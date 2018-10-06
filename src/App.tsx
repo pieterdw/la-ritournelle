@@ -1,9 +1,9 @@
-import React from 'react'
-import { hot } from 'react-hot-loader'
-import { Link, Router } from 'react-static'
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import { Link, Router } from 'react-static';
 //
-import Routes from 'react-static-routes'
-import './app.scss'
+import Routes from 'react-static-routes';
+import './app.scss';
 
 const App = () => (
   <Router>
@@ -20,6 +20,6 @@ const App = () => (
       </div>
     </div>
   </Router>
-)
+);
 
-export default hot(module)(App)
+export default hot(module)(App);
