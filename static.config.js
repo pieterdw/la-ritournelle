@@ -1,64 +1,30 @@
-import axios from 'axios'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import path from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import path from 'path';
+import { RouteUtil } from './src/utils/RouteUtil.js';
 
 // Paths Aliases defined through tsconfig.json
-const typescriptWebpackPaths = require('./webpack.config.js')
+const typescriptWebpackPaths = require('./webpack.config.js');
 
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
   getSiteData: () => ({
-    title: 'React Static',
+    title: 'La Ritournelle'
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts',
-    )
-    return [
-      {
-        path: '/',
-        component: 'src/containers/Home',
-      },
-      {
-        path: '/about',
-        component: 'src/containers/About',
-      },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
-      },
-      {
-        is404: true,
-        component: 'src/containers/404',
-      },
-    ]
+    return await RouteUtil.getRoutes();
   },
   webpack: (config, { defaultLoaders, stage }) => {
     // Add .ts and .tsx extension to resolver
-    config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.extensions.push('.ts', '.tsx');
 
     // Add TypeScript Path Mappings (from tsconfig via webpack.config.js)
     // to react-statics alias resolution
-    config.resolve.alias = typescriptWebpackPaths.resolve.alias
+    config.resolve.alias = typescriptWebpackPaths.resolve.alias;
 
-    let loaders = []
+    let loaders = [];
 
     if (stage === 'dev') {
-      loaders = [
-        { loader: 'style-loader' },
-        { loader: 'css-loader' },
-        { loader: 'sass-loader' },
-      ]
+      loaders = [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }];
     } else {
       loaders = [
         {
@@ -66,14 +32,14 @@ export default {
           options: {
             importLoaders: 1,
             minimize: stage === 'prod',
-            sourceMap: false,
-          },
+            sourceMap: false
+          }
         },
         {
           loader: 'sass-loader',
-          options: { includePaths: ['src/'] },
-        },
-      ]
+          options: { includePaths: ['src/'] }
+        }
+      ];
 
       // Don't extract css to file during node build process
       if (stage !== 'node') {
@@ -82,11 +48,11 @@ export default {
             loader: 'style-loader',
             options: {
               sourceMap: false,
-              hmr: false,
-            },
+              hmr: false
+            }
           },
-          use: loaders,
-        })
+          use: loaders
+        });
       }
     }
 
@@ -100,25 +66,25 @@ export default {
             exclude: defaultLoaders.jsLoader.exclude, // as std jsLoader exclude
             use: [
               {
-                loader: 'babel-loader',
+                loader: 'babel-loader'
               },
               {
                 loader: require.resolve('ts-loader'),
                 options: {
-                  transpileOnly: true,
-                },
-              },
-            ],
+                  transpileOnly: true
+                }
+              }
+            ]
           },
           {
             test: /\.s(a|c)ss$/,
-            use: loaders,
+            use: loaders
           },
           defaultLoaders.cssLoader,
-          defaultLoaders.fileLoader,
-        ],
-      },
-    ]
-    return config
-  },
-}
+          defaultLoaders.fileLoader
+        ]
+      }
+    ];
+    return config;
+  }
+};
