@@ -15,23 +15,9 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@myPathAlias/*": [
-        "src/path-alias-example/*"
-      ]
-    },
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
-    ]
+    "paths": {},
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["dom", "es2015", "es2016"]
   },
-  "exclude": [
-    "dist/**/*",
-    "public/**/*",
-    "node_modules"
-  ]
+  "exclude": ["dist/**/*", "public/**/*", "node_modules"]
 }
