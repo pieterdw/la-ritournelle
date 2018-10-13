@@ -1,7 +1,3 @@
 build:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn build'
-
-deploy:
-  image: 'kkarczmarczyk/node-yarn'
-  script: 'yarn build'
