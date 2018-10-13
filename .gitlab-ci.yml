@@ -1,12 +1,8 @@
 before_script:
+  - 'yarn'
   - 'yarn before-ci'
-
-build:
-  image: 'kkarczmarczyk/node-yarn'
-  script: 'yarn build'
-  stage: 'build'
 
 deploy:
   image: 'kkarczmarczyk/node-yarn'
-  script: 'yarn deploy-only'
+  script: 'yarn deploy'
   stage: 'deploy'
