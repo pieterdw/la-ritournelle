@@ -3,7 +3,7 @@ import { PageUtil } from './PageUtil';
 export class RouteUtil {
 }
 RouteUtil.getRoutes = async () => {
-    const result = await axios.get('https://www.vakantiehuisantibes.com/admin/api/collections/get/pages?token=ab5b0c4737b57b8d7bac392bb68912');
+    const result = await axios.get('https://admin.vakantiehuisantibes.com/api/collections/get/pages?token=ab5b0c4737b57b8d7bac392bb68912');
     const pages = PageUtil.parsePages(result.data.entries);
     return [
         {

@@ -5,3 +5,8 @@ build:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn build'
   stage: 'build'
+
+deploy:
+  image: 'kkarczmarczyk/node-yarn'
+  script: 'yarn deploy-only'
+  stage: 'deploy'
