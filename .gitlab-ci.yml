@@ -1,0 +1,5 @@
+build:
+  script: 'yarn build'
+
+deploy:
+  script: 'yarn build'
