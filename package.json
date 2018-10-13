@@ -8,7 +8,8 @@
     "stage": "npm run build-scripts --silent && react-static build --staging",
     "build": "npm run build-scripts --silent && react-static build",
     "serve": "serve dist -p 3000",
-    "build-scripts": "yarn run tsc -p ./scripts"
+    "build-scripts": "tsc -p ./scripts",
+    "before-ci": "yarn global add typescript"
   },
   "dependencies": {
     "axios": "^0.18.0",
