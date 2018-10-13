@@ -8,14 +8,14 @@ export class RouteUtil {
     );
     const pages = PageUtil.parsePages(result.data.entries);
     return [
-      {
-        path: '/',
-        component: 'src/containers/Home'
-      },
-      {
-        path: '/about',
-        component: 'src/containers/About'
-      },
+      // {
+      //   path: '/',
+      //   component: 'src/containers/Home'
+      // },
+      // {
+      //   path: '/about',
+      //   component: 'src/containers/About'
+      // },
       ...pages.map(p => ({
         path: p.path,
         component: 'src/containers/Page',
