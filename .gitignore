@@ -9,6 +9,7 @@
 /tmp
 
 # scripts
+/scripts/**/*.js
 /scripts/*.js
 
 # misc

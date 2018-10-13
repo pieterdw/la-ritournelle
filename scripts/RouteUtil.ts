@@ -1,12 +1,13 @@
-import axios from 'axios';
+import { Api } from './Api';
+import { MenuUtil } from './MenuUtil';
 import { PageUtil } from './PageUtil';
 
 export class RouteUtil {
   static getRoutes = async () => {
-    const result = await axios.get(
-      'https://admin.vakantiehuisantibes.com/api/collections/get/pages?token=ab5b0c4737b57b8d7bac392bb68912'
-    );
-    const pages = PageUtil.parsePages(result.data.entries);
+    const rawPages = await Api.get<any>('/api/collections/get/pages');
+    const rawMenu = await Api.get('/api/singletons/get/menu_header');
+    const menu = MenuUtil.parseMenu(rawPages, rawMenu);
+    const pages = PageUtil.parsePages(rawPages.entries);
     return [
       // {
       //   path: '/',
@@ -19,7 +20,7 @@ export class RouteUtil {
       ...pages.map(p => ({
         path: p.path,
         component: 'src/containers/Page',
-        getData: () => ({ page: p })
+        getData: () => ({ page: p, menu: menu[p.locale] })
       })),
       //   {
       //     path: '/blog',

@@ -14,6 +14,7 @@
     },
     "editor.formatOnSave": true,
     "files.exclude": {
+      "**/scripts/**/*.js": true,
       "**/scripts/*.js": true
     }
   }

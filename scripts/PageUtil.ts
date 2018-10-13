@@ -1,6 +1,8 @@
+import { Page, RawPage } from './models/Page';
+
 export class PageUtil {
-  static parsePages = (raw: any) => {
-    const result: any[] = [];
+  static parsePages = (raw: RawPage[]): Page[] => {
+    const result: Page[] = [];
     raw.forEach((page: any) => {
       result.push({
         slug: page.slug,

@@ -12,7 +12,9 @@ export interface RawPage {
 
 export interface Page {
   locale: 'nl' | 'en' | 'fr';
+  slug: string;
   path: string;
   title: string;
+  intro: string;
   content: Layout[];
 }
