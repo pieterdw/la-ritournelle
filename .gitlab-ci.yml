@@ -1,4 +1,5 @@
-before_script: 'yarn before-ci'
+before_script:
+  - 'yarn before-ci'
 
 build:
   image: 'kkarczmarczyk/node-yarn'
