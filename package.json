@@ -9,7 +9,7 @@
     "build": "npm run build-scripts --silent && react-static build",
     "serve": "serve dist -p 3000",
     "build-scripts": "tsc -p ./scripts",
-    "before-ci": "yarn global add typescript"
+    "before-ci": "yarn global add typescript && yarn"
   },
   "dependencies": {
     "axios": "^0.18.0",
