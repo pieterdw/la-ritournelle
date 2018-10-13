@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 export default () => (
   <div>
-    <h1>404 - Oh no's! We couldn't find that page :(</h1>
+    <h1>Deze pagina kon niet terug gevonden worden, sorry!</h1>
+    <p>
+      <a href="/">Ga naar de homepage &raquo;</a>
+    </p>
   </div>
-)
+);
