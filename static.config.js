@@ -1,12 +1,13 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
-import { RouteUtil } from './src/utils/RouteUtil.js';
+import { RouteUtil } from './scripts/RouteUtil.js';
 
 // Paths Aliases defined through tsconfig.json
 const typescriptWebpackPaths = require('./webpack.config.js');
 
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
+  siteRoot: 'https://www.vakantiehuisantibes.com/',
   getSiteData: () => ({
     title: 'La Ritournelle'
   }),

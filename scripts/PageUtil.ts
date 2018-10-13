@@ -1,7 +1,7 @@
 export class PageUtil {
-  static parsePages = raw => {
-    const result = [];
-    raw.forEach(page => {
+  static parsePages = (raw: any) => {
+    const result: any[] = [];
+    raw.forEach((page: any) => {
       result.push({
         slug: page.slug,
         path: '/' + page.slug,

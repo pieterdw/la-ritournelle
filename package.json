@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "react-static start",
-    "stage": "react-static build --staging",
-    "build": "react-static build",
-    "serve": "serve dist -p 3000"
+    "start": "npm run build-scripts --silent && react-static start",
+    "stage": "npm run build-scripts --silent && react-static build --staging",
+    "build": "npm run build-scripts --silent && react-static build",
+    "serve": "serve dist -p 3000",
+    "build-scripts": "tsc -p ./scripts"
   },
   "dependencies": {
     "axios": "^0.18.0",

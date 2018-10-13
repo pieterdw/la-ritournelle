@@ -12,6 +12,9 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/scripts/*.js": true
+    }
   }
 }
