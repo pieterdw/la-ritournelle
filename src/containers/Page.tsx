@@ -5,7 +5,7 @@ import { Page } from 'scripts/models/Page';
 import { Various } from 'scripts/models/Various';
 import { Content } from '../components/layout/Content';
 import { Header } from '../components/layout/Header';
-import { Layout } from '../components/layout/Layout';
+import { Template } from '../components/layout/Template';
 import { RouteHistory } from '../models/RouteHistory';
 import { RouteMatch } from '../models/RouteMatch';
 
@@ -18,8 +18,8 @@ export interface PageProps {
 }
 
 export default withRouteData((props: any) => (
-  <Layout page={props.page} menu={props.menu} various={props.various} match={props.match}>
+  <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
     <Header page={props.page} />
     <Content page={props.page} />
-  </Layout>
+  </Template>
 ));

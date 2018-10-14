@@ -6,14 +6,14 @@ import { Various } from 'scripts/models/Various';
 import { RouteMatch } from '../../models/RouteMatch';
 import { Nav } from './Nav';
 
-export interface LayoutProps {
+export interface TemplateProps {
   page: Page;
   menu: MenuItem[];
   various: Various;
   match: RouteMatch;
 }
 
-export class Layout extends React.Component<LayoutProps, {}> {
+export class Template extends React.Component<TemplateProps, {}> {
   public render() {
     return (
       <div>
