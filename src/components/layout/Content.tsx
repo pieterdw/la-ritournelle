@@ -8,6 +8,6 @@ export interface ContentProps {
 
 export class Content extends React.Component<ContentProps, {}> {
   public render() {
-    return <Container>Page content</Container>;
+    return <Container>{JSON.stringify(this.props.page)}</Container>;
   }
 }

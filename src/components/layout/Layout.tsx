@@ -2,12 +2,14 @@ import React from 'react';
 import { Head } from 'react-static';
 import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
+import { Various } from 'scripts/models/Various';
 import { RouteMatch } from '../../models/RouteMatch';
 import { Nav } from './Nav';
 
 export interface LayoutProps {
   page: Page;
   menu: MenuItem[];
+  various: Various;
   match: RouteMatch;
 }
 
@@ -16,7 +18,9 @@ export class Layout extends React.Component<LayoutProps, {}> {
     return (
       <div>
         <Head>
-          <title>{this.props.page.title}</title>
+          <title>
+            {this.props.page.title} - {this.props.various.website_title}
+          </title>
           <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

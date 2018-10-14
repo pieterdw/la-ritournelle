@@ -1,5 +1,7 @@
+import { RawPages } from './models/RawPages';
+
 export class MenuUtil {
-  public static parseMenu = (rawPages, rawMenu): Menu => {
+  public static parseMenu = (rawPages: RawPages, rawMenu): Menu => {
     const pages = rawMenu.items.map(item => {
       return rawPages.entries.find(page => page._id === item._id);
     });

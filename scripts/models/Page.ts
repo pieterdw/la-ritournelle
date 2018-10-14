@@ -8,6 +8,7 @@ export interface RawPage {
   content: Layout[];
   content_en: Layout[];
   content_fr: Layout[];
+  _id: string;
 }
 
 export interface Page {
