@@ -6,7 +6,7 @@ export class PageUtil {
     raw.forEach((page: any) => {
       result.push({
         slug: page.slug,
-        path: page.slug === 'home' ? '/' : '/' + page.slug,
+        path: page.slug === 'home' ? '/' : '/nl/' + page.slug,
         locale: 'nl',
         title: page.title,
         intro: page.intro,

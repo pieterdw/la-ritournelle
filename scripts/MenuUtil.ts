@@ -4,7 +4,7 @@ export class MenuUtil {
       return rawPages.entries.find(page => page._id === item._id);
     });
     return {
-      nl: pages.map(page => ({ label: page.title, url: '/' + page.slug })),
+      nl: pages.map(page => ({ label: page.title, url: '/nl/' + page.slug })),
       en: pages.map(page => ({ label: page.title_en || page.title, url: '/en/' + page.slug })),
       fr: pages.map(page => ({ label: page.title_fr || page.title, url: '/fr/' + page.slug }))
     };

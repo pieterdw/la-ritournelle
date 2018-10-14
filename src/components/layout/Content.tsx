@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'reactstrap/lib/Container';
 import { Page } from 'scripts/models/Page';
 
 export interface ContentProps {
@@ -7,6 +8,6 @@ export interface ContentProps {
 
 export class Content extends React.Component<ContentProps, {}> {
   public render() {
-    return <div>Page content: {JSON.stringify(this.props.page)}</div>;
+    return <Container>Page content</Container>;
   }
 }

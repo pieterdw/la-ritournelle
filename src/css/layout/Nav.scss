@@ -1,0 +1,10 @@
+.headerNav {
+  .dropdown-item.active {
+    background-color: transparent;
+    color: #212529;
+    &:hover {
+      color: #16181b;
+      background-color: #f8f9fa;
+    }
+  }
+}

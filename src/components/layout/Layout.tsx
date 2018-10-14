@@ -1,6 +1,5 @@
 import React from 'react';
 import { Head } from 'react-static';
-import Button from 'reactstrap/lib/Button';
 import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
 import { RouteMatch } from '../../models/RouteMatch';
@@ -25,9 +24,8 @@ export class Layout extends React.Component<LayoutProps, {}> {
             crossOrigin="anonymous"
           />
         </Head>
-        <Nav menu={this.props.menu} match={this.props.match} />
-        <Button color="danger">test!</Button>
-        <div className="content">{this.props.children}</div>
+        <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />
+        {this.props.children}
       </div>
     );
   }
