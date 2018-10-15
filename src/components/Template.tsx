@@ -27,8 +27,12 @@ export class Template extends React.Component<TemplateProps, {}> {
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossOrigin="anonymous"
           />
-          <link rel="stylesheet" href="/assets/animate.css" />
-          <script src="/assets/wow.min.js" />
+          <link
+            rel="stylesheet"
+            href="https://www.vakantiehuisantibes.com/assets/animate.css"
+            crossOrigin="anonymous"
+          />
+          <script src="https://www.vakantiehuisantibes.com/assets/wow.min.js" />
           <script>new WOW().init();</script>
         </Head>
         <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />
