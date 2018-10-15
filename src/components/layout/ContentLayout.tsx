@@ -1,8 +1,8 @@
 import React from 'react';
 import { ContentLayoutSettings } from 'scripts/models/ContentLayout';
-import { cn } from '../../../utils/cn';
-import { StyleUtil } from '../../../utils/StyleUtil';
-import { Markdown } from '../../Markdown';
+import { cn } from '../../utils/cn';
+import { StyleUtil } from '../../utils/StyleUtil';
+import { Markdown } from '../Markdown';
 
 export interface ContentLayoutProps {
   settings: ContentLayoutSettings;

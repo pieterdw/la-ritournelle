@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageLayoutSettings } from 'scripts/models/ImageLayout';
-import { cn } from '../../../utils/cn';
-import { StyleUtil } from '../../../utils/StyleUtil';
+import { cn } from '../../utils/cn';
+import { StyleUtil } from '../../utils/StyleUtil';
 
 export interface ImageLayoutProps {
   settings: ImageLayoutSettings;

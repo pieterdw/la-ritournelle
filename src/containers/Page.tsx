@@ -3,9 +3,10 @@ import { withRouteData } from 'react-static';
 import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
 import { Various } from 'scripts/models/Various';
-import { Content } from '../components/layout/Content';
-import { Header } from '../components/layout/Header';
-import { Template } from '../components/layout/Template';
+import { Content } from '../components/Content';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
+import { Template } from '../components/Template';
 import { RouteHistory } from '../models/RouteHistory';
 import { RouteMatch } from '../models/RouteMatch';
 
@@ -21,5 +22,6 @@ export default withRouteData((props: any) => (
   <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
     <Header page={props.page} />
     <Content page={props.page} />
+    <Footer page={props.page} />
   </Template>
 ));

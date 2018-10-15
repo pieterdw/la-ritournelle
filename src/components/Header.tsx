@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'reactstrap/lib/Container';
 import { Page } from 'scripts/models/Page';
-import { Markdown } from '../Markdown';
+import { Markdown } from './Markdown';
 
 export interface HeaderProps {
   page: Page;

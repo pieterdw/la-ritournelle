@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 import { Router } from 'react-static';
 //
 import Routes from 'react-static-routes';
-import './app.scss';
+import './css/App.scss';
 
 const App = () => (
   <Router>

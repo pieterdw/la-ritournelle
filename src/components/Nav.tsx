@@ -13,8 +13,8 @@ import NavLink from 'reactstrap/lib/NavLink';
 import { UncontrolledDropdown } from 'reactstrap/lib/Uncontrolled';
 import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
-import '../../css/layout/Nav.scss';
-import { RouteMatch } from '../../models/RouteMatch';
+import '../css/Nav.scss';
+import { RouteMatch } from '../models/RouteMatch';
 
 export interface NavProps {
   page: Page;
@@ -44,7 +44,7 @@ export class Nav extends React.Component<NavProps, NavState> {
     const locale = this.props.page.locale;
     const homePath = locale === 'nl' ? '/' : '/' + locale;
     return (
-      <Navbar color="light" light expand="md" className="headerNav">
+      <Navbar dark sticky="top" expand="md" className="headerNav">
         <Container>
           <NavbarBrand tag={Link} to={homePath}>
             La Ritournelle

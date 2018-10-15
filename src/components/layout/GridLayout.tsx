@@ -3,8 +3,8 @@ import Col from 'reactstrap/lib/Col';
 import Row from 'reactstrap/lib/Row';
 import { GridColumnLayout } from 'scripts/models/GridLayout';
 import { LayoutSettings } from 'scripts/models/LayoutSettings';
-import { cn } from '../../../utils/cn';
-import { StyleUtil } from '../../../utils/StyleUtil';
+import { cn } from '../../utils/cn';
+import { StyleUtil } from '../../utils/StyleUtil';
 import { LayoutChooser } from './LayoutChooser';
 
 export interface GridLayoutProps {
