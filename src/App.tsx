@@ -1,9 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Router } from 'react-static';
-//
 import Routes from 'react-static-routes';
 import './css/App.scss';
+import './css/pages/Home.scss';
 
 const App = () => (
   <Router>

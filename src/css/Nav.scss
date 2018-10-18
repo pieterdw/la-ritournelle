@@ -1,5 +1,8 @@
 .headerNav {
   background-color: rgba(30, 30, 30, 0.85);
+  &.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+  }
   .dropdown-item.active {
     background-color: transparent;
     color: #212529;

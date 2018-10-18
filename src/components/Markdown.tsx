@@ -1,7 +1,5 @@
 import React from 'react';
-import remark from 'remark';
-import remarkHtml from 'remark-html';
-import recommended from 'remark-preset-lint-recommended';
+import { Converter } from 'showdown';
 
 export interface MarkdownProps {
   content: string;
@@ -9,10 +7,6 @@ export interface MarkdownProps {
 }
 
 export const Markdown: React.SFC<MarkdownProps> = ({ content, className }) => {
-  content = remark()
-    .use(recommended)
-    .use(remarkHtml)
-    .processSync(content)
-    .toString();
+  content = content ? new Converter().makeHtml(content) : null;
   return <div className={className} dangerouslySetInnerHTML={{ __html: content }} />;
 };

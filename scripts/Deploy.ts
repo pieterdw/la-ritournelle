@@ -8,7 +8,7 @@ var config = {
   port: 21,
   localRoot: './dist',
   remoteRoot: '/',
-  include: ['*', '**/*'],
+  include: ['*', '**/*', '.*'],
   exclude: [],
   deleteRemote: true
 };
