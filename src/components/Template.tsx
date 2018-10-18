@@ -14,6 +14,10 @@ export interface TemplateProps {
 }
 
 export class Template extends React.Component<TemplateProps, {}> {
+  public componentDidMount() {
+    new (window as any).WOW().init();
+  }
+
   public render() {
     return (
       <div>
@@ -27,11 +31,7 @@ export class Template extends React.Component<TemplateProps, {}> {
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossOrigin="anonymous"
           />
-          <link
-            rel="stylesheet"
-            href="https://www.vakantiehuisantibes.com/assets/animate.css"
-            crossOrigin="anonymous"
-          />
+          <link rel="stylesheet" href="https://www.vakantiehuisantibes.com/assets/animate.css" />
           <script src="https://www.vakantiehuisantibes.com/assets/wow.min.js" />
           <script>new WOW().init();</script>
         </Head>
