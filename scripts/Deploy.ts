@@ -22,7 +22,7 @@ ftpDeploy
     client.messages
       .create({
         body: 'La Ritournelle has been deployed!',
-        from: 'whatsapp:+32472735666',
+        from: 'whatsapp:+14155238886',
         to: 'whatsapp:+32472735666'
       })
       .then(message => console.log(message.sid))
