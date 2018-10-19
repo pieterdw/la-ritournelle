@@ -7,12 +7,13 @@ import { LayoutChooser } from './layout/LayoutChooser';
 
 export interface ContentProps {
   page: Page;
+  className?: string;
 }
 
 export class Content extends React.Component<ContentProps, {}> {
   public render() {
     return (
-      <React.Fragment>
+      <div className={cn('pageContent', this.props.className)}>
         {this.props.page.content &&
           this.props.page.content.map((layout, i) => (
             <Container key={i} className={cn('contentContainer', i === 0 && 'first')}>
@@ -22,7 +23,7 @@ export class Content extends React.Component<ContentProps, {}> {
         <Container className="contentContainer">
           <Alert className="json">{JSON.stringify(this.props.page)}</Alert>
         </Container>
-      </React.Fragment>
+      </div>
     );
   }
 }

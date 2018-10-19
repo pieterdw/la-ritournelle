@@ -4,4 +4,13 @@ html.home {
     background-size: cover;
     background-attachment: fixed;
   }
+
+  .pageHeader {
+    height: calc(100vh - 150px);
+  }
+
+  .pageContent {
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+  }
 }

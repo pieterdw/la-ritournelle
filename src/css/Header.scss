@@ -1,0 +1,15 @@
+.pageHeader {
+  display: flex;
+  align-items: center;
+  > div {
+    flex-grow: 1;
+    color: #fff;
+    text-align: center;
+    h1 {
+      text-transform: uppercase;
+    }
+    .markdown {
+      animation-delay: 0.8s;
+    }
+  }
+}

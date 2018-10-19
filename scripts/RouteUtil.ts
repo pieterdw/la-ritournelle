@@ -23,7 +23,7 @@ export class RouteUtil {
       // },
       ...pages.map(p => ({
         path: p.path,
-        component: 'src/containers/Page',
+        component: PageUtil.getPageComponent(p.slug),
         getData: () => ({
           page: p,
           menu: menu[p.locale],

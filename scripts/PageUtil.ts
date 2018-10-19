@@ -31,4 +31,13 @@ export class PageUtil {
     });
     return result;
   };
+
+  public static getPageComponent = (slug: string): string => {
+    switch (slug) {
+      case 'home':
+        return 'src/containers/HomePage';
+      default:
+        return 'src/containers/Page';
+    }
+  };
 }

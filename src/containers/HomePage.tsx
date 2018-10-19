@@ -1,27 +1,16 @@
 import React from 'react';
 import { withRouteData } from 'react-static';
-import { MenuItem } from 'scripts/MenuUtil';
-import { Page } from 'scripts/models/Page';
-import { Various } from 'scripts/models/Various';
 import { Content } from '../components/Content';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Template } from '../components/Template';
-import { RouteHistory } from '../models/RouteHistory';
-import { RouteMatch } from '../models/RouteMatch';
-
-export interface PageProps {
-  page: Page;
-  menu: MenuItem[];
-  various: Various;
-  match: RouteMatch;
-  history: RouteHistory;
-}
+import '../css/HomePage.scss';
+import { PageProps } from './Page';
 
 export default withRouteData((props: PageProps) => (
   <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
-    <Header page={props.page} />
-    <Content page={props.page} />
+    <Header page={props.page} animate={true} />
+    <Content page={props.page} className="wow slideInUp" />
     <Footer page={props.page} />
   </Template>
 ));
