@@ -3,7 +3,6 @@ import { Head } from 'react-static';
 import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
 import { Various } from 'scripts/models/Various';
-import 'wowjs/dist/wow';
 import { RouteMatch } from '../models/RouteMatch';
 import { Nav } from './Nav';
 
@@ -16,7 +15,7 @@ export interface TemplateProps {
 
 export class Template extends React.Component<TemplateProps, {}> {
   public componentDidMount() {
-    (window as any).WOW.init();
+    new (window as any).WOW().init();
   }
 
   public render() {
@@ -37,7 +36,9 @@ export class Template extends React.Component<TemplateProps, {}> {
             href="https://www.vakantiehuisantibes.com/assets/animate.css"
             crossOrigin="anonymous"
           />
-          {/* <script src="https://www.vakantiehuisantibes.com/assets/wow.min.js" crossOrigin="anonymous" /> */}
+          {process.env.NODE_ENV === 'production' && (
+            <script src="https://www.vakantiehuisantibes.com/assets/wow.min.js" crossOrigin="anonymous" />
+          )}
           {/* <script>new WOW().init();</script> */}
         </Head>
         <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />

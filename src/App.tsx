@@ -3,9 +3,11 @@ import { hot } from 'react-hot-loader';
 import { Router } from 'react-static';
 import Routes from 'react-static-routes';
 import './css/App.scss';
-const WOW = require('wowjs');
 
-(window as any).WOW = new WOW.WOW();
+if (process.env.NODE_ENV !== 'production') {
+  const WOW = require('wowjs');
+  (window as any).WOW = WOW.WOW;
+}
 
 const App = () => (
   <Router>
