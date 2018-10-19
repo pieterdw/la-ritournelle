@@ -5,12 +5,14 @@
     flex-grow: 1;
     color: #fff;
     text-align: center;
+    text-shadow: 1px 1px 25px rgba(0, 0, 0, 0.7);
     h1 {
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
     }
     .markdown {
-      animation-delay: 0.8s;
+      animation-delay: 0.5s;
+      animation-duration: 1s;
     }
   }
 }
