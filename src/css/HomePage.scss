@@ -1,3 +1,5 @@
+@import './Colors.scss';
+
 html.home {
   //body {
   background-color: #333;
@@ -11,6 +13,26 @@ html.home {
 
   .pageHeader {
     height: calc(100vh - 180px);
+    .markdown {
+      margin-top: 25px;
+      a {
+        background-color: $primaryBackground;
+        padding: 0.375rem 0.75rem;
+        margin: 10px 5px 0 5px;
+        display: inline-block;
+        text-shadow: none;
+        color: #fff;
+        border: 1px solid $primaryBorderColor;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+        text-decoration: none;
+        &:hover {
+          background-color: $primaryHoverBackground;
+          border-color: $primaryHoverBorderColor;
+        }
+      }
+    }
   }
 
   .pageContent {

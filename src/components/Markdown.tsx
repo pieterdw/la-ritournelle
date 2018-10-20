@@ -8,6 +8,6 @@ export interface MarkdownProps {
 }
 
 export const Markdown: React.SFC<MarkdownProps> = ({ content, className }) => {
-  content = content ? new Converter().makeHtml(content) : null;
+  content = content ? new Converter().makeHtml(content).replace('\n', '<br />') : null;
   return <div className={cn('markdown', className)} dangerouslySetInnerHTML={{ __html: content }} />;
 };
