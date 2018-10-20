@@ -5,10 +5,10 @@ before_script:
 deploy:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy'
-  stage: 'deploy'
+  stage: deploy
 
 fail:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy-failed'
-  stage: 'deploy'
+  stage: deploy
   when: on_failure
