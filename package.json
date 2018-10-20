@@ -9,7 +9,7 @@
     "build": "npm run build-scripts --silent && react-static build",
     "serve": "serve dist -p 3000",
     "build-scripts": "tsc -p ./scripts",
-    "deploy": "yarn build && node ./scripts/Deploy",
+    "deploy": "yarn build && yarn deploy-only",
     "deploy-only": "node ./scripts/Deploy",
     "deploy-failed": "node ./scripts/Fail",
     "before-ci": "yarn global add typescript"
