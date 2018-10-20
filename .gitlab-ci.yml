@@ -6,3 +6,9 @@ deploy:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy'
   stage: 'deploy'
+
+deploy:
+  image: 'kkarczmarczyk/node-yarn'
+  script: 'yarn deploy-failed'
+  stage: 'deploy'
+  when: on_failure

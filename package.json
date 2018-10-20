@@ -11,6 +11,7 @@
     "build-scripts": "tsc -p ./scripts",
     "deploy": "yarn build && node ./scripts/Deploy",
     "deploy-only": "node ./scripts/Deploy",
+    "deploy-failed": "node ./scripts/Fail",
     "before-ci": "yarn global add typescript"
   },
   "dependencies": {

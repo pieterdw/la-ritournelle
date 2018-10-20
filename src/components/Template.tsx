@@ -42,7 +42,7 @@ export class Template extends React.Component<TemplateProps, {}> {
           )}
           {/* <script>new WOW().init();</script> */}
         </Head>
-        <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />
+        <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} /></Nav>
         {this.props.children}
       </div>
     );
