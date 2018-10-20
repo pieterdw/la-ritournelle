@@ -1,14 +1,13 @@
-before_script:
-  - 'yarn'
-  - 'yarn before-ci'
-
 deploy:
+  before_script:
+    - 'yarn'
+    - 'yarn before-ci'
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy'
-  stage: deploy
+  stage: build
 
 fail:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy-failed'
-  stage: deploy
+  stage: build
   when: on_failure
