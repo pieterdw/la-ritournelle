@@ -52,7 +52,6 @@ export class GridLayout extends React.Component<GridLayoutProps> {
         <Row>
           {columns.map((col, i) => (
             <Col
-              col
               key={i}
               xs="12"
               sm={this.getSmColumnClass(columns.length)}
