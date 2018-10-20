@@ -1,3 +1,7 @@
+stages:
+  - deploy
+  - finish
+
 deploy:
   before_script:
     - 'yarn'
@@ -5,10 +9,10 @@ deploy:
     - 'yarn build'
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy-only'
-  stage: build
+  stage: deploy
 
 fail:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy-failed'
-  stage: deploy
+  stage: finish
   when: on_failure
