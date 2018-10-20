@@ -9,6 +9,9 @@
     h1 {
       text-transform: uppercase;
       letter-spacing: 3px;
+      @media only screen and (max-width: 400px) {
+        font-size: 1.8rem;
+      }
     }
     .markdown {
       animation-delay: 0.5s;

@@ -1,9 +1,12 @@
 html.home {
+  //body {
+  background-color: #333;
+  background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/15/5bc4ca5ca5634bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  //}
   body {
-    background-color: #333;
-    background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/15/5bc4ca5ca5634bg.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: transparent;
   }
 
   .pageHeader {

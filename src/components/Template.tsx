@@ -40,9 +40,8 @@ export class Template extends React.Component<TemplateProps, {}> {
           {process.env.NODE_ENV === 'production' && (
             <script src="https://www.vakantiehuisantibes.com/assets/wow.min.js" crossOrigin="anonymous" />
           )}
-          {/* <script>new WOW().init();</script> */}
         </Head>
-        <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} /></Nav>
+        <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />
         {this.props.children}
       </div>
     );

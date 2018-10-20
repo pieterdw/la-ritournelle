@@ -2,6 +2,7 @@ import React from 'react';
 import Alert from 'reactstrap/lib/Alert';
 import Container from 'reactstrap/lib/Container';
 import { Page } from 'scripts/models/Page';
+import '../css/Content.scss';
 import { cn } from '../utils/cn';
 import { LayoutChooser } from './layout/LayoutChooser';
 
