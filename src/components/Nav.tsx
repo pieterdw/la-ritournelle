@@ -15,6 +15,7 @@ import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
 import '../css/Nav.scss';
 import { RouteMatch } from '../models/RouteMatch';
+import { cn } from '../utils/cn';
 
 export interface NavProps {
   page: Page;
@@ -49,7 +50,11 @@ export class Nav extends React.Component<NavProps, NavState> {
           <NavbarBrand tag={Link} to={homePath}>
             La Ritournelle
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler onClick={this.toggle} className={cn(this.state.isOpen && 'open')}>
+            <div className="one" />
+            <div className="two" />
+            <div className="three" />
+          </NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavBs className="ml-auto" navbar>
               {this.props.menu.map(item => (
