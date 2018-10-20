@@ -21,6 +21,7 @@ export class Template extends React.Component<TemplateProps, {}> {
   public render() {
     return (
       <div>
+        <div className="html-mobile-background" />
         <Head htmlAttributes={{ class: this.props.page.slug }}>
           <title>
             {this.props.page.title} - {this.props.various.website_title}

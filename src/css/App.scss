@@ -2,3 +2,25 @@ html,
 body {
   // height: 100%;
 }
+
+.html-mobile-background {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 125%; /* To compensate for mobile browser address bar space */
+  background: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/15/5bc4ca5ca5634bg.jpg') no-repeat;
+  background-size: 100% 100%;
+}
+
+@media (min-width: 600px) {
+  html {
+    background: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/15/5bc4ca5ca5634bg.jpg') no-repeat
+      center center fixed;
+    background-size: cover;
+  }
+  .html-mobile-background {
+    display: none;
+  }
+}
