@@ -63,7 +63,7 @@ export class GridLayout extends React.Component<GridLayoutProps> {
               {col.children.map((x, i2) => (
                 <LayoutChooser key={i2} layout={x} />
               ))}
-            </Col></Col>
+            </Col>
           ))}
         </Row>
       </div>
