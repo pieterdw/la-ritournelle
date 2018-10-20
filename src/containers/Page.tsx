@@ -20,7 +20,7 @@ export interface PageProps {
 
 export default withRouteData((props: PageProps) => (
   <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
-    <Header page={props.page} />
+    <Header title={props.page.title} intro={props.page.intro} />
     <Content page={props.page} />
     <Footer page={props.page} />
   </Template>

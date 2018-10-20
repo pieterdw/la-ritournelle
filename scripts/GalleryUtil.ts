@@ -1,11 +1,13 @@
 import { Api } from './Api';
-import { Gallery, GalleryImage } from './models/Gallery';
+import { GalleriesByLocale, Gallery, GalleryImage } from './models/Gallery';
 import { RawGalleries } from './models/RawGallery';
 
 export class GalleryUtil {
-  public static getGalleries = async (): Promise<Gallery[]> => {
+  public static getGalleries = async (): Promise<GalleriesByLocale> => {
     const raw = await Api.get<RawGalleries>('/api/collections/get/galleries');
-    const galleries: Gallery[] = [];
+    const nl: Gallery[] = [];
+    const en: Gallery[] = [];
+    const fr: Gallery[] = [];
     await raw.entries.forEach(async g => {
       const images: GalleryImage[] = [];
 
@@ -18,20 +20,32 @@ export class GalleryUtil {
         });
         images.push({
           title: img.meta.title,
-          asset: img.meta.title,
+          asset: img.meta.asset,
           thumbPath: thumb,
           fullSizePath: img.path
         });
       });
 
-      galleries.push({
+      nl.push({
         title: g.title,
-        title_en: g.title_en,
-        title_fr: g.title_fr,
+        slug: g.slug,
+        images: images
+      });
+      en.push({
+        title: g.title_en || g.title,
+        slug: g.slug,
+        images: images
+      });
+      fr.push({
+        title: g.title_fr || g.title,
         slug: g.slug,
         images: images
       });
     });
-    return galleries;
+    return {
+      nl,
+      en,
+      fr
+    };
   };
 }

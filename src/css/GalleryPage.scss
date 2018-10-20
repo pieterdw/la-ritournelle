@@ -1,4 +1,15 @@
 @import './Colors.scss';
 
 html.fotos {
+  .galleryOverview {
+    .nav {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      .nav-item {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }

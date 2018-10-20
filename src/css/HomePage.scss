@@ -9,6 +9,7 @@ html.home {
       flex-grow: 1;
       text-align: center;
       h1 {
+        text-transform: uppercase;
         letter-spacing: 3px;
         font-size: 2.5rem;
         @media only screen and (max-width: 400px) {

@@ -14,6 +14,7 @@ export class RouteUtil {
     const menu = MenuUtil.parseMenu(rawPages, rawMenu);
     const pages = PageUtil.parsePages(rawPages.entries);
     const various = VariousUtil.parseVarious(rawVarious);
+
     return [
       ...pages.map(p => {
         const result: any = {
@@ -26,15 +27,21 @@ export class RouteUtil {
           })
         };
         if (p.slug === 'fotos') {
-          result.galleries = galleries;
-          result.children = galleries.map(g => ({
+          const gal = galleries[p.locale];
+          result.getData = () => ({
+            page: p,
+            galleries: gal,
+            menu: menu[p.locale],
+            various: various[p.locale]
+          });
+          result.children = gal.map(g => ({
             path: g.slug,
             component: result.component,
             getData: () => ({
               page: p,
               menu: menu[p.locale],
               various: various[p.locale],
-              galleries: galleries,
+              galleries: gal,
               gallerySlug: g.slug
             })
           }));

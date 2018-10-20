@@ -1,7 +1,7 @@
-import { Various, VariousGroups } from './models/Various';
+import { Various, VariousByLocale } from './models/Various';
 
 export class VariousUtil {
-  public static parseVarious = (raw): VariousGroups => {
+  public static parseVarious = (raw): VariousByLocale => {
     const nl = {};
     const en = {};
     const fr = {};

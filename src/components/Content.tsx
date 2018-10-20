@@ -15,9 +15,10 @@ export class Content extends React.Component<ContentProps, {}> {
   public render() {
     return (
       <div className={cn('pageContent', this.props.className)}>
+        {this.props.children && <Container className="contentContainer">{this.props.children}</Container>}
         {this.props.page.content &&
           this.props.page.content.map((layout, i) => (
-            <Container key={i} className={cn('contentContainer', i === 0 && 'first')}>
+            <Container key={i} className="contentContainer">
               <LayoutChooser layout={layout} />
             </Container>
           ))}
