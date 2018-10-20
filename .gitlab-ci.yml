@@ -2,12 +2,13 @@ deploy:
   before_script:
     - 'yarn'
     - 'yarn before-ci'
+    - 'yarn build'
   image: 'kkarczmarczyk/node-yarn'
-  script: 'yarn deploy'
+  script: 'yarn deploy-only'
   stage: build
 
 fail:
   image: 'kkarczmarczyk/node-yarn'
   script: 'yarn deploy-failed'
-  stage: build
+  stage: deploy
   when: on_failure
