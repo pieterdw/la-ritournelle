@@ -1,4 +1,5 @@
 import { Api } from './Api';
+import { GalleryUtil } from './GalleryUtil';
 import { MenuUtil } from './MenuUtil';
 import { RawPages } from './models/RawPages';
 import { PageUtil } from './PageUtil';
@@ -9,27 +10,37 @@ export class RouteUtil {
     const rawPages = await Api.get<RawPages>('/api/collections/get/pages');
     const rawMenu = await Api.get('/api/singletons/get/menu_header');
     const rawVarious = await Api.get('/api/singletons/get/Various');
+    const galleries = await GalleryUtil.getGalleries();
     const menu = MenuUtil.parseMenu(rawPages, rawMenu);
     const pages = PageUtil.parsePages(rawPages.entries);
     const various = VariousUtil.parseVarious(rawVarious);
     return [
-      // {
-      //   path: '/',
-      //   component: 'src/containers/Home'
-      // },
-      // {
-      //   path: '/about',
-      //   component: 'src/containers/About'
-      // },
-      ...pages.map(p => ({
-        path: p.path,
-        component: PageUtil.getPageComponent(p.slug),
-        getData: () => ({
-          page: p,
-          menu: menu[p.locale],
-          various: various[p.locale]
-        })
-      })),
+      ...pages.map(p => {
+        const result: any = {
+          path: p.path,
+          component: PageUtil.getPageComponent(p.slug),
+          getData: () => ({
+            page: p,
+            menu: menu[p.locale],
+            various: various[p.locale]
+          })
+        };
+        if (p.slug === 'fotos') {
+          result.galleries = galleries;
+          result.children = galleries.map(g => ({
+            path: g.slug,
+            component: result.component,
+            getData: () => ({
+              page: p,
+              menu: menu[p.locale],
+              various: various[p.locale],
+              galleries: galleries,
+              gallerySlug: g.slug
+            })
+          }));
+        }
+        return result;
+      }),
       //   {
       //     path: '/blog',
       //     component: 'src/containers/Blog',

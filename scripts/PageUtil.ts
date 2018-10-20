@@ -36,6 +36,8 @@ export class PageUtil {
     switch (slug) {
       case 'home':
         return 'src/containers/HomePage';
+      case 'fotos':
+        return 'src/containers/GalleryPage';
       default:
         return 'src/containers/Page';
     }

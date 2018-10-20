@@ -1,24 +1,28 @@
-html,
-body {
-  // height: 100%;
-}
-
-.html-mobile-background {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 125vh;
-}
-
-@media (min-width: 600px) {
-  html {
-    background: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/15/5bc4ca5ca5634bg.jpg') no-repeat
-      center center fixed;
+html {
+  @media only screen and (min-width: 600px) {
+    background-color: #333;
+    background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/15/5bc4ca5ca5634bg.jpg');
     background-size: cover;
+    background-attachment: fixed;
+    .html-mobile-background {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .html-mobile-background {
+      background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/10/20/5bcb19ea6880cbg-mobile.jpg');
+      background-size: cover;
+    }
+  }
+  body {
+    background-color: transparent;
   }
   .html-mobile-background {
-    display: none;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 125vh;
   }
 }

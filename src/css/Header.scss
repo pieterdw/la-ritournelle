@@ -1,17 +1,11 @@
 .pageHeader {
-  display: flex;
-  align-items: center;
   > div {
-    flex-grow: 1;
     color: #fff;
-    text-align: center;
     text-shadow: 1px 1px 15px #000;
+    padding: 25px 0;
     h1 {
       text-transform: uppercase;
-      letter-spacing: 3px;
-      @media only screen and (max-width: 400px) {
-        font-size: 1.8rem;
-      }
+      letter-spacing: 1px;
     }
     .markdown {
       animation-delay: 0.5s;
