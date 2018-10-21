@@ -25,7 +25,7 @@ ftpDeploy
         from: 'whatsapp:+14155238886',
         to: 'whatsapp:+32472735666'
       })
-      .then(message => console.log(message.sid))
+      .then(message => console.log('Message sent: ', message.sid))
       .done();
   })
   .catch(err => console.log(err));
