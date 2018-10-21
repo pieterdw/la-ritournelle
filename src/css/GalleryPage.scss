@@ -20,6 +20,7 @@ html.fotos {
         display: block;
         height: 150px;
         background-size: cover;
+        animation-duration: 0.8s;
         cursor: pointer;
         &:hover {
           opacity: 0.8;
