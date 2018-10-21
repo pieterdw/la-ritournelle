@@ -1,11 +1,10 @@
 import React from 'react';
 import Col from 'reactstrap/lib/Col';
 import Row from 'reactstrap/lib/Row';
-import { Gallery } from 'scripts/models/Gallery';
+import { GalleryImage } from 'scripts/models/Gallery';
 
 export interface GalleryThumbsProps {
-  galleries: Gallery[];
-  slug: string;
+  images: GalleryImage[];
   onSelect: (imagePath: string) => any;
 }
 
@@ -15,27 +14,19 @@ export class GalleryThumbs extends React.Component<GalleryThumbsProps, {}> {
     this.props.onSelect(path);
   };
   public render() {
-    const { galleries, slug } = this.props;
-    let counter = -1;
-    const gals = slug ? galleries.filter(x => x.slug === slug) : galleries;
     return (
       <div className="galleryThumbs">
         <Row>
-          {gals.map(g =>
-            g.images.map(img => {
-              counter++;
-              return (
-                <Col key={counter} xs={6} md={3} className="thumbCol">
-                  <a
-                    data-path={img.fullSizePath}
-                    onClick={this.handleSelect}
-                    className="animated zoomIn"
-                    style={{ backgroundImage: 'url(' + img.thumbPath + ')', animationDelay: counter * 100 + 'ms' }}
-                  />
-                </Col>
-              );
-            })
-          )}
+          {this.props.images.map((img, i) => (
+            <Col key={i} xs={6} md={3} className="thumbCol">
+              <a
+                data-path={img.fullSizePath}
+                onClick={this.handleSelect}
+                className="animated zoomIn"
+                style={{ backgroundImage: 'url(' + img.thumbPath + ')', animationDelay: i * 100 + 'ms' }}
+              />
+            </Col>
+          ))}
         </Row>
       </div>
     );

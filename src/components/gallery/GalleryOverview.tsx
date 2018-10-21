@@ -3,20 +3,32 @@ import { Link } from 'react-static';
 import Nav from 'reactstrap/lib/Nav';
 import NavItem from 'reactstrap/lib/NavItem';
 import NavLink from 'reactstrap/lib/NavLink';
+import { GalleryImage } from 'scripts/models/Gallery';
 import { GalleryPageProps } from '../../containers/GalleryPage';
 import { tr } from '../../utils/tr';
+import { GalleryLightbox } from './GalleryLightbox';
 import { GalleryThumbs } from './GalleryThumbs';
 
 export interface GalleryOverviewProps extends GalleryPageProps {}
 
+export interface GalleryOverviewState {
+  currentImagePath: string;
+}
+
 export class GalleryOverview extends React.Component<GalleryOverviewProps, {}> {
-  private handleSelect = (path: string) => alert(path);
+  public state = { currentImagePath: null };
+
+  private handleSelect = (path: string) => this.setState({ currentImagePath: path });
 
   public render() {
+    const { galleries, gallerySlug } = this.props;
+    const gals = gallerySlug ? galleries.filter(x => x.slug === gallerySlug) : galleries;
+    const images = gals.reduce((img: GalleryImage[], g) => img.concat(g.images), []);
     return (
       <div className="galleryOverview">
         {this.renderGallerySelector()}
-        <GalleryThumbs galleries={this.props.galleries} slug={this.props.gallerySlug} onSelect={this.handleSelect} />
+        <GalleryThumbs images={images} onSelect={this.handleSelect} />
+        <GalleryLightbox images={images} currentImagePath={this.state.currentImagePath} onSelect={this.handleSelect} />
       </div>
     );
   }
