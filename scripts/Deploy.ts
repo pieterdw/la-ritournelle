@@ -21,7 +21,7 @@ ftpDeploy
     var client = new Twilio('AC437e7ed94d29c261b1f9ce8fd32be152', 'e9471789102987d56cde48576909f413');
     client.messages
       .create({
-        body: 'La Ritournelle has been deployed! Check www.vakantiehuisantibes.com for the latest version.',
+        body: 'La Ritournelle has been deployed, check www.vakantiehuisantibes.com for the latest version.',
         from: 'whatsapp:+14155238886',
         to: 'whatsapp:+32472735666'
       })
