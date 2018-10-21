@@ -12,4 +12,19 @@ html.fotos {
       }
     }
   }
+  .galleryThumbs {
+    padding: 0 0 0 15px;
+    .thumbCol {
+      padding: 0 15px 15px 0;
+      a {
+        display: block;
+        height: 150px;
+        background-size: cover;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
 }

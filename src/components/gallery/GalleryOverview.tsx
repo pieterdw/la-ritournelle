@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'react-static';
-import Alert from 'reactstrap/lib/Alert';
 import Nav from 'reactstrap/lib/Nav';
 import NavItem from 'reactstrap/lib/NavItem';
 import NavLink from 'reactstrap/lib/NavLink';
-import { GalleryPageProps } from '../containers/GalleryPage';
-import { tr } from '../utils/tr';
+import { GalleryPageProps } from '../../containers/GalleryPage';
+import { tr } from '../../utils/tr';
+import { GalleryThumbs } from './GalleryThumbs';
 
 export interface GalleryOverviewProps extends GalleryPageProps {}
 
 export class GalleryOverview extends React.Component<GalleryOverviewProps, {}> {
+  private handleSelect = (path: string) => alert(path);
+
   public render() {
     return (
-      <div className="galleryOverview wow slideInUp">
+      <div className="galleryOverview">
         {this.renderGallerySelector()}
-        <Alert>{JSON.stringify(this.props)}</Alert>
+        <GalleryThumbs galleries={this.props.galleries} slug={this.props.gallerySlug} onSelect={this.handleSelect} />
       </div>
     );
   }

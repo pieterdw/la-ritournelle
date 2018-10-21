@@ -1,5 +1,4 @@
 import React from 'react';
-import Alert from 'reactstrap/lib/Alert';
 import Container from 'reactstrap/lib/Container';
 import { Page } from 'scripts/models/Page';
 import '../css/Content.scss';
@@ -22,9 +21,9 @@ export class Content extends React.Component<ContentProps, {}> {
               <LayoutChooser layout={layout} />
             </Container>
           ))}
-        <Container className="contentContainer">
+        {/* <Container className="contentContainer">
           <Alert className="json">{JSON.stringify(this.props.page)}</Alert>
-        </Container>
+        </Container> */}
       </div>
     );
   }

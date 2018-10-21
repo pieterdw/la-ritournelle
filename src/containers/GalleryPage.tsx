@@ -3,7 +3,7 @@ import { withRouteData } from 'react-static';
 import { Gallery } from 'scripts/models/Gallery';
 import { Content } from '../components/Content';
 import { Footer } from '../components/Footer';
-import { GalleryOverview } from '../components/GalleryOverview';
+import { GalleryOverview } from '../components/gallery/GalleryOverview';
 import { Header } from '../components/Header';
 import { Template } from '../components/Template';
 import '../css/GalleryPage.scss';

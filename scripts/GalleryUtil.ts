@@ -15,7 +15,7 @@ export class GalleryUtil {
         const thumb = await Api.post<string>(`/api/cockpit/image`, {
           src: img.meta.asset,
           m: 'bestFit',
-          w: 200,
+          w: 270,
           h: 200
         });
         images.push({
