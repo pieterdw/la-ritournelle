@@ -20,11 +20,15 @@ html.fotos {
         display: block;
         height: 150px;
         background-size: cover;
+        background-position: center center;
         animation-duration: 0.8s;
         background-color: #ddd;
         cursor: pointer;
         &:hover {
           opacity: 0.8;
+        }
+        @media only screen and (max-width: 450px) {
+          height: 110px;
         }
       }
     }
