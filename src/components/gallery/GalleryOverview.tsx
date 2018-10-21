@@ -34,8 +34,8 @@ export class GalleryOverview extends React.Component<GalleryOverviewProps, {}> {
             {tr('all', page.locale)}
           </NavLink>
         </NavItem>
-        {galleries.map(g => (
-          <NavItem>
+        {galleries.map((g, i) => (
+          <NavItem key={i}>
             <NavLink key={g.slug} tag={Link} to={`${page.path}/${g.slug}`} active={gallerySlug === g.slug}>
               {g.title}
             </NavLink>
