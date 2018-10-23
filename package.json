@@ -19,6 +19,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-image-lightbox": "^5.0.0",
+    "react-images": "^0.5.19",
     "react-router": "^4.2.0",
     "react-static": "^5.9.12",
     "reactstrap": "^6.5.0",
