@@ -22,7 +22,7 @@ export class CalendarUtil {
     const concurrent = await axios.all([axios.get(optionsIcal), axios.get(confirmationsIcal)]);
 
     const options = ical.parseICS(concurrent[0].data);
-    const confirmations = ical.parseICS(concurrent[1].data);
+    // const confirmations = ical.parseICS(concurrent[1].data);
 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     for (var k in options) {
