@@ -1,15 +1,9 @@
 import axios from 'axios';
 import ical from 'ical';
-import { RawCalendarEvent } from './models/CalendarEvent';
+import { CalendarEvent, RawCalendarEvent } from './models/CalendarEvent';
 
 export class CalendarUtil {
   public static getEvents = async () => {
-    // const apiKey = 'AIzaSyCpuMhikO5zC93UGKm8ZWrnEoG0IbmeWrg';
-    // const confirmedCalendarId = '9lki2futg9e5f5sotp1gu09ph87%40group.calendar.google.com';
-    // const optionCalendarId = 'n5h5tinp2hratnrjao8gaqom64%40group.calendar.google.com';
-    // const url = `https://www.googleapis.com/calendar/v3/calendars/${confirmedCalendarId}/events?key=${apiKey}`
-    // await axios.get(url)
-
     const optionsIcal =
       'https://calendar.google.com/calendar/ical/' +
       'n5h5tinp2hratnrjao8gaqom64%40group.calendar.google.com/' +
@@ -22,23 +16,23 @@ export class CalendarUtil {
     const concurrent = await axios.all([axios.get(optionsIcal), axios.get(confirmationsIcal)]);
 
     const options = ical.parseICS(concurrent[0].data);
-    // const confirmations = ical.parseICS(concurrent[1].data);
+    const confirmations = ical.parseICS(concurrent[1].data);
 
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    for (var k in options) {
-      if (options.hasOwnProperty(k)) {
-        var ev: RawCalendarEvent = options[k];
-        console.log(
-          'Conference',
-          ev.summary,
-          'is in',
-          ev.location,
-          'on the',
-          ev.start.getDate(),
-          'of',
-          months[ev.start.getMonth()]
-        );
+    return CalendarUtil.processEvents(options, false).concat(CalendarUtil.processEvents(confirmations, true));
+  };
+
+  private static processEvents = (data: any, isConfirmed: boolean): CalendarEvent[] => {
+    const result: CalendarEvent[] = [];
+    for (var k in data) {
+      if (data.hasOwnProperty(k)) {
+        var ev: RawCalendarEvent = data[k];
+        result.push({
+          start: new Date(ev.start),
+          end: new Date(ev.end),
+          isConfirmed: isConfirmed
+        });
       }
     }
+    return result;
   };
 }

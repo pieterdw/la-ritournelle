@@ -1,4 +1,28 @@
 @import './Colors.scss';
 
 html.reserveren {
+  .confirmation.react-calendar__tile {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  .option {
+    background-color: #ffc107;
+  }
+  //   .available {
+  //     background-color: #28a745;
+  //     color: #fff;
+  //   }
+  .react-calendar__month-view__days__day--weekend {
+    color: #000;
+  }
+  .react-calendar__tile--active,
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    background-color: $primaryBackground !important;
+    color: #fff !important;
+  }
+  .react-calendar__tile--hover {
+    background-color: lighten($primaryBackground, 10%) !important;
+    color: #fff !important;
+  }
 }

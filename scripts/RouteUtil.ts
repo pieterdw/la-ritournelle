@@ -11,7 +11,7 @@ export class RouteUtil {
     const rawPages = await Api.get<RawPages>('/api/collections/get/pages');
     const rawMenu = await Api.get('/api/singletons/get/menu_header');
     const rawVarious = await Api.get('/api/singletons/get/Various');
-    /*const calendarItems = */ await CalendarUtil.getEvents();
+    const bookings = await CalendarUtil.getEvents();
     const galleries = await GalleryUtil.getGalleries();
     const menu = MenuUtil.parseMenu(rawPages, rawMenu);
     const pages = PageUtil.parsePages(rawPages.entries);
@@ -47,6 +47,13 @@ export class RouteUtil {
               gallerySlug: g.slug
             })
           }));
+        } else if (p.slug === 'reserveren') {
+          result.getData = () => ({
+            page: p,
+            bookings: bookings,
+            menu: menu[p.locale],
+            various: various[p.locale]
+          });
         }
         return result;
       }),

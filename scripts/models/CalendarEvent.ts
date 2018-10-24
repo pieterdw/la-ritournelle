@@ -5,8 +5,8 @@ export interface CalendarEvent {
 }
 
 export interface RawCalendarEvent {
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   summary: string;
   location: string;
 }
