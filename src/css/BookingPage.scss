@@ -1,28 +1,82 @@
 @import './Colors.scss';
 
+$confirmationColor: #ef9a9a;
+$optionColor: #ffcc80;
+$availableColor: #fff;
+$selectedColor: #90caf9;
+
 html.reserveren {
-  .confirmation.react-calendar__tile {
-    background-color: #dc3545;
-    color: #fff;
+  .react-calendar {
+    border-width: 0px;
+    width: unset;
   }
-  .option {
-    background-color: #ffc107;
-  }
-  //   .available {
-  //     background-color: #28a745;
-  //     color: #fff;
-  //   }
   .react-calendar__month-view__days__day--weekend {
     color: #000;
+  }
+  .react-calendar__tile {
+    color: #000 !important;
+
+    &[disabled].available,
+    &.confirmation {
+      background: $confirmationColor;
+    }
+    &.option {
+      background: $optionColor;
+    }
+    &.selected {
+      background: $selectedColor;
+    }
+    &.optionToConfirmation {
+      background: linear-gradient(115deg, $optionColor 50%, $confirmationColor 50%);
+    }
+    &.optionToAvailable {
+      background: linear-gradient(115deg, $optionColor 50%, $availableColor 50%);
+    }
+    &.confirmationToOption {
+      background: linear-gradient(115deg, $confirmationColor 50%, $optionColor 50%);
+    }
+    &.confirmationToAvailable {
+      background: linear-gradient(115deg, $confirmationColor 50%, $availableColor 50%);
+    }
+    &.availableToConfirmation {
+      background: linear-gradient(115deg, $availableColor 50%, $confirmationColor 50%);
+    }
+    &.availableToOption {
+      background: linear-gradient(115deg, $availableColor 50%, $optionColor 50%);
+    }
+    &.selectedToConfirmation {
+      background: linear-gradient(115deg, $selectedColor 50%, $confirmationColor 50%);
+    }
+    &.selectedToOption {
+      background: linear-gradient(115deg, $selectedColor 50%, $optionColor 50%);
+    }
+    &.selectedToAvailable {
+      background: linear-gradient(115deg, $selectedColor 50%, $availableColor 50%);
+    }
+    &.confirmationToSelected {
+      background: linear-gradient(115deg, $confirmationColor 50%, $selectedColor 50%);
+    }
+    &.optionToSelected {
+      background: linear-gradient(115deg, $optionColor 50%, $selectedColor 50%);
+    }
+    &.availableToSelected {
+      background: linear-gradient(115deg, $availableColor 50%, $selectedColor 50%);
+    }
+  }
+  .react-calendar__navigation button[disabled] {
+    background: transparent;
+    color: #bbb !important;
   }
   .react-calendar__tile--active,
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
-    background-color: $primaryBackground !important;
-    color: #fff !important;
+    background: $selectedColor !important;
+    outline: none;
   }
   .react-calendar__tile--hover {
-    background-color: lighten($primaryBackground, 10%) !important;
-    color: #fff !important;
+    background: #eee;
+    &.option {
+      background: lighten($optionColor, 15%);
+    }
   }
 }
