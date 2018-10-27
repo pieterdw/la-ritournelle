@@ -33,6 +33,17 @@ export enum Availability {
 }
 
 export class BookingOverview extends React.Component<BookingOverviewProps, BookingOverviewState> {
+  constructor(props) {
+    super(props);
+    this._today = new Date();
+    this._today.setHours(0);
+    this._today.setMinutes(0);
+    this._today.setSeconds(0);
+    this._today.setMilliseconds(0);
+  }
+
+  private _today: Date;
+
   public state = {
     bookingStart: null,
     bookingEnd: null,
@@ -63,6 +74,9 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private handleCheckAvailability = (date: Date) => {
+    if (date < this._today) {
+      return Availability.Confirmation;
+    }
     const { bookings } = this.props;
     const { bookingStart, bookingEnd } = this.state;
     const isSelected = bookingStart && date >= bookingStart && date < bookingEnd;
