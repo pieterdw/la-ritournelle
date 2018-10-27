@@ -1,0 +1,15 @@
+[27-Oct-2018 20:31:41 Europe/Amsterdam] PHP Warning:  require_once(Mail.php): failed to open stream: No such file or directory in /home/laritournelle/public_html/booking.php on line 11
+[27-Oct-2018 20:31:41 Europe/Amsterdam] PHP Fatal error:  require_once(): Failed opening required 'Mail.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/laritournelle/public_html/booking.php on line 11
+[27-Oct-2018 20:35:09 Europe/Amsterdam] PHP Warning:  include_once(Net/SMTP.php): failed to open stream: No such file or directory in /home/laritournelle/public_html/Mail/smtp.php on line 365
+[27-Oct-2018 20:35:09 Europe/Amsterdam] PHP Warning:  include_once(): Failed opening 'Net/SMTP.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/laritournelle/public_html/Mail/smtp.php on line 365
+[27-Oct-2018 20:35:09 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Class 'Net_SMTP' not found in /home/laritournelle/public_html/Mail/smtp.php:366
+Stack trace:
+#0 /home/laritournelle/public_html/Mail/smtp.php(271): Mail_smtp->getSMTPObject()
+#1 /home/laritournelle/public_html/Mail/smtp.php(258): Mail_smtp->send_or_fail('Pieter De Witte...', Array, 'Hi,\n\nHow are yo...')
+#2 /home/laritournelle/public_html/booking.php(27): Mail_smtp->send('Pieter De Witte...', Array, 'Hi,\n\nHow are yo...')
+#3 {main}
+  thrown in /home/laritournelle/public_html/Mail/smtp.php on line 366
+[27-Oct-2018 20:42:02 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Class 'PHPMailer' not found in /home/laritournelle/public_html/booking.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/laritournelle/public_html/booking.php on line 13
