@@ -32,10 +32,12 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     if (cached) {
       return cached;
     } else {
+      console.log('checking availability for ', date, date.getHours());
+
       const isSelected = this.state.bookingStart && date >= this.state.bookingStart && date < this.state.bookingEnd;
       let result = isSelected ? Availability.Selected : Availability.Available;
       if (!isSelected) {
-        const overlaps = this.props.bookings.filter(b => new Date(b.start) <= date && new Date(b.end) >= date);
+        const overlaps = this.props.bookings.filter(b => new Date(b.start) <= date && new Date(b.end) > date);
         if (overlaps.some(b => b.isConfirmed)) {
           result = Availability.Confirmation;
         } else if (overlaps.length > 0) {

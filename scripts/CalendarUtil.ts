@@ -26,9 +26,16 @@ export class CalendarUtil {
     for (var k in data) {
       if (data.hasOwnProperty(k)) {
         var ev: RawCalendarEvent = data[k];
+        let start = new Date(ev.start);
+        let end = new Date(ev.end);
+        if (end.getDay() === 0) {
+          // move sunday morning ends to saturday morning, to make it easier to work with
+          end.setDate(end.getDate() - 1);
+        }
+        console.log('event from', start.getDate(), 'until', end.getDate());
         result.push({
-          start: new Date(ev.start),
-          end: new Date(ev.end),
+          start: start,
+          end: end,
           isConfirmed: isConfirmed
         });
       }
