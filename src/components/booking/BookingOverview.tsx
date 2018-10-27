@@ -1,4 +1,5 @@
 import React from 'react';
+import Recaptcha from 'react-google-invisible-recaptcha';
 import Badge from 'reactstrap/lib/Badge';
 import Button from 'reactstrap/lib/Button';
 import Col from 'reactstrap/lib/Col';
@@ -43,6 +44,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   }
 
   private _today: Date;
+  private _recaptcha;
 
   public state = {
     bookingStart: null,
@@ -104,6 +106,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private handleFormSubmit = e => {
     e.preventDefault();
+    this._recaptcha.execute();
     alert('yes');
     return false;
   };
@@ -128,6 +131,10 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
       firstDateOfWeek.setDate(firstDateOfWeek.getDate() + 7);
     }
     return price;
+  };
+
+  private handleRecaptchaResolved = () => {
+    alert('Recaptcha resolved with response: ' + this._recaptcha.getResponse());
   };
 
   public render() {
@@ -210,6 +217,11 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
                 onChange={e => this.setState({ request: e.target.value })}
               />
             </FormGroup>
+            <Recaptcha
+              ref={ref => (this._recaptcha = ref)}
+              sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC"
+              onResolved={this.handleCheckAvailability}
+            />
             <Button>{tr('submitBookingRequest', page.locale)}</Button>
           </Form>
         </div>
