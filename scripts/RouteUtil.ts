@@ -1,4 +1,5 @@
 import { Api } from './Api';
+import { BookingOptionsUtil } from './BookingOptionsUtil';
 import { CalendarUtil } from './CalendarUtil';
 import { GalleryUtil } from './GalleryUtil';
 import { MenuUtil } from './MenuUtil';
@@ -11,11 +12,13 @@ export class RouteUtil {
     const rawPages = await Api.get<RawPages>('/api/collections/get/pages');
     const rawMenu = await Api.get('/api/singletons/get/menu_header');
     const rawVarious = await Api.get('/api/singletons/get/Various');
+    const rawBookingOptions = await Api.get('/api/singletons/get/bookingoptions');
     const bookings = await CalendarUtil.getEvents();
     const galleries = await GalleryUtil.getGalleries();
     const menu = MenuUtil.parseMenu(rawPages, rawMenu);
     const pages = PageUtil.parsePages(rawPages.entries);
     const various = VariousUtil.parseVarious(rawVarious);
+    const bookingOptions = BookingOptionsUtil.parseBookingOptions(rawBookingOptions);
 
     return [
       ...pages.map(p => {
@@ -51,6 +54,7 @@ export class RouteUtil {
           result.getData = () => ({
             page: p,
             bookings: bookings,
+            bookingOptions: bookingOptions,
             menu: menu[p.locale],
             various: various[p.locale]
           });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouteData } from 'react-static';
+import { BookingOptions } from 'scripts/models/BookingOptions';
 import { CalendarEvent } from 'scripts/models/CalendarEvent';
 import { BookingOverview } from '../components/booking/BookingOverview';
 import { Content } from '../components/Content';
@@ -11,6 +12,7 @@ import { PageProps } from './Page';
 
 export interface BookingPageProps extends PageProps {
   bookings: CalendarEvent[];
+  bookingOptions: BookingOptions;
 }
 
 export default withRouteData((props: BookingPageProps) => (

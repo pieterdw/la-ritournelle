@@ -32,7 +32,6 @@ export class CalendarUtil {
           // move sunday morning ends to saturday morning, to make it easier to work with
           end.setDate(end.getDate() - 1);
         }
-        console.log('event from', start.getDate(), 'until', end.getDate());
         result.push({
           start: start,
           end: end,

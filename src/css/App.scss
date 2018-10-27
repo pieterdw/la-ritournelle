@@ -1,3 +1,5 @@
+@import './Colors.scss';
+
 html {
   @media only screen and (min-width: 600px) {
     background-color: #333;
@@ -16,6 +18,19 @@ html {
   }
   body {
     background-color: transparent;
+    color: $lightForeground;
+  }
+  a {
+    cursor: pointer;
+    &:not([href]):not([tabindex]) {
+      color: #007bff;
+      &:hover {
+        color: #0056b3;
+      }
+    }
+  }
+  .light {
+    color: $lighterForeground;
   }
   .html-mobile-background {
     position: fixed;
