@@ -220,7 +220,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             <Recaptcha
               ref={ref => (this._recaptcha = ref)}
               sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC"
-              onResolved={this.handleCheckAvailability}
+              onResolved={this.handleRecaptchaResolved}
             />
             <Button>{tr('submitBookingRequest', page.locale)}</Button>
           </Form>
