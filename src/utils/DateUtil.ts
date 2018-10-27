@@ -48,8 +48,6 @@ export class DateUtil {
     end2 = new Date(end2);
     const maxStart = start1 > start2 ? start1 : start2;
     const minEnd = end1 < end2 ? end1 : end2;
-    console.log('date ranges overlap? ', maxStart < minEnd, start1, end1, start2, end2);
-
     return maxStart < minEnd;
   };
 

@@ -33,7 +33,6 @@ export enum Availability {
 }
 
 export class BookingOverview extends React.Component<BookingOverviewProps, BookingOverviewState> {
-  private _cache: Map<string, Availability> = new Map();
   public state = {
     bookingStart: null,
     bookingEnd: null,
@@ -44,21 +43,13 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     request: ''
   };
 
-  private clearCache = () => {
-    this._cache = new Map();
-  };
-
   private handleDateSelected = (start: Date, end: Date) => {
-    this.clearCache();
-    this.setState(
-      {
-        bookingStart: start,
-        bookingEnd: end,
-        overlapsWithOption: this.checkOverlapsWithOption(start, end),
-        canAddWeek: this.checkCanAddWeek(end)
-      },
-      this.clearCache
-    );
+    this.setState({
+      bookingStart: start,
+      bookingEnd: end,
+      overlapsWithOption: this.checkOverlapsWithOption(start, end),
+      canAddWeek: this.checkCanAddWeek(end)
+    });
   };
 
   private checkCanAddWeek = (endDate: Date) => {
@@ -72,39 +63,29 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private handleCheckAvailability = (date: Date) => {
-    const cached = this._cache.get(date.toString());
-    if (cached) {
-      return cached;
-    } else {
-      const { bookings } = this.props;
-      const { bookingStart, bookingEnd } = this.state;
-      const isSelected = bookingStart && date >= bookingStart && date < bookingEnd;
-      let result = isSelected ? Availability.Selected : Availability.Available;
-      if (!isSelected) {
-        const overlaps = bookings.filter(b => new Date(b.start) <= date && new Date(b.end) > date);
-        if (overlaps.some(b => b.isConfirmed)) {
-          result = Availability.Confirmation;
-        } else if (overlaps.length > 0) {
-          result = Availability.Option;
-        }
+    const { bookings } = this.props;
+    const { bookingStart, bookingEnd } = this.state;
+    const isSelected = bookingStart && date >= bookingStart && date < bookingEnd;
+    let result = isSelected ? Availability.Selected : Availability.Available;
+    if (!isSelected) {
+      const overlaps = bookings.filter(b => new Date(b.start) <= date && new Date(b.end) > date);
+      if (overlaps.some(b => b.isConfirmed)) {
+        result = Availability.Confirmation;
+      } else if (overlaps.length > 0) {
+        result = Availability.Option;
       }
-      this._cache.set(date.toString(), result);
-      return result;
     }
+    return result;
   };
 
   private handleAddWeek = () => {
     const newEnd = new Date(this.state.bookingEnd);
     newEnd.setDate(newEnd.getDate() + 7);
-    this.clearCache();
-    this.setState(
-      {
-        bookingEnd: newEnd,
-        overlapsWithOption: this.checkOverlapsWithOption(this.state.bookingStart, newEnd),
-        canAddWeek: this.checkCanAddWeek(newEnd)
-      },
-      this.clearCache
-    );
+    this.setState({
+      bookingEnd: newEnd,
+      overlapsWithOption: this.checkOverlapsWithOption(this.state.bookingStart, newEnd),
+      canAddWeek: this.checkCanAddWeek(newEnd)
+    });
   };
 
   private handleFormSubmit = e => {
