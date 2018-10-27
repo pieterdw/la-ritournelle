@@ -134,7 +134,8 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private handleRecaptchaResolved = () => {
-    alert('Recaptcha resolved with response: ' + this._recaptcha.getResponse());
+    const response = this._recaptcha.getResponse();
+    console.log('Recaptcha resolved with response: ' + response);
     const {
       page: { locale }
     } = this.props;
@@ -146,10 +147,11 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
       price: this.getPriceEstimate(),
       name: name,
       email: email,
-      request: request
+      request: request,
+      captchaResponse: response
     })
-      .then(response => alert('Server response: ' + JSON.stringify(response)))
-      .catch(error => alert('Oops, something went wrong! ' + JSON.stringify(error)));
+      .then(response => console.log('Server response: ' + JSON.stringify(response)))
+      .catch(error => console.log('Oops, something went wrong! ' + JSON.stringify(error)));
   };
 
   public render() {
