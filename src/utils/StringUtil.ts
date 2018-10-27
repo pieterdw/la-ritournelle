@@ -89,7 +89,7 @@ export class StringUtil {
     }
   };
 
-  public static formatPrice = (value: number): string => {
+  public static formatCurrency = (value: number): string => {
     return '€ ' + value.toFixed(2);
   };
 

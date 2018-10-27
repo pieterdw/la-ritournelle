@@ -113,6 +113,14 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     return false;
   };
 
+  private formatCurrency = (value: number) => {
+    let formatted = StringUtil.formatCurrency(value);
+    if (this.props.page.locale != 'en') {
+      formatted = formatted.replace('.', ',');
+    }
+    return formatted;
+  };
+
   private getPriceEstimate = () => {
     let price = 0;
     let firstDateOfWeek = new Date(this.state.bookingStart);
@@ -149,9 +157,6 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   }
 
   private renderNoDateSelected() {
-    if (window.innerWidth < 768) {
-      return null;
-    }
     return (
       <div className="noDateSelected animated fadeInRight">
         <i className="fas fa-arrow-left" /> {tr('pleaseSelectADate', this.props.page.locale)}
@@ -178,7 +183,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             </span>
           )}
           <br />
-          {tr('estimatedPrice', page.locale)} {StringUtil.formatPrice(price)} ({StringUtil.formatPrice(price / nights)}{' '}
+          {tr('estimatedPrice', page.locale)} {this.formatCurrency(price)} ({this.formatCurrency(price / nights)}{' '}
           {tr('perNight', page.locale)})
         </p>
         <div className="bookingForm animated fadeInUp">
