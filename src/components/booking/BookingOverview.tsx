@@ -9,6 +9,7 @@ import Input from 'reactstrap/lib/Input';
 import Label from 'reactstrap/lib/Label';
 import Row from 'reactstrap/lib/Row';
 import { BookingPageProps } from 'src/containers/BookingPage';
+import { Api } from '../../../scripts/Api';
 import { DateUtil } from '../../utils/DateUtil';
 import { StringUtil } from '../../utils/StringUtil';
 import { tr } from '../../utils/tr';
@@ -107,7 +108,6 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   private handleFormSubmit = e => {
     e.preventDefault();
     this._recaptcha.execute();
-    alert('yes');
     return false;
   };
 
@@ -135,6 +135,21 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private handleRecaptchaResolved = () => {
     alert('Recaptcha resolved with response: ' + this._recaptcha.getResponse());
+    const {
+      page: { locale }
+    } = this.props;
+    const { bookingStart, bookingEnd, name, email, request } = this.state;
+    Api.post(Api.websiteBasePath + '/booking.php', {
+      locale: locale,
+      dates: DateUtil.formatStartEndDates(bookingStart, bookingEnd, locale, 'short'),
+      nights: DateUtil.daysBetween(bookingStart, bookingEnd),
+      price: this.getPriceEstimate(),
+      name: name,
+      email: email,
+      request: request
+    })
+      .then(response => alert('Server response: ' + JSON.stringify(response)))
+      .catch(error => alert('Oops, something went wrong! ' + JSON.stringify(error)));
   };
 
   public render() {

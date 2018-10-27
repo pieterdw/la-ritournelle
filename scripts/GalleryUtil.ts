@@ -22,7 +22,7 @@ export class GalleryUtil {
           title: img.meta.title,
           asset: img.meta.asset,
           thumbPath: thumb,
-          fullSizePath: 'https://admin.vakantiehuisantibes.com' + img.path
+          fullSizePath: Api.cmsBasePath + img.path
         });
       });
 

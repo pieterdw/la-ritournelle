@@ -3,6 +3,7 @@ import { Head } from 'react-static';
 import { MenuItem } from 'scripts/MenuUtil';
 import { Page } from 'scripts/models/Page';
 import { Various } from 'scripts/models/Various';
+import { Api } from '../../scripts/Api';
 import { RouteMatch } from '../models/RouteMatch';
 import { Nav } from './Nav';
 
@@ -49,13 +50,9 @@ export class Template extends React.Component<TemplateProps, {}> {
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossOrigin="anonymous"
           />
-          <link
-            rel="stylesheet"
-            href="https://www.vakantiehuisantibes.com/assets/animate.css"
-            crossOrigin="anonymous"
-          />
+          <link rel="stylesheet" href={Api.websiteBasePath + '/assets/animate.css'} crossOrigin="anonymous" />
           {process.env.NODE_ENV === 'production' && (
-            <script src="https://www.vakantiehuisantibes.com/assets/wow.min.js" crossOrigin="anonymous" />
+            <script src={Api.websiteBasePath + '/assets/wow.min.js'} crossOrigin="anonymous" />
           )}
         </Head>
         <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />
