@@ -9,6 +9,7 @@ import Label from 'reactstrap/lib/Label';
 import Row from 'reactstrap/lib/Row';
 import { BookingPageProps } from 'src/containers/BookingPage';
 import { DateUtil } from '../../utils/DateUtil';
+import { StringUtil } from '../../utils/StringUtil';
 import { tr } from '../../utils/tr';
 import { BookingCalendar } from './BookingCalendar';
 
@@ -48,15 +49,26 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private handleDateSelected = (start: Date, end: Date) => {
-    const overlaps = this.props.bookings.some(b => DateUtil.dateRangesOverlap(start, end, b.start, b.end));
-    const nextDay = new Date(end);
-    nextDay.setDate(nextDay.getDate() + 1);
-    const canAddWeek = this.handleCheckAvailability(nextDay) !== Availability.Confirmation;
     this.clearCache();
     this.setState(
-      { bookingStart: start, bookingEnd: end, overlapsWithOption: overlaps, canAddWeek: canAddWeek },
+      {
+        bookingStart: start,
+        bookingEnd: end,
+        overlapsWithOption: this.checkOverlapsWithOption(start, end),
+        canAddWeek: this.checkCanAddWeek(end)
+      },
       this.clearCache
     );
+  };
+
+  private checkCanAddWeek = (endDate: Date) => {
+    const nextDay = new Date(endDate);
+    nextDay.setDate(nextDay.getDate() + 1);
+    return this.handleCheckAvailability(nextDay) !== Availability.Confirmation;
+  };
+
+  private checkOverlapsWithOption = (start: Date, end: Date) => {
+    return this.props.bookings.some(b => DateUtil.dateRangesOverlap(start, end, b.start, b.end));
   };
 
   private handleCheckAvailability = (date: Date) => {
@@ -84,17 +96,35 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   private handleAddWeek = () => {
     const newEnd = new Date(this.state.bookingEnd);
     newEnd.setDate(newEnd.getDate() + 7);
-    const overlaps = this.props.bookings.some(b =>
-      DateUtil.dateRangesOverlap(this.state.bookingStart, newEnd, b.start, b.end)
-    );
     this.clearCache();
-    this.setState({ bookingEnd: newEnd, overlapsWithOption: overlaps }, this.clearCache);
+    this.setState(
+      {
+        bookingEnd: newEnd,
+        overlapsWithOption: this.checkOverlapsWithOption(this.state.bookingStart, newEnd),
+        canAddWeek: this.checkCanAddWeek(newEnd)
+      },
+      this.clearCache
+    );
   };
 
   private handleFormSubmit = e => {
     e.preventDefault();
     alert('yes');
     return false;
+  };
+
+  private getPriceEstimate = () => {
+    let price = 0;
+    let firstDateOfWeek = new Date(this.state.bookingStart);
+    firstDateOfWeek.setDate(firstDateOfWeek.getDate() + 1);
+    while (firstDateOfWeek < this.state.bookingEnd) {
+      const weekPrice = this.props.bookingOptions.prices.find(
+        pr => new Date(pr.start) <= firstDateOfWeek && new Date(pr.end) > firstDateOfWeek
+      );
+      price += weekPrice.price;
+      firstDateOfWeek.setDate(firstDateOfWeek.getDate() + 7);
+    }
+    return price;
   };
 
   public render() {
@@ -105,6 +135,10 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             bookings={this.props.bookings}
             bookingStart={this.state.bookingStart}
             bookingEnd={this.state.bookingEnd}
+            maxBookingDate={this.props.bookingOptions.prices.reduce(
+              (max, current) => DateUtil.max(max, new Date(current.end)),
+              new Date()
+            )}
             onSelected={this.handleDateSelected}
             onCheckAvailability={this.handleCheckAvailability}
           />
@@ -128,11 +162,15 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   private renderDateSelected() {
     const { page } = this.props;
     const { bookingStart, bookingEnd, overlapsWithOption, canAddWeek } = this.state;
+    const nights = DateUtil.daysBetween(bookingStart, bookingEnd);
+    const price = this.getPriceEstimate();
     return (
-      <div className="dateSelected">
+      <div className="dateSelected animated fadeInUp">
         <h2 className="dateRange">{DateUtil.formatStartEndDates(bookingStart, bookingEnd, page.locale, 'short')}</h2>
         <p className="light">
-          {DateUtil.daysBetween(bookingStart, bookingEnd)} {tr('nights', page.locale)}
+          {overlapsWithOption && <Badge color="warning">{tr('overlapsLabel', page.locale)}</Badge>}
+          {!overlapsWithOption && <Badge color="success">{tr('availableLabel', page.locale)}</Badge>}
+          &nbsp; {nights} {tr('nights', page.locale)}
           {canAddWeek && (
             <span>
               &nbsp;(
@@ -140,10 +178,10 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             </span>
           )}
           <br />
-          {overlapsWithOption && <Badge color="warning">{tr('overlapsLabel', page.locale)}</Badge>}
-          {!overlapsWithOption && <Badge color="success">{tr('availableLabel', page.locale)}</Badge>}
+          {tr('estimatedPrice', page.locale)} {StringUtil.formatPrice(price)} ({StringUtil.formatPrice(price / nights)}{' '}
+          {tr('perNight', page.locale)})
         </p>
-        <div className="bookingForm">
+        <div className="bookingForm animated fadeInUp">
           <Form onSubmit={this.handleFormSubmit}>
             <FormGroup>
               <Label for="name">{tr('name', page.locale)}</Label>

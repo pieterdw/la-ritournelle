@@ -89,5 +89,9 @@ export class StringUtil {
     }
   };
 
+  public static formatPrice = (value: number): string => {
+    return '€ ' + value.toFixed(2);
+  };
+
   public static containsVariables = (value: string): boolean => value && value.indexOf('{{') >= 0;
 }

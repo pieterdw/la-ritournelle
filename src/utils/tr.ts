@@ -23,8 +23,8 @@ translations.set('submitBookingRequest', {
 translations.set('availableLabel', { nl: 'Beschikbaar', en: 'Available', fr: 'Disponible' });
 translations.set('overlapsLabel', { nl: 'Mogelijk beschikbaar', en: 'Possibly available', fr: 'Peut-être disponible' });
 translations.set('addWeek', { nl: 'week toevoegen', en: 'add week', fr: 'ajouter une semaine' });
-translations.set('', { nl: '', en: '', fr: '' });
-translations.set('', { nl: '', en: '', fr: '' });
+translations.set('estimatedPrice', { nl: 'Prijsinschatting:', en: 'Estimated price:', fr: 'Prix estimé :' });
+translations.set('perNight', { nl: 'per nacht', en: 'per night', fr: 'par nuit' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });

@@ -8,6 +8,7 @@ export interface BookingCalendarProps {
   bookings: CalendarEvent[];
   bookingStart: Date;
   bookingEnd: Date;
+  maxBookingDate: Date;
   onSelected: (start: Date, end: Date) => void;
   onCheckAvailability: (date: Date) => Availability;
 }
@@ -98,6 +99,7 @@ export class BookingCalendar extends React.Component<BookingCalendarProps, {}> {
           tileClassName={this.getDateClassName}
           tileDisabled={this.checkDateIsDisabled}
           minDate={new Date()}
+          maxDate={this.props.maxBookingDate}
           prev2Label={null}
           next2Label={null}
           onChange={this.handleChange}
