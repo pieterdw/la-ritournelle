@@ -91,7 +91,7 @@ function replaceVariables($value, $params)
     $value = str_replace('{{email}}', $params->email, $value);
 
     $request = $parsedown->text($params->request);
-    // $request = '<div style="border: 1px solid #ddd; border-radius: 2px; padding: 10px 15px;">' . $request . '</div>';
+    $request = '<div style="border: 1px solid #ddd; border-radius: 2px; padding: 5px 10px;">' . $request . '</div>';
     $value = str_replace('{{request}}', $request, $value);
 
     return $value;
