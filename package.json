@@ -11,11 +11,14 @@
     "build-scripts": "tsc -p ./scripts",
     "deploy": "yarn build && yarn deploy-only",
     "deploy-only": "node ./scripts/Deploy",
+    "deploy-php": "node ./scripts/DeployPhp",
     "deploy-failed": "node ./scripts/Fail",
     "before-ci": "yarn global add typescript"
   },
   "dependencies": {
+    "@prettier/plugin-php": "^0.9.0",
     "axios": "^0.18.0",
+    "global": "^4.3.2",
     "ical": "^0.5.0",
     "react": "^16.2.0",
     "react-calendar": "^2.17.4",

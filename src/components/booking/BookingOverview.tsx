@@ -268,11 +268,11 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             </div>
             {formStatus === FormStatus.Validating &&
               !this.checkIfFormValid() && <Alert color="danger">{tr('completeAllFields', page.locale)}</Alert>}
+            {formStatus === FormStatus.Saved && <Alert color="success">{tr('bookingRequestSent', page.locale)}</Alert>}
+            {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', page.locale)}</Alert>}
             <Button color="primary" disabled={formStatus === FormStatus.Saving}>
               {tr('submitBookingRequest', page.locale)}
             </Button>
-            {formStatus === FormStatus.Saved && <Alert color="success">{tr('bookingRequestSent', page.locale)}</Alert>}
-            {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', page.locale)}</Alert>}
           </Form>
         </div>
       </div>
