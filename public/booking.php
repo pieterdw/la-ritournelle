@@ -16,8 +16,7 @@ if (verifyRecaptcha($params->recaptcha)) {
     $bookingOptions = getBookingOptions();
     sendMailToRequester($params, $bookingOptions);
 } else {
-    echo '{ "success": false }';
-    // throw new Exception('Captcha invalid!');
+    throw new Exception('Captcha invalid!');
 }
 
 function verifyRecaptcha($recaptcha)
@@ -91,7 +90,7 @@ function replaceVariables($value, $params)
     $value = str_replace('{{email}}', $params->email, $value);
 
     $request = $parsedown->text($params->request);
-    $request = '<div style="border: 1px solid #ddd; border-radius: 2px; padding: 5px 10px;">' . $request . '</div>';
+    $request = '<div style="border: 1px solid #ddd; border-radius: 2px; padding: 5px 7px;">' . $request . '</div>';
     $value = str_replace('{{request}}', $request, $value);
 
     return $value;
