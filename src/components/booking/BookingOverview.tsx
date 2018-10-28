@@ -1,5 +1,6 @@
 import React from 'react';
-import Recaptcha from 'react-google-invisible-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
+import Alert from 'reactstrap/lib/Alert';
 import Badge from 'reactstrap/lib/Badge';
 import Button from 'reactstrap/lib/Button';
 import Col from 'reactstrap/lib/Col';
@@ -25,6 +26,8 @@ export interface BookingOverviewState {
   name: string;
   email: string;
   request: string;
+  recaptcha: string;
+  formStatus: FormStatus;
 }
 
 export enum Availability {
@@ -32,6 +35,14 @@ export enum Availability {
   Confirmation,
   Option,
   Selected
+}
+
+export enum FormStatus {
+  Initial = 1,
+  Validating,
+  Saving,
+  Saved,
+  Error
 }
 
 export class BookingOverview extends React.Component<BookingOverviewProps, BookingOverviewState> {
@@ -45,16 +56,17 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   }
 
   private _today: Date;
-  private _recaptcha;
 
   public state = {
     bookingStart: null,
     bookingEnd: null,
     overlapsWithOption: false,
     canAddWeek: false,
+    recaptcha: null,
     name: '',
     email: '',
-    request: ''
+    request: '',
+    formStatus: FormStatus.Initial
   };
 
   private handleDateSelected = (start: Date, end: Date) => {
@@ -107,7 +119,35 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private handleFormSubmit = e => {
     e.preventDefault();
-    this._recaptcha.execute();
+    if (this.checkIfFormValid()) {
+      this.setState({ formStatus: FormStatus.Saving }, () => {
+        const {
+          page: { locale }
+        } = this.props;
+        const { bookingStart, bookingEnd, name, email, request, recaptcha } = this.state;
+        Api.post(Api.websiteBasePath + '/booking.php', {
+          locale: locale,
+          dates: DateUtil.formatStartEndDates(bookingStart, bookingEnd, locale, 'short'),
+          nights: DateUtil.daysBetween(bookingStart, bookingEnd),
+          price: StringUtil.formatCurrency(this.getPriceEstimate()),
+          name: name,
+          email: email,
+          request: request,
+          recaptcha: recaptcha
+        })
+          .then(response => {
+            console.log('Server response: ' + JSON.stringify(response));
+            this.setState({ formStatus: FormStatus.Saved });
+          })
+          .catch(error => {
+            console.log('Oops, something went wrong! ' + JSON.stringify(error));
+            this.setState({ formStatus: FormStatus.Error });
+          });
+      });
+    } else {
+      this.setState({ formStatus: FormStatus.Validating });
+    }
+
     return false;
   };
 
@@ -133,25 +173,14 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     return price;
   };
 
-  private handleRecaptchaResolved = () => {
-    const response = this._recaptcha.getResponse();
-    console.log('Recaptcha resolved with response: ' + response);
-    const {
-      page: { locale }
-    } = this.props;
-    const { bookingStart, bookingEnd, name, email, request } = this.state;
-    Api.post(Api.websiteBasePath + '/booking.php', {
-      locale: locale,
-      dates: DateUtil.formatStartEndDates(bookingStart, bookingEnd, locale, 'short'),
-      nights: DateUtil.daysBetween(bookingStart, bookingEnd),
-      price: this.getPriceEstimate(),
-      name: name,
-      email: email,
-      request: request,
-      captchaResponse: response
-    })
-      .then(response => console.log('Server response: ' + JSON.stringify(response)))
-      .catch(error => console.log('Oops, something went wrong! ' + JSON.stringify(error)));
+  private handleRecaptchaResolved = response => {
+    console.log('Recaptcha resolved: ', response);
+    this.setState({ recaptcha: response });
+  };
+
+  private checkIfFormValid = () => {
+    const { name, email, recaptcha } = this.state;
+    return !!(recaptcha && name && email);
   };
 
   public render() {
@@ -185,7 +214,17 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private renderDateSelected() {
     const { page } = this.props;
-    const { bookingStart, bookingEnd, overlapsWithOption, canAddWeek } = this.state;
+    const {
+      bookingStart,
+      bookingEnd,
+      overlapsWithOption,
+      canAddWeek,
+      name,
+      email,
+      request,
+      recaptcha,
+      formStatus
+    } = this.state;
     const nights = DateUtil.daysBetween(bookingStart, bookingEnd);
     const price = this.getPriceEstimate();
     return (
@@ -209,37 +248,31 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
           <Form onSubmit={this.handleFormSubmit}>
             <FormGroup>
               <Label for="name">{tr('name', page.locale)}</Label>
-              <Input
-                type="text"
-                id="name"
-                value={this.state.name}
-                onChange={e => this.setState({ name: e.target.value })}
-              />
+              <Input type="text" id="name" value={name} onChange={e => this.setState({ name: e.target.value })} />
             </FormGroup>
             <FormGroup>
               <Label for="email">{tr('email', page.locale)}</Label>
-              <Input
-                type="email"
-                id="email"
-                value={this.state.email}
-                onChange={e => this.setState({ email: e.target.value })}
-              />
+              <Input type="email" id="email" value={email} onChange={e => this.setState({ email: e.target.value })} />
             </FormGroup>
             <FormGroup>
               <Label for="request">{tr('request', page.locale)}</Label>
               <Input
                 type="textarea"
                 id="request"
-                value={this.state.request}
+                value={request}
                 onChange={e => this.setState({ request: e.target.value })}
               />
             </FormGroup>
-            <Recaptcha
-              ref={ref => (this._recaptcha = ref)}
-              sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC"
-              onResolved={this.handleRecaptchaResolved}
-            />
-            <Button>{tr('submitBookingRequest', page.locale)}</Button>
+            <div className="captcha">
+              <ReCAPTCHA sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC" onChange={this.handleRecaptchaResolved} />
+            </div>
+            {formStatus === FormStatus.Validating &&
+              !this.checkIfFormValid() && <Alert color="danger">{tr('completeAllFields', page.locale)}</Alert>}
+            <Button color="primary" disabled={formStatus === FormStatus.Saving}>
+              {tr('submitBookingRequest', page.locale)}
+            </Button>
+            {formStatus === FormStatus.Saved && <Alert color="success">{tr('bookingRequestSent', page.locale)}</Alert>}
+            {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', page.locale)}</Alert>}
           </Form>
         </div>
       </div>

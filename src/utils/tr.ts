@@ -25,6 +25,21 @@ translations.set('overlapsLabel', { nl: 'Mogelijk beschikbaar', en: 'Possibly av
 translations.set('addWeek', { nl: 'week toevoegen', en: 'add week', fr: 'ajouter une semaine' });
 translations.set('estimatedPrice', { nl: 'Prijsinschatting:', en: 'Estimated price:', fr: 'Prix estimé :' });
 translations.set('perNight', { nl: 'per nacht', en: 'per night', fr: 'par nuit' });
+translations.set('completeAllFields', {
+  nl: 'Gelieve alle velden in te vullen.',
+  en: 'Please complete all fields.',
+  fr: `Remplissez tous les champs, s'il vous plaît`
+});
+translations.set('bookingRequestSent', {
+  nl: 'Uw boekingsaanvraag is verzonden, wij nemen zo snel mogelijk contact op.',
+  en: `Your booking request has been sent, we'll get back to you as soon as possible.`,
+  fr: 'Votre demande de réservation a été envoyée. Nous reviendrons vers vous dès que possible. '
+});
+translations.set('oops', {
+  nl: 'Oeps, er is iets misgegaan. Contacteer ons als dit blijft gebeuren.',
+  en: 'Oops, something went wrong. Please contact us if this problem persists.',
+  fr: `Oups, quelque chose s'est mal passé. S'il vous plaît contactez-nous si le problème persiste.`
+});
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });

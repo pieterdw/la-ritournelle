@@ -4791,6 +4791,13 @@ hoist-non-react-statics@^2.2.1, hoist-non-react-statics@^2.5.0:
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
 
+hoist-non-react-statics@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.0.1.tgz#fba3e7df0210eb9447757ca1a7cb607162f0a364"
+  integrity sha512-1kXwPsOi0OGQIZNVMPvgWJ9tSnGMiMfJdihqEzrPEXlHOBh9AAHXX/QYmAJTXztnz/K+PQ8ryCb4eGaN6HlGbQ==
+  dependencies:
+    react-is "^16.3.2"
+
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -7514,7 +7521,7 @@ promise-ftp@^1.3.5:
     bluebird "2.x"
     promise-ftp-common "^1.1.5"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -7695,6 +7702,14 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-async-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-async-script/-/react-async-script-1.0.0.tgz#3578153247bc3f9654a5878c4142539ffbf65c2d"
+  integrity sha512-KNbqPgaOrb7sxEr3qLuyxswJfveCGSGsxj/jYbUT0esTD2p5u5kmnt6huOOEcL5UwU4Zmbw561gUC45xPjB+MA==
+  dependencies:
+    hoist-non-react-statics "^3.0.1"
+    prop-types "^15.5.0"
+
 react-calendar@^2.17.4:
   version "2.17.4"
   resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-2.17.4.tgz#95aeb1545159b97727f152f091ef563624dfd70c"
@@ -7744,13 +7759,13 @@ react-error-overlay@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
   integrity sha512-XzgvowFrwDo6TWcpJ/WTiarb9UI6lhA4PMzS7n1joK3sHfBBBOQHUc0U4u57D6DWO9vHv6lVSWx2Q/Ymfyv4hw==
 
-react-google-invisible-recaptcha@^0.2.11:
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/react-google-invisible-recaptcha/-/react-google-invisible-recaptcha-0.2.11.tgz#cb9eed3348d251eb0faa3a2d56ca4f9095fffa6e"
-  integrity sha512-OtT+/VOdmnFtXdOrZKRetKB5c5Zmq3u+YKsWeIX9XEVVJxXtyJvrWzu9rGGdCDIrOL0wEDWCLNmIc2AxrvpX1w==
+react-google-recaptcha@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-google-recaptcha/-/react-google-recaptcha-1.0.4.tgz#e94249ee8e99e216218ee23ce95270717af60b90"
+  integrity sha512-y0LJ88mUwB8/B12VPKpgR3y5UxNp7E/3vw4+e0ysrToUl9v4pag8vIrk2gDlWwnMeb8NLJacz9skGlnF5vzPfQ==
   dependencies:
-    prop-types "^15.6.0"
-    uuid "^3.1.0"
+    prop-types "^15.5.0"
+    react-async-script "^1.0.0"
 
 react-helmet@^5.2.0:
   version "5.2.0"
@@ -7791,6 +7806,11 @@ react-images@^0.5.19:
     prop-types "^15.6.0"
     react-scrolllock "^2.0.1"
     react-transition-group "2"
+
+react-is@^16.3.2:
+  version "16.6.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.0.tgz#456645144581a6e99f6816ae2bd24ee94bdd0c01"
+  integrity sha512-q8U7k0Fi7oxF1HvQgyBjPwDXeMplEsArnKt2iYhuIF86+GBbgLHdAmokL3XUFjTd7Q363OSNG55FOGUdONVn1g==
 
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"

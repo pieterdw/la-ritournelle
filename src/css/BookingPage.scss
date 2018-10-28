@@ -28,6 +28,10 @@ html.reserveren {
       textarea {
         min-height: 250px;
       }
+      .captcha,
+      .btn {
+        margin-bottom: 1rem;
+      }
     }
   }
 }

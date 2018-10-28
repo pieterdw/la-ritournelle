@@ -19,6 +19,14 @@ interface GetDateClassNameObject {
 }
 
 export class BookingCalendar extends React.Component<BookingCalendarProps, {}> {
+  constructor(props) {
+    super(props);
+    this._nextMonth = new Date();
+    this._nextMonth.setDate(this._nextMonth.getDate() + 30);
+  }
+
+  private _nextMonth: Date;
+
   private getDateClassName = (obj: GetDateClassNameObject) => {
     const availability = this.props.onCheckAvailability(obj.date);
     const yesterdayDate = new Date(obj.date);
@@ -98,6 +106,7 @@ export class BookingCalendar extends React.Component<BookingCalendarProps, {}> {
         <Calendar
           tileClassName={this.getDateClassName}
           tileDisabled={this.checkDateIsDisabled}
+          activeStartDate={new Date(this._nextMonth)}
           minDate={new Date()}
           maxDate={this.props.maxBookingDate}
           prev2Label={null}

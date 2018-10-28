@@ -20,7 +20,7 @@
     "react": "^16.2.0",
     "react-calendar": "^2.17.4",
     "react-dom": "^16.2.0",
-    "react-google-invisible-recaptcha": "^0.2.11",
+    "react-google-recaptcha": "^1.0.4",
     "react-image-lightbox": "^5.0.0",
     "react-images": "^0.5.19",
     "react-router": "^4.2.0",
