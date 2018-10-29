@@ -1,7 +1,7 @@
 export interface CalendarEvent {
   isConfirmed: boolean;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
 }
 
 export interface RawCalendarEvent {

@@ -27,18 +27,32 @@ export class CalendarUtil {
       if (data.hasOwnProperty(k)) {
         var ev: RawCalendarEvent = data[k];
         let start = new Date(ev.start);
+        start.setHours(start.getHours() + 24 - start.getUTCHours());
         let end = new Date(ev.end);
+        end.setHours(start.getHours() + 24 - end.getUTCHours());
         if (end.getDay() === 0) {
           // move sunday morning ends to saturday morning, to make it easier to work with
           end.setDate(end.getDate() - 1);
         }
+
         result.push({
-          start: start,
-          end: end,
+          start: start.toISOString(),
+          end: end.toISOString(),
           isConfirmed: isConfirmed
         });
       }
     }
     return result;
   };
+
+  // private static roundDate = (date: Date) => {
+  //   if (date.getHours() > 12) {
+  //     date.setDate(date.getDate() + 1);
+  //   }
+  //   date.setHours(0);
+  //   date.setMinutes(0);
+  //   date.setSeconds(0);
+  //   date.setMilliseconds(0);
+  //   return date;
+  // };
 }

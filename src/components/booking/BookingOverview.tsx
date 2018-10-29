@@ -84,15 +84,20 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private handleCheckAvailability = (date: Date) => {
+    const { bookings } = this.props;
+    const { bookingStart, bookingEnd } = this.state;
+
     if (date < this._today) {
       return Availability.Confirmation;
     }
-    const { bookings } = this.props;
-    const { bookingStart, bookingEnd } = this.state;
     const isSelected = bookingStart && date >= bookingStart && date < bookingEnd;
     let result = isSelected ? Availability.Selected : Availability.Available;
     if (!isSelected) {
-      const overlaps = bookings.filter(b => new Date(b.start) <= date && new Date(b.end) > date);
+      date = new Date(date);
+      date.setHours(date.getHours() + 24 - date.getUTCHours());
+      const endCheck = new Date(date);
+      endCheck.setHours(endCheck.getHours() + 5);
+      const overlaps = bookings.filter(b => new Date(b.start) <= date && new Date(b.end) > endCheck);
       if (overlaps.some(b => b.isConfirmed)) {
         result = Availability.Confirmation;
       } else if (overlaps.length > 0) {
@@ -242,9 +247,9 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
           {tr('estimatedPrice', page.locale)} {this.formatCurrency(price)} ({this.formatCurrency(price / nights)}{' '}
           {tr('perNight', page.locale)})
         </p>
-        <p className="prebookingtext">
+        <div className="prebookingtext">
           <Markdown content={bookingOptions.prebookingtext} />
-        </p>
+        </div>
         <div className="bookingForm animated fadeInUp">
           <Form onSubmit={this.handleFormSubmit}>
             <FormGroup>
