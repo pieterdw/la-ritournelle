@@ -14,6 +14,7 @@ import { Api } from '../../../scripts/Api';
 import { DateUtil } from '../../utils/DateUtil';
 import { StringUtil } from '../../utils/StringUtil';
 import { tr } from '../../utils/tr';
+import { Spinner } from '../Spinner';
 import { BookingCalendar } from './BookingCalendar';
 
 export interface BookingOverviewProps extends BookingPageProps {}
@@ -214,17 +215,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private renderDateSelected() {
     const { page } = this.props;
-    const {
-      bookingStart,
-      bookingEnd,
-      overlapsWithOption,
-      canAddWeek,
-      name,
-      email,
-      request,
-      recaptcha,
-      formStatus
-    } = this.state;
+    const { bookingStart, bookingEnd, overlapsWithOption, canAddWeek, name, email, request, formStatus } = this.state;
     const nights = DateUtil.daysBetween(bookingStart, bookingEnd);
     const price = this.getPriceEstimate();
     return (
@@ -273,6 +264,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             <Button color="primary" disabled={formStatus === FormStatus.Saving}>
               {tr('submitBookingRequest', page.locale)}
             </Button>
+            {formStatus === FormStatus.Saving && <Spinner />}
           </Form>
         </div>
       </div>
