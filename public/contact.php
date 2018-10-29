@@ -28,10 +28,11 @@ function verifyRecaptcha($recaptcha)
 
 function sendMail($params)
 {
+    $parsedown = new Parsedown();
     $locale = $params->locale;
     $name = $params->name;
     $email = $params->email;
-    $message = $params->message;
+    $message = $parsedown->text($params->message);
 
     $subject = 'Bericht via contactformulier';
 
@@ -41,17 +42,16 @@ function sendMail($params)
     <br />
     <br />Er is een nieuw bericht via het contactformulier op www.vakantiehuisantibes.com.
     <br />
-    <br />Details:
-    <ul>
-        <li>Naam: $name</li>
-        <li>Email: $email</li>
-        <li>Taal website: $locale</li>
-    </ul>
+    <br />Naam: $name
+    <br />Email: $email
+    <br />Taal website: $locale
     <br />
-    <br />Bericht:
-    <div style="border: 1px solid #ddd; border-radius: 2px; padding: 5px 7px;">$message</div>
+    <br /><strong>Bericht:</strong>
+    <div style="border: 1px solid #ddd; border-radius: 2px; padding: 5px 7px; margin-top: 5px;">$message</div>
+    <br />
     <br />
     <br />Met vriendelijke groeten,
+    <br />
     <br />Vakantiehuis La Ritournelle
 </p>
 END;

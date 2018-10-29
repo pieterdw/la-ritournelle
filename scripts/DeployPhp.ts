@@ -9,7 +9,7 @@ var config = {
   port: 21,
   localRoot: './public',
   remoteRoot: '/',
-  include: ['booking.php'],
+  include: ['*.php'],
   exclude: [],
   deleteRemote: false
 };
