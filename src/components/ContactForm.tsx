@@ -75,7 +75,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
     const {
       page: { locale }
     } = this.props;
-    const { name, email, message, formStatus } = this.state;
+    const { name, email, message, recaptcha, formStatus } = this.state;
     return (
       <div className="contactForm">
         <Form onSubmit={this.handleFormSubmit}>
@@ -103,7 +103,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
             !this.checkIfFormValid() && <Alert color="danger">{tr('completeAllFields', locale)}</Alert>}
           {formStatus === FormStatus.Saved && <Alert color="success">{tr('contactFormSent', locale)}</Alert>}
           {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', locale)}</Alert>}
-          <Button color="primary" disabled={formStatus === FormStatus.Saving}>
+          <Button color="primary" disabled={formStatus === FormStatus.Saving || !recaptcha}>
             {tr('submitContactForm', locale)}
           </Button>
           {formStatus === FormStatus.Saving && <Spinner />}

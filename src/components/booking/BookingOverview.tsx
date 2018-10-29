@@ -210,9 +210,21 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private renderDateSelected() {
     const { page, bookingOptions } = this.props;
-    const { bookingStart, bookingEnd, overlapsWithOption, canAddWeek, name, email, request, formStatus } = this.state;
+    const {
+      bookingStart,
+      bookingEnd,
+      overlapsWithOption,
+      canAddWeek,
+      name,
+      email,
+      request,
+      recaptcha,
+      formStatus
+    } = this.state;
+
     const nights = DateUtil.daysBetween(bookingStart, bookingEnd);
     const price = this.getPriceEstimate();
+
     return (
       <div className="dateSelected animated fadeInUp">
         <h2 className="dateRange">{DateUtil.formatStartEndDates(bookingStart, bookingEnd, page.locale, 'short')}</h2>
@@ -259,7 +271,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
               !this.checkIfFormValid() && <Alert color="danger">{tr('completeAllFields', page.locale)}</Alert>}
             {formStatus === FormStatus.Saved && <Alert color="success">{tr('bookingRequestSent', page.locale)}</Alert>}
             {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', page.locale)}</Alert>}
-            <Button color="primary" disabled={formStatus === FormStatus.Saving}>
+            <Button color="primary" disabled={formStatus === FormStatus.Saving || !recaptcha}>
               {tr('submitBookingRequest', page.locale)}
             </Button>
             {formStatus === FormStatus.Saving && <Spinner />}
