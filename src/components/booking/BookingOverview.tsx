@@ -207,8 +207,10 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private renderNoDateSelected() {
     return (
-      <div className="noDateSelected animated fadeInRight">
-        <i className="fas fa-arrow-left" /> {tr('pleaseSelectADate', this.props.page.locale)}
+      <div className="noDateSelected">
+        <div className="animated fadeInRight">
+          <i className="fas fa-arrow-left" /> {tr('pleaseSelectADate', this.props.page.locale)}
+        </div>
       </div>
     );
   }
