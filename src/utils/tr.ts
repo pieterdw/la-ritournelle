@@ -40,6 +40,18 @@ translations.set('oops', {
   en: 'Oops, something went wrong. Please contact us if this problem persists.',
   fr: `Oups, quelque chose s'est mal passé. S'il vous plaît contactez-nous si le problème persiste.`
 });
+translations.set('contactFormSent', {
+  nl: 'Bedankt voor uw bericht, wij nemen zo snel mogelijk contact op.',
+  en: `Thanks for your message, we'll get back to you as soon as possible.`,
+  fr: 'Merci pour votre message. Nous reviendrons vers vous dès que possible.'
+});
+translations.set('submitContactForm', { nl: 'Verzenden', en: 'Send', fr: 'Envoyer' });
+translations.set('message', { nl: 'Bericht', en: 'Message', fr: 'Message' });
+translations.set('', { nl: '', en: '', fr: '' });
+translations.set('', { nl: '', en: '', fr: '' });
+translations.set('', { nl: '', en: '', fr: '' });
+translations.set('', { nl: '', en: '', fr: '' });
+translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });

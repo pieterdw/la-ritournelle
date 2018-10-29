@@ -40,6 +40,8 @@ export class PageUtil {
         return 'src/containers/GalleryPage';
       case 'reserveren':
         return 'src/containers/BookingPage';
+      case 'contact':
+        return 'src/containers/ContactPage';
       default:
         return 'src/containers/Page';
     }

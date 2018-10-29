@@ -11,6 +11,7 @@ import Label from 'reactstrap/lib/Label';
 import Row from 'reactstrap/lib/Row';
 import { BookingPageProps } from 'src/containers/BookingPage';
 import { Api } from '../../../scripts/Api';
+import { FormStatus } from '../../models/FormStatus';
 import { DateUtil } from '../../utils/DateUtil';
 import { StringUtil } from '../../utils/StringUtil';
 import { tr } from '../../utils/tr';
@@ -37,14 +38,6 @@ export enum Availability {
   Confirmation,
   Option,
   Selected
-}
-
-export enum FormStatus {
-  Initial = 1,
-  Validating,
-  Saving,
-  Saved,
-  Error
 }
 
 export class BookingOverview extends React.Component<BookingOverviewProps, BookingOverviewState> {
@@ -176,7 +169,6 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private handleRecaptchaResolved = response => {
-    console.log('Recaptcha resolved: ', response);
     this.setState({ recaptcha: response });
   };
 

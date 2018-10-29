@@ -12,11 +12,21 @@ export interface ContentProps {
 
 export class Content extends React.Component<ContentProps, {}> {
   public render() {
+    const {
+      page: { intro, content },
+      children,
+      className
+    } = this.props;
     return (
-      <div className={cn('pageContent', this.props.className)}>
-        {this.props.children && <Container className="contentContainer">{this.props.children}</Container>}
-        {this.props.page.content &&
-          this.props.page.content.map((layout, i) => (
+      <div className={cn('pageContent', className)}>
+        {/* {intro && (
+          <Container className="contentContainer intro">
+            <Markdown content={intro} />
+          </Container>
+        )} */}
+        {children && <Container className="contentContainer">{this.props.children}</Container>}
+        {content &&
+          content.map((layout, i) => (
             <Container key={i} className="contentContainer">
               <LayoutChooser layout={layout} />
             </Container>
