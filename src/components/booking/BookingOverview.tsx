@@ -14,6 +14,7 @@ import { Api } from '../../../scripts/Api';
 import { DateUtil } from '../../utils/DateUtil';
 import { StringUtil } from '../../utils/StringUtil';
 import { tr } from '../../utils/tr';
+import { Markdown } from '../Markdown';
 import { Spinner } from '../Spinner';
 import { BookingCalendar } from './BookingCalendar';
 
@@ -216,7 +217,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   }
 
   private renderDateSelected() {
-    const { page } = this.props;
+    const { page, bookingOptions } = this.props;
     const { bookingStart, bookingEnd, overlapsWithOption, canAddWeek, name, email, request, formStatus } = this.state;
     const nights = DateUtil.daysBetween(bookingStart, bookingEnd);
     const price = this.getPriceEstimate();
@@ -236,6 +237,9 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
           <br />
           {tr('estimatedPrice', page.locale)} {this.formatCurrency(price)} ({this.formatCurrency(price / nights)}{' '}
           {tr('perNight', page.locale)})
+        </p>
+        <p className="prebookingtext">
+          <Markdown content={bookingOptions.prebookingtext} />
         </p>
         <div className="bookingForm animated fadeInUp">
           <Form onSubmit={this.handleFormSubmit}>

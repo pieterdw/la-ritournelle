@@ -54,7 +54,7 @@ export class RouteUtil {
           result.getData = () => ({
             page: p,
             bookings: bookings,
-            bookingOptions: bookingOptions,
+            bookingOptions: bookingOptions[p.locale],
             menu: menu[p.locale],
             various: various[p.locale]
           });

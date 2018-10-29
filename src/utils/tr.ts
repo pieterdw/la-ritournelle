@@ -44,7 +44,19 @@ translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 
-export const tr = (key: string, locale: string) => {
+const trObject = (key: string, locale: string, obj: any) => {
+  if (locale === 'nl') {
+    return obj[key];
+  } else {
+    return obj[key + '_' + locale] || obj[key];
+  }
+};
+
+const trStatic = (key: string, locale: string) => {
   const value = translations.get(key);
   return value ? value[locale] : key;
+};
+
+export const tr = (key: string, locale: string, obj?: any) => {
+  return obj ? trObject(key, locale, obj) : trStatic(key, locale);
 };
