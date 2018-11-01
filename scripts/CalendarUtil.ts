@@ -27,9 +27,9 @@ export class CalendarUtil {
       if (data.hasOwnProperty(k)) {
         var ev: RawCalendarEvent = data[k];
         let start = new Date(ev.start);
-        start.setHours(start.getHours() + 24 - start.getUTCHours());
+        start.setHours((start.getHours() + 24 - start.getUTCHours()) % 24);
         let end = new Date(ev.end);
-        end.setHours(start.getHours() + 24 - end.getUTCHours());
+        end.setHours((start.getHours() + 24 - end.getUTCHours()) % 24);
         if (end.getDay() === 0) {
           // move sunday morning ends to saturday morning, to make it easier to work with
           end.setDate(end.getDate() - 1);
