@@ -1,5 +1,10 @@
+@import './Colors.scss';
+
 .headerNav {
-  background-color: #54858c; //rgba(30, 30, 30, 0.85);
+  background-color: $primaryBackground; //rgba(30, 30, 30, 0.85);
+  .container {
+    padding: 0;
+  }
   &.navbar-dark .navbar-nav .nav-link {
     color: #fff;
   }

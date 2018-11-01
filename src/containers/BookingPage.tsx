@@ -21,6 +21,6 @@ export default withRouteData((props: BookingPageProps) => (
     <Content page={props.page}>
       <BookingOverview {...props} />
     </Content>
-    <Footer page={props.page} />
+    <Footer page={props.page} menu={props.menu} isBookingPage={true} />
   </Template>
 ));

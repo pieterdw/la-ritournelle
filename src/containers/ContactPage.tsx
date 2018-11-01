@@ -16,6 +16,6 @@ export default withRouteData((props: ContactPageProps) => (
     <Content page={props.page}>
       <ContactForm {...props} />
     </Content>
-    <Footer page={props.page} />
+    <Footer page={props.page} menu={props.menu} />
   </Template>
 ));

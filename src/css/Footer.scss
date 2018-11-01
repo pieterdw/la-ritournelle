@@ -1,3 +1,35 @@
 .pageFooter {
-  background-color: rgba(30, 30, 30, 0.85);
+  .bookingFooter {
+    background-color: #cbddde;
+    text-align: center;
+    padding: 30px 15px;
+  }
+  .navFooter {
+    background-color: #454135;
+    padding: 15px;
+    display: flex;
+    .nav {
+      &:first-child {
+        flex-grow: 1;
+      }
+      .nav-link {
+        color: #fff;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+    @media only screen and (max-width: 574px) {
+      flex-direction: column;
+      .nav {
+        flex-direction: column;
+        align-items: center;
+        &:last-child {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          margin-top: 10px;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
 }

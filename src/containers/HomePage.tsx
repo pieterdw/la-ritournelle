@@ -24,7 +24,7 @@ export default withRouteData((props: PageProps) => {
         </div>
       </Header>
       <Content page={props.page} className="wow slideInUp" />
-      <Footer page={props.page} />
+      <Footer page={props.page} menu={props.menu} />
     </Template>
   );
 });

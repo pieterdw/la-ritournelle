@@ -26,6 +26,6 @@ export default withRouteData((props: GalleryPageProps) => (
     <Content page={props.page}>
       <GalleryOverview {...props} />
     </Content>
-    <Footer page={props.page} />
+    <Footer page={props.page} menu={props.menu} />
   </Template>
 ));

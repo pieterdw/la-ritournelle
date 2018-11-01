@@ -48,9 +48,17 @@ translations.set('contactFormSent', {
 translations.set('submitContactForm', { nl: 'Verzenden', en: 'Send', fr: 'Envoyer' });
 translations.set('message', { nl: 'Bericht', en: 'Message', fr: 'Message' });
 translations.set('moreInfo', { nl: 'Meer info', en: 'More info', fr: `Plus d'infos` });
-translations.set('', { nl: '', en: '', fr: '' });
-translations.set('', { nl: '', en: '', fr: '' });
-translations.set('', { nl: '', en: '', fr: '' });
+translations.set('bookingFooterText', {
+  nl: 'Nieuwsgierig? Plan je vakantie en bekijk wanneer het huis beschikbaar is.',
+  en: 'Curious? Start planning your vacation and check when the house is available!',
+  fr: ''
+});
+translations.set('bookingFooterButton', {
+  nl: 'Bekijk beschikbaarheid',
+  en: 'Check availability',
+  fr: 'Disponibilités'
+});
+translations.set('home', { nl: 'Home', en: 'Home', fr: 'Accueil' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
