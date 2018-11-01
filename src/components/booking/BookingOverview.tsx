@@ -80,6 +80,8 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   };
 
   private checkOverlapsWithOption = (start: Date, end: Date) => {
+    start = new Date(start);
+    start.setHours(start.getHours() + 5);
     return this.props.bookings.some(b => DateUtil.dateRangesOverlap(start, end, b.start, b.end));
   };
 
