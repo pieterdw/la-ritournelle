@@ -41,7 +41,12 @@ export class DateUtil {
     return Math.round(difference_ms / one_day);
   };
 
-  public static dateRangesOverlap = (start1: Date, end1: Date, start2: Date, end2: Date) => {
+  public static dateRangesOverlap = (
+    start1: Date | string,
+    end1: Date | string,
+    start2: Date | string,
+    end2: Date | string
+  ) => {
     start1 = new Date(start1);
     end1 = new Date(end1);
     start2 = new Date(start2);
