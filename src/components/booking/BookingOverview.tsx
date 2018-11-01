@@ -22,7 +22,6 @@ import { BookingCalendar } from './BookingCalendar';
 export interface BookingOverviewProps extends BookingPageProps {}
 
 export interface BookingOverviewState {
-  isMounted: boolean;
   bookingStart: Date;
   bookingEnd: Date;
   overlapsWithOption: boolean;
@@ -54,7 +53,6 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
   private _today: Date;
 
   public state = {
-    isMounted: false,
     bookingStart: null,
     bookingEnd: null,
     overlapsWithOption: false,
@@ -65,10 +63,6 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     request: '',
     formStatus: FormStatus.Initial
   };
-
-  public componentDidMount() {
-    this.setState({ isMounted: true });
-  }
 
   private handleDateSelected = (start: Date, end: Date) => {
     this.setState({
@@ -192,19 +186,17 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     return (
       <Row className="bookingOverview">
         <Col sm="12" md="5" lg="4">
-          {this.state.isMounted && (
-            <BookingCalendar
-              bookings={this.props.bookings}
-              bookingStart={this.state.bookingStart}
-              bookingEnd={this.state.bookingEnd}
-              maxBookingDate={this.props.bookingOptions.prices.reduce(
-                (max, current) => DateUtil.max(max, new Date(current.end)),
-                new Date()
-              )}
-              onSelected={this.handleDateSelected}
-              onCheckAvailability={this.handleCheckAvailability}
-            />
-          )}
+          <BookingCalendar
+            bookings={this.props.bookings}
+            bookingStart={this.state.bookingStart}
+            bookingEnd={this.state.bookingEnd}
+            maxBookingDate={this.props.bookingOptions.prices.reduce(
+              (max, current) => DateUtil.max(max, new Date(current.end)),
+              new Date()
+            )}
+            onSelected={this.handleDateSelected}
+            onCheckAvailability={this.handleCheckAvailability}
+          />
         </Col>
         <Col>{this.state.bookingStart ? this.renderDateSelected() : this.renderNoDateSelected()}</Col>
       </Row>
