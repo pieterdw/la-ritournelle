@@ -17,6 +17,12 @@ export interface TemplateProps {
 export class Template extends React.Component<TemplateProps, {}> {
   public componentDidMount() {
     new (window as any).WOW().init();
+    const image = new Image();
+    image.onload = () =>
+      (document.querySelector(
+        'html'
+      ).style.backgroundImage = `url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/01/5bdac5f58c794bg.jpg')`);
+    image.src = 'https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/01/5bdac5f58c794bg.jpg';
   }
 
   public render() {
