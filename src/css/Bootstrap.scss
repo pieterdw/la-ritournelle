@@ -33,4 +33,16 @@ body {
       border-color: lighten($secondaryBackground, 40%);
     }
   }
+
+  .nav-pills {
+    .nav-link.active,
+    .nav-pills .show > .nav-link {
+      color: #fff;
+      background-color: $primaryBackground;
+      border-color: $primaryBackground;
+    }
+    .nav-link {
+      color: $primaryBackground;
+    }
+  }
 }
