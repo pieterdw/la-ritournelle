@@ -1,6 +1,6 @@
-$primaryBackground: #0062cc;
-$primaryBorderColor: #005cbf;
-$primaryHoverBackground: #0069d9;
-$primaryHoverBorderColor: #0062cc;
+$primaryBackground: #54858c;
+$primaryHoverBackground: darken($primaryBackground, 10%);
+$secondaryBackground: #b55555;
+$secondaryHoverBackground: darken($secondaryBackground, 10%);
 $lightForeground: #333;
 $lighterForeground: #888;

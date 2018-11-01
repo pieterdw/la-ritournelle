@@ -12,12 +12,13 @@ export interface HeaderProps {
 
 export class Header extends React.Component<HeaderProps, {}> {
   public render() {
-    const { title, intro, animate } = this.props;
+    const { title, intro, animate, children } = this.props;
     return (
       <Container className="pageHeader">
         <div>
           <h1 className={cn(animate && 'wow fadeInUp')}>{title}</h1>
           <Markdown content={intro} className={cn(animate && 'wow fadeIn')} />
+          {children}
         </div>
       </Container>
     );

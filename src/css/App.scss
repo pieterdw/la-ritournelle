@@ -1,10 +1,10 @@
 @import './Colors.scss';
+@import './Bootstrap.scss';
 
 html {
   @media only screen and (min-width: 600px) {
     background-color: #333;
     background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080"%3E%3Cfilter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"%3E%3CfeGaussianBlur stdDeviation="20 20" edgeMode="duplicate" /%3E%3CfeComponentTransfer%3E%3CfeFuncA type="discrete" tableValues="1 1" /%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Cimage filter="url(%23blur)" xlink:href="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAUAAD/4QMdaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MiA3OS4xNjA5MjQsIDIwMTcvMDcvMTMtMDE6MDY6MzkgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjgxM0Y0NzVDRERCNjExRThBNjUxOERDQTI2NDE4RUVDIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjgxM0Y0NzVCRERCNjExRThBNjUxOERDQTI2NDE4RUVDIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE4IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0iNDA3NkIwNjQ4QTg4QUEyQTY1Njc3N0NEODk5RDdEMjYiIHN0UmVmOmRvY3VtZW50SUQ9IjQwNzZCMDY0OEE4OEFBMkE2NTY3NzdDRDg5OUQ3RDI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAEg4ODhAOFRAQFR4UERQeIxoVFRojIhkZGhkZIiceIyEhIx4nJy4wMzAuJz4+QUE+PkFBQUFBQUFBQUFBQUFBQQEUFBQWGRYbFxcbGhYaFhohGh0dGiExISEkISExPi0nJycnLT44OzMzMzs4QUE+PkFBQUFBQUFBQUFBQUFBQUFB/8AAEQgAMgBZAwEiAAIRAQMRAf/EAIcAAAIDAQEBAAAAAAAAAAAAAAADAgQFAQYHAQADAQEAAAAAAAAAAAAAAAAAAQIDBBAAAgECAwUFBAYLAAAAAAAAAQIAEQMhMQRBUWESBXGBwSITMkJSgvCRoSMzU7HR4fFikrLC0oMVEQACAgEEAwEAAAAAAAAAAAAAARECITFBURJhgQNS/9oADAMBAAIRAxEAPwDIW+yWwaCrVGGFAMKQF31GPKeRjQbMTTsEqkmlaivGc5+Ug1oTIgQ/1boNa1qMpH17iscQSRgKSAKkntwkiq4UzO2GAH2boNr70FgcCActwxlgMXtABCyr5QBge+UyEUGmGztkkuDkILEe8tDukvlcjLL2bgCPYB9UUIU0/u3TQ6Z1PnDJqn5nAYhivLWn8VfCeUv3routRycTiDK5dicWJ75da2W4SfQ7HUtA7crOFapGOQ3TJ662nua1GS8GVUXAMCBiazyQGMclBBp8gbii0WdiyhTkK0MPT0/5n2zMteZgoOJNI/7n80fymKHESBdOgsX1pauNaIBI5/ODyiuwLIP09eTyJmwBcHJZcsXkdgQgUgHAGskvlGFRhjSQrWjOuTodfnONMGDd0+qtsQbZVK4AnZWWrNzTiguWanD3mE13ctnK76e0+a04iaJpoydRBfphFHstQ7mJ/VAp0phQeWu8N4Ezj6D4TUcYh9NcXZKSWzIdV5XseNH01z7dsfM6/wBUkvRdEzBlZW4C4D4zPK3BxkOYg1pSPIui2tY2U6HbC8qoSCak+0TwrTKDdEQXPUuALjWhZUXsoZl6a59/bAJFWGU3FAL1AApwxkWtGw183+mKXpthBzVSvNWoBOG4EDxkP+Xo9x+tv85eOn1V40HlSlA3jF/8R/z/ANMnsX0WhC1at22NFA2YACsCVBwHdOFqduVeIkbhwDDv7Y4HJ1t4nAafskOYEYyHORhsgA+oGIkg67R3iIX1H9hSRwwlpNHcbFyF+0wYCnSwwq1K8YoaKzcagRm4D900rWl06ZrzHaTlLakKKLQDdsi7cMIM2z0e2CGKKndzNNG1prFoeVaneZINA3FUVYgDeYnkYytBU5SHr2viEqXdYGwtj5j4CJ9e/wDE31w6uBSio23tnB+G30GUISxC1zPZH6X/AF5+9nCETGaOyAhCZlEhOrn9KQhGhEtsoaz8Xb82XdCEumpNtBaZiNhCWQf/2Q==" x="0" y="0" height="100%25" width="100%25"/%3E%3C/svg%3E');
-    //background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/01/5bdac5f58c794bg.jpg');
     background-size: cover;
     background-attachment: fixed;
     .html-mobile-background {
@@ -20,6 +20,9 @@ html {
   body {
     background-color: transparent;
     color: $lightForeground;
+    #root {
+      background-color: rgba(69, 65, 53, 0.5);
+    }
   }
   a {
     cursor: pointer;

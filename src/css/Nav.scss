@@ -1,7 +1,26 @@
 .headerNav {
-  background-color: rgba(30, 30, 30, 0.85);
+  background-color: #54858c; //rgba(30, 30, 30, 0.85);
   &.navbar-dark .navbar-nav .nav-link {
     color: #fff;
+  }
+  .navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+  @media (min-width: 768px) {
+    &.navbar-expand-md {
+      padding: 0;
+      .nav-item {
+        .nav-link {
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 15px 12px;
+          &.active {
+            background-color: #6ba6ac;
+          }
+        }
+      }
+    }
   }
   .dropdown-item.active {
     background-color: transparent;

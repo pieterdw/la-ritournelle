@@ -9,7 +9,7 @@ translations.set('all', { nl: 'Alle', en: 'All', fr: 'Tous' });
 translations.set('nights', { nl: 'nachten', en: 'nights', fr: 'nuits' });
 translations.set('pleaseSelectADate', {
   nl: 'Kies een datum',
-  en: 'Please select a data',
+  en: 'Please select a date',
   fr: 'Veuillez choisir une date'
 });
 translations.set('name', { nl: 'Naam', en: 'Name', fr: 'Nom' });
@@ -47,7 +47,7 @@ translations.set('contactFormSent', {
 });
 translations.set('submitContactForm', { nl: 'Verzenden', en: 'Send', fr: 'Envoyer' });
 translations.set('message', { nl: 'Bericht', en: 'Message', fr: 'Message' });
-translations.set('', { nl: '', en: '', fr: '' });
+translations.set('moreInfo', { nl: 'Meer info', en: 'More info', fr: `Plus d'infos` });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });
 translations.set('', { nl: '', en: '', fr: '' });

@@ -1,0 +1,36 @@
+@import './Colors.scss';
+
+body {
+  .btn-primary {
+    background-color: $primaryBackground;
+    border-color: $primaryBackground;
+    &:hover,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    &:focus {
+      background-color: $primaryHoverBackground;
+      border-color: $primaryHoverBackground;
+    }
+    &.disabled,
+    &:disabled {
+      background-color: lighten($primaryBackground, 40%);
+      border-color: lighten($primaryBackground, 40%);
+    }
+  }
+  .btn-secondary {
+    background-color: $secondaryBackground;
+    border-color: $secondaryBackground;
+    &:hover,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    &:focus {
+      background-color: $secondaryHoverBackground;
+      border-color: $secondaryHoverBackground;
+    }
+    &.disabled,
+    &:disabled {
+      background-color: lighten($secondaryBackground, 40%);
+      border-color: lighten($secondaryBackground, 40%);
+    }
+  }
+}

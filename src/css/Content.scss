@@ -6,12 +6,11 @@
 
   .contentContainer {
     background-color: #fff;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    &:first-child {
-      @media only screen and (min-width: 574px) {
-        border-radius: 4px 4px 0 0;
-      }
-    }
+    padding: 30px;
+    // &:first-child {
+    //   @media only screen and (min-width: 574px) {
+    //     border-radius: 4px 4px 0 0;
+    //   }
+    // }
   }
 }

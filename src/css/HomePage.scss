@@ -5,12 +5,13 @@ html.home {
     display: flex;
     align-items: center;
     height: calc(100vh - 180px);
+    min-height: 250px;
     > div {
       flex-grow: 1;
       text-align: center;
       h1 {
         text-transform: uppercase;
-        letter-spacing: 3px;
+        letter-spacing: 15px;
         font-size: 2.5rem;
         @media only screen and (max-width: 400px) {
           font-size: 1.8rem;
@@ -18,21 +19,12 @@ html.home {
       }
       .markdown {
         margin-top: 25px;
-        a {
-          background-color: $primaryBackground;
-          padding: 0.375rem 0.75rem;
-          margin: 10px 5px 0 5px;
-          display: inline-block;
+      }
+      .headerButtons {
+        .btn {
           text-shadow: none;
-          color: #fff;
-          border: 1px solid $primaryBorderColor;
-          border-radius: 0.25rem;
-          transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-            box-shadow 0.15s ease-in-out;
-          text-decoration: none;
-          &:hover {
-            background-color: $primaryHoverBackground;
-            border-color: $primaryHoverBorderColor;
+          &:first-child {
+            margin-right: 10px;
           }
         }
       }
