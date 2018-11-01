@@ -94,7 +94,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     let result = isSelected ? Availability.Selected : Availability.Available;
     if (!isSelected) {
       date = new Date(date);
-      date.setHours(date.getHours() + 24 - date.getUTCHours());
+      date.setHours((date.getHours() + 24 - date.getUTCHours()) % 24);
       const endCheck = new Date(date);
       endCheck.setHours(endCheck.getHours() + 5);
       const overlaps = bookings.filter(b => new Date(b.start) <= date && new Date(b.end) > endCheck);
