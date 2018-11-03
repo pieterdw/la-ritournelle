@@ -34,6 +34,8 @@ export class Template extends React.Component<TemplateProps, {}> {
             {this.props.page.title} - {this.props.various.website_title}
           </title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="icon" type="image/png" href="/icon-32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="/icon-16.png" sizes="16x16" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127881760-1" />
           <script>
             {`window.dataLayer = window.dataLayer || [];
