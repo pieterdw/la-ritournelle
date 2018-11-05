@@ -9,12 +9,10 @@ export interface TemplateProps extends PageProps {}
 export class Template extends React.Component<TemplateProps, {}> {
   public componentDidMount() {
     new (window as any).WOW().init();
+    const imagePath = 'https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/05/5be05f608de75bg3-big.jpg';
     const image = new Image();
-    image.onload = () =>
-      (document.querySelector(
-        'html'
-      ).style.backgroundImage = `url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/01/5bdac5f58c794bg.jpg')`);
-    image.src = 'https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/01/5bdac5f58c794bg.jpg';
+    image.onload = () => (document.querySelector('html').style.backgroundImage = `url('${imagePath}')`);
+    image.src = imagePath;
   }
 
   public render() {

@@ -13,12 +13,17 @@ html.homepage {
         text-transform: uppercase;
         letter-spacing: 15px;
         font-size: 2.5rem;
-        @media only screen and (max-width: 400px) {
-          font-size: 1.8rem;
-        }
-      }
-      .markdown {
         margin-top: 25px;
+        @media only screen and (max-width: 460px) and (min-width: 340px) {
+          font-size: 1.6rem;
+          letter-spacing: 10px;
+          margin-bottom: 20px;
+        }
+        @media only screen and (max-width: 340px) {
+          font-size: 1.4rem;
+          letter-spacing: 8px;
+          margin-bottom: 10px;
+        }
       }
       .headerButtons {
         animation-delay: 0.55s;
