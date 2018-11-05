@@ -4,7 +4,7 @@ html.homepage {
   .pageHeader {
     display: flex;
     align-items: center;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 150px);
     min-height: 250px;
     > div {
       flex-grow: 1;
@@ -39,5 +39,19 @@ html.homepage {
 
   .pageContent {
     animation-duration: 1.7s;
+
+    .highlight {
+      text-align: center;
+      .imageContainer {
+        // margin: 15px 25px 0 25px;
+        padding: 10px 20px;
+        img {
+          border-radius: 400px;
+          width: 100%;
+          max-width: 240px;
+          height: auto;
+        }
+      }
+    }
   }
 }

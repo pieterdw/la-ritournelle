@@ -1,14 +1,28 @@
 import React from 'react';
 import { Link, withRouteData } from 'react-static';
 import Button from 'reactstrap/lib/Button';
+import { ImagePath } from 'src/models/ImagePath';
 import { Content } from '../components/Content';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
+import { HomeOverview } from '../components/home/HomeOverview';
 import { Template } from '../components/Template';
 import '../css/HomePage.scss';
 import { PageProps } from './Page';
 
-export default withRouteData((props: PageProps) => {
+export interface HomePageProps extends PageProps {
+  highlight1title: string;
+  highlight1text: string;
+  highlight1image: ImagePath;
+  highlight2title: string;
+  highlight2text: string;
+  highlight2image: ImagePath;
+  highlight3title: string;
+  highlight3text: string;
+  highlight3image: ImagePath;
+}
+
+export default withRouteData((props: HomePageProps) => {
   const fotos = props.menu.find(x => x.id === 'gallerypage');
   return (
     <Template {...props}>
@@ -22,7 +36,9 @@ export default withRouteData((props: PageProps) => {
           </Button>
         </div>
       </Header>
-      <Content {...props} className="wow slideInUp" />
+      <Content {...props} className="wow slideInUp">
+        <HomeOverview {...props} />
+      </Content>
       <Footer {...props} menu={props.menu} />
     </Template>
   );
