@@ -1,21 +1,12 @@
-import { Layout } from './Layout';
-
-export interface RawPage {
-  slug: string;
-  title: string;
-  title_en: string;
-  title_fr: string;
-  content: Layout[];
-  content_en: Layout[];
-  content_fr: Layout[];
-  _id: string;
-}
+import { MenuItem } from './MenuItem';
 
 export interface Page {
   locale: 'nl' | 'en' | 'fr';
+  id: string;
   slug: string;
   path: string;
   title: string;
   intro: string;
-  content: Layout[];
+  text: any;
+  menu: MenuItem[];
 }

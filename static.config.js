@@ -1,6 +1,6 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
-import { RouteUtil } from './scripts/RouteUtil.js';
+import { PageUtil } from './scripts/PageUtil.js';
 
 // Paths Aliases defined through tsconfig.json
 const typescriptWebpackPaths = require('./webpack.config.js');
@@ -12,7 +12,7 @@ export default {
     title: 'La Ritournelle'
   }),
   getRoutes: async () => {
-    return await RouteUtil.getRoutes();
+    return await PageUtil.getPages();
   },
   webpack: (config, { defaultLoaders, stage }) => {
     // Add .ts and .tsx extension to resolver
