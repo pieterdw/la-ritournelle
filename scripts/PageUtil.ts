@@ -95,7 +95,7 @@ export class PageUtil {
 
   private static createRoute = async (page: KeyValue<Page>, texts: KeyValue<any>[], menus: KeyValue<MenuItem>[]) => {
     const component = PageUtil.getPageComponent(page.value.id);
-    const path = '/' + page.key + (page.value.slug ? '/' + page.value.slug : '');
+    const path = PageUtil.getPath(page);
     const text = texts.find(x => x.key === page.key).value;
     const menu = menus.find(x => x.key === page.key).value;
 
@@ -139,6 +139,13 @@ export class PageUtil {
       getData: () => data
     };
     return item;
+  };
+
+  private static getPath = (page: KeyValue<Page>) => {
+    if (page.key === 'nl' && !page.value.slug) {
+      return '/';
+    }
+    return '/' + page.key + (page.value.slug ? '/' + page.value.slug : '');
   };
 
   private static getPageComponent = (id: string): string => {
