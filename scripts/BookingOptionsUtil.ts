@@ -1,4 +1,5 @@
-import { BookingOptionsByLocale, BookingPrice } from './models/BookingOptions';
+import { BookingOptionsByLocale } from './models/BookingOptions';
+import { BookingPrice } from './models/BookingPrice';
 
 export class BookingOptionsUtil {
   public static parseBookingOptions = (raw): BookingOptionsByLocale => {
