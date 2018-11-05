@@ -17,4 +17,20 @@ html.contactpage {
       margin-left: 10px;
     }
   }
+  .sidePanel {
+    @media only screen and (max-width: 768px) {
+      padding-top: 30px;
+    }
+  }
+  .googleMap {
+    margin: 30px -15px -21px -15px;
+    @media only screen and (min-width: 574px) {
+      margin: 30px -30px -36px -30px;
+    }
+    iframe {
+      border-width: 0;
+      width: 100%;
+      height: 350px;
+    }
+  }
 }
