@@ -33,7 +33,7 @@ export default withRouteData((props: ContactPageProps) => (
       </Row>
       <div className="googleMap">
         <iframe
-          src="https://www.google.com/maps/embed/v1/view?zoom=14&center=43.5425%2C7.1216&key=AIzaSyDejb2-anZN0SKZicyWS1gCAJ0zq_92LQs"
+          src="https://www.google.com/maps/embed/v1/view?zoom=14&amp;center=43.5425%2C7.1216&amp;key=AIzaSyDuTJuZp7CuwXdTjHli7E-SEZ4jvfhRgAE"
           frameBorder="0"
           allowFullScreen
         />
