@@ -5,7 +5,7 @@ import NavItem from 'reactstrap/lib/NavItem';
 import NavLink from 'reactstrap/lib/NavLink';
 import { GalleryImage } from 'scripts/models/Gallery';
 import { GalleryPageProps } from '../../containers/GalleryPage';
-import { tr } from '../../utils/tr';
+import { PathUtil } from '../../utils/PathUtil';
 import { GalleryLightbox } from './GalleryLightbox';
 import { GalleryThumbs } from './GalleryThumbs';
 
@@ -38,17 +38,18 @@ export class GalleryOverview extends React.Component<GalleryOverviewProps, {}> {
   };
 
   private renderGallerySelector = () => {
-    const { page, galleries, gallerySlug } = this.props;
+    const { text, locale, id, slug, galleries, gallerySlug } = this.props;
+    const path = PathUtil.getPathInLocale(locale, id, slug);
     return (
       <Nav pills>
         <NavItem>
-          <NavLink tag={this.renderLink} to={page.path} active={!gallerySlug}>
-            {tr('all', page.locale)}
+          <NavLink tag={this.renderLink} to={path} active={!gallerySlug}>
+            {text.all}
           </NavLink>
         </NavItem>
         {galleries.map((g, i) => (
           <NavItem key={i}>
-            <NavLink key={g.slug} tag={Link} to={`${page.path}/${g.slug}`} active={gallerySlug === g.slug}>
+            <NavLink key={g.slug} tag={Link} to={`${path}/${g.slug}`} active={gallerySlug === g.slug}>
               {g.title}
             </NavLink>
           </NavItem>

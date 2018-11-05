@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouteData } from 'react-static';
-import { BookingOptions } from 'scripts/models/BookingOptions';
+import { BookingPrice } from 'scripts/models/BookingPrice';
 import { CalendarEvent } from 'scripts/models/CalendarEvent';
 import { BookingOverview } from '../components/booking/BookingOverview';
 import { Content } from '../components/Content';
@@ -12,15 +12,16 @@ import { PageProps } from './Page';
 
 export interface BookingPageProps extends PageProps {
   bookings: CalendarEvent[];
-  bookingOptions: BookingOptions;
+  prices: BookingPrice[];
+  prebookingtext: string;
 }
 
 export default withRouteData((props: BookingPageProps) => (
-  <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
-    <Header title={props.page.title} intro={props.page.intro} />
-    <Content page={props.page}>
+  <Template {...props}>
+    <Header title={props.title} intro={props.intro} />
+    <Content {...props}>
       <BookingOverview {...props} />
     </Content>
-    <Footer page={props.page} menu={props.menu} isBookingPage={true} />
+    <Footer {...props} />
   </Template>
 ));

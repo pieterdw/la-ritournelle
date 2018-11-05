@@ -15,17 +15,16 @@ export interface GalleryPageProps extends PageProps {
 }
 
 export default withRouteData((props: GalleryPageProps) => (
-  <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
+  <Template {...props}>
     <Header
       title={
-        props.page.title +
-        (props.gallerySlug ? ' > ' + props.galleries.find(g => g.slug === props.gallerySlug).title : '')
+        props.title + (props.gallerySlug ? ' > ' + props.galleries.find(g => g.slug === props.gallerySlug).title : '')
       }
-      intro={props.page.intro}
+      intro={props.intro}
     />
-    <Content page={props.page}>
+    <Content {...props}>
       <GalleryOverview {...props} />
     </Content>
-    <Footer page={props.page} menu={props.menu} />
+    <Footer {...props} />
   </Template>
 ));

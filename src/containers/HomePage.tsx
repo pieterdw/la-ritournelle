@@ -6,25 +6,24 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Template } from '../components/Template';
 import '../css/HomePage.scss';
-import { tr } from '../utils/tr';
 import { PageProps } from './Page';
 
 export default withRouteData((props: PageProps) => {
-  const fotos = props.menu.find(x => x.url.endsWith('/fotos'));
+  const fotos = props.menu.find(x => x.id === 'gallerypage');
   return (
-    <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
-      <Header title={props.page.title} intro={props.page.intro} animate={true}>
+    <Template {...props}>
+      <Header title={props.title} intro={props.intro} animate={true}>
         <div className="headerButtons wow fadeIn">
-          <Button color="primary" tag={Link} to={`/${props.page.locale}/info`}>
-            {tr('moreInfo', props.page.locale)}
+          <Button color="primary" tag={Link} to={`/${props.locale}/info`}>
+            {props.text.moreInfo}
           </Button>
-          <Button color="secondary" tag={Link} to={fotos.url}>
+          <Button color="secondary" tag={Link} to={fotos.path}>
             {fotos.label}
           </Button>
         </div>
       </Header>
-      <Content page={props.page} className="wow slideInUp" />
-      <Footer page={props.page} menu={props.menu} />
+      <Content {...props} className="wow slideInUp" />
+      <Footer {...props} menu={props.menu} />
     </Template>
   );
 });

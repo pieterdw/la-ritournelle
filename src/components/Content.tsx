@@ -1,29 +1,19 @@
 import React from 'react';
 import Container from 'reactstrap/lib/Container';
-import { Page } from 'scripts/models/Page';
+import { PageProps } from 'src/containers/Page';
 import '../css/Content.scss';
 import { cn } from '../utils/cn';
 import { LayoutChooser } from './layout/LayoutChooser';
 
-export interface ContentProps {
-  page: Page;
+export interface ContentProps extends PageProps {
   className?: string;
 }
 
 export class Content extends React.Component<ContentProps, {}> {
   public render() {
-    const {
-      page: { intro, content },
-      children,
-      className
-    } = this.props;
+    const { content, children, className } = this.props;
     return (
       <div className={cn('pageContent', className)}>
-        {/* {intro && (
-          <Container className="contentContainer intro">
-            <Markdown content={intro} />
-          </Container>
-        )} */}
         {children && <Container className="contentContainer">{this.props.children}</Container>}
         {content &&
           content.map((layout, i) => (
@@ -31,9 +21,6 @@ export class Content extends React.Component<ContentProps, {}> {
               <LayoutChooser layout={layout} />
             </Container>
           ))}
-        {/* <Container className="contentContainer">
-          <Alert className="json">{JSON.stringify(this.props.page)}</Alert>
-        </Container> */}
       </div>
     );
   }

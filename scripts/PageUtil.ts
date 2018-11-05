@@ -6,20 +6,22 @@ import { MenuUtil } from './MenuUtil';
 import { KeyValue } from './models/KeyValue';
 import { MenuItem } from './models/MenuItem';
 import { Page } from './models/Page';
+import { PathInfo } from './models/PathInfo';
 
 export class PageUtil {
   private static _languages = ['nl', 'en', 'fr'];
 
   public static getPages = async (): Promise<Route[]> => {
     const data = await PageUtil.fetchData();
-    const text = PageUtil.splitObjectInLanguages(data.find(x => x.id === 'text'));
+    const texts = PageUtil.splitObjectInLanguages(data.find(x => x.id === 'text'));
     const pages: Array<Array<KeyValue<Page>>> = data
       .filter(x => x.id.endsWith('page'))
       .map(x => PageUtil.splitObjectInLanguages(x));
-    const rawMenu = data.find(x => x.id === 'menu');
-    const menu = MenuUtil.parseMenu(pages, rawMenu, PageUtil._languages);
+    const rawMenus = data.find(x => x.id === 'menu');
+    const menus = MenuUtil.parseMenu(pages, rawMenus, PageUtil._languages);
+    const paths = PageUtil.getAllPaths(pages);
 
-    return await PageUtil.createRoutes(pages, text, menu);
+    return await PageUtil.createRoutes(pages, texts, menus, paths);
   };
 
   private static fetchData = async () => {
@@ -77,15 +79,18 @@ export class PageUtil {
 
   private static createRoutes = async (
     raw: Array<Array<KeyValue<Page>>>,
-    text: KeyValue<any>[],
-    menu: KeyValue<MenuItem>[]
+    texts: KeyValue<any>[],
+    menus: KeyValue<MenuItem>[],
+    paths: PathInfo[]
   ): Promise<Route[]> => {
     const result: Route[] = [];
-    raw.forEach(async rawPage => {
-      rawPage.forEach(async page => {
-        result.push(await PageUtil.createRoute(page, text, menu));
-      });
-    });
+    for (let i = 0; i < raw.length; i++) {
+      const rawPage = raw[i];
+      for (let j = 0; j < rawPage.length; j++) {
+        const page = rawPage[j];
+        result.push(await PageUtil.createRoute(page, texts, menus, paths));
+      }
+    }
     result.push({
       is404: true,
       component: 'src/containers/404'
@@ -93,16 +98,24 @@ export class PageUtil {
     return result;
   };
 
-  private static createRoute = async (page: KeyValue<Page>, texts: KeyValue<any>[], menus: KeyValue<MenuItem>[]) => {
+  private static createRoute = async (
+    page: KeyValue<Page>,
+    texts: KeyValue<any>[],
+    menus: KeyValue<MenuItem>[],
+    allPaths: PathInfo[]
+  ): Promise<Route> => {
     const component = PageUtil.getPageComponent(page.value.id);
-    const path = PageUtil.getPath(page);
     const text = texts.find(x => x.key === page.key).value;
     const menu = menus.find(x => x.key === page.key).value;
+    const paths = allPaths.filter(x => x.id === page.value.id);
+    const path = paths.find(x => x.locale === page.key).path;
+    const otherPaths = paths.filter(x => x.locale !== page.key);
 
     let children = undefined;
     let data: any = {
       locale: page.key,
       path: path,
+      otherPaths: otherPaths,
       text: text,
       menu: menu,
       ...page.value
@@ -138,14 +151,31 @@ export class PageUtil {
       children: children,
       getData: () => data
     };
+
     return item;
   };
 
-  private static getPath = (page: KeyValue<Page>) => {
-    if (page.key === 'nl' && !page.value.slug) {
+  public static getAllPaths = (rawPages: Array<Array<KeyValue<Page>>>): PathInfo[] => {
+    const paths: PathInfo[] = [];
+    for (let i = 0; i < rawPages.length; i++) {
+      const rawPage = rawPages[i];
+      for (let j = 0; j < rawPage.length; j++) {
+        const page = rawPage[j];
+        paths.push({
+          locale: page.key,
+          id: page.value.id,
+          path: PageUtil.getPath(page.key, page.value.slug)
+        });
+      }
+    }
+    return paths;
+  };
+
+  public static getPath = (locale: string, slug: string) => {
+    if (locale === 'nl' && !slug) {
       return '/';
     }
-    return '/' + page.key + (page.value.slug ? '/' + page.value.slug : '');
+    return `/${locale}${slug ? '/' + slug : ''}`;
   };
 
   private static getPageComponent = (id: string): string => {

@@ -1,18 +1,10 @@
 import React from 'react';
 import { Head } from 'react-static';
-import { MenuItem } from 'scripts/MenuUtil';
-import { Page } from 'scripts/models/Page';
-import { Various } from 'scripts/models/Various';
 import { Api } from '../../scripts/Api';
-import { RouteMatch } from '../models/RouteMatch';
+import { PageProps } from '../containers/Page';
 import { Nav } from './Nav';
 
-export interface TemplateProps {
-  page: Page;
-  menu: MenuItem[];
-  various: Various;
-  match: RouteMatch;
-}
+export interface TemplateProps extends PageProps {}
 
 export class Template extends React.Component<TemplateProps, {}> {
   public componentDidMount() {
@@ -29,9 +21,9 @@ export class Template extends React.Component<TemplateProps, {}> {
     return (
       <div>
         <div className="html-mobile-background" />
-        <Head htmlAttributes={{ class: this.props.page.slug }}>
+        <Head htmlAttributes={{ class: this.props.id }}>
           <title>
-            {this.props.page.title} - {this.props.various.website_title}
+            {this.props.title} - {this.props.text.websiteTitle}
           </title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="icon" type="image/png" href="/icon-32.png" sizes="32x32" />
@@ -63,7 +55,7 @@ export class Template extends React.Component<TemplateProps, {}> {
             <script src={Api.websiteBasePath + '/assets/wow.min.js'} crossOrigin="anonymous" />
           )}
         </Head>
-        <Nav page={this.props.page} menu={this.props.menu} match={this.props.match} />
+        <Nav {...this.props} />
         {this.props.children}
       </div>
     );

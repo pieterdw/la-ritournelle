@@ -13,9 +13,9 @@ import { PageProps } from './Page';
 export interface ContactPageProps extends PageProps {}
 
 export default withRouteData((props: ContactPageProps) => (
-  <Template page={props.page} menu={props.menu} various={props.various} match={props.match}>
-    <Header title={props.page.title} intro={props.page.intro} />
-    <Content page={props.page}>
+  <Template {...props}>
+    <Header title={props.title} intro={props.intro} />
+    <Content {...props}>
       <Row>
         <Col sm={12} md={7} lg={8}>
           <ContactForm {...props} />
@@ -25,6 +25,6 @@ export default withRouteData((props: ContactPageProps) => (
         </Col>
       </Row>
     </Content>
-    <Footer page={props.page} menu={props.menu} />
+    <Footer {...props} />
   </Template>
 ));

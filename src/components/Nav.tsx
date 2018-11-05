@@ -11,17 +11,12 @@ import NavbarToggler from 'reactstrap/lib/NavbarToggler';
 import NavItem from 'reactstrap/lib/NavItem';
 import NavLink from 'reactstrap/lib/NavLink';
 import { UncontrolledDropdown } from 'reactstrap/lib/Uncontrolled';
-import { MenuItem } from 'scripts/MenuUtil';
-import { Page } from 'scripts/models/Page';
+import { PageProps } from 'src/containers/Page';
 import '../css/Nav.scss';
-import { RouteMatch } from '../models/RouteMatch';
 import { cn } from '../utils/cn';
+import { PathUtil } from '../utils/PathUtil';
 
-export interface NavProps {
-  page: Page;
-  menu: MenuItem[];
-  match: RouteMatch;
-}
+export interface NavProps extends PageProps {}
 
 export interface NavState {
   isOpen: boolean;
@@ -30,20 +25,13 @@ export interface NavState {
 export class Nav extends React.Component<NavProps, NavState> {
   public state = { isOpen: false };
 
-  private getPathInLocale = (locale: string) => {
-    if (this.props.page.slug === 'home') {
-      return locale === 'nl' ? '/' : '/' + locale;
-    }
-    return `/${locale}/${this.props.page.slug}`;
-  };
-
   public toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
   public render() {
-    const locale = this.props.page.locale;
-    const homePath = locale === 'nl' ? '/' : '/' + locale;
+    const { locale, otherPaths } = this.props;
+    const homePath = PathUtil.getPathInLocale(locale, 'homepage', null);
     return (
       <Navbar dark sticky="top" expand="md" className="headerNav">
         <Container>
@@ -57,30 +45,30 @@ export class Nav extends React.Component<NavProps, NavState> {
           </NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavBs className="ml-auto" navbar>
-              {this.props.menu.map(item => (
-                <NavItem key={item.url}>
-                  <NavLink tag={Link} to={item.url}>
+              {this.props.menu.filter(item => item.id !== 'homepage').map(item => (
+                <NavItem key={item.path}>
+                  <NavLink tag={Link} to={item.path}>
                     {item.label}
                   </NavLink>
                 </NavItem>
               ))}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  {this.props.page.locale.toUpperCase()}
+                  {this.props.locale.toUpperCase()}
                 </DropdownToggle>
                 <DropdownMenu right>
                   {locale !== 'nl' && (
-                    <Link className="dropdown-item" to={this.getPathInLocale('nl')}>
+                    <Link className="dropdown-item" to={otherPaths.find(x => x.locale === 'nl').path}>
                       Nederlands
                     </Link>
                   )}
                   {locale !== 'en' && (
-                    <Link className="dropdown-item" to={this.getPathInLocale('en')}>
+                    <Link className="dropdown-item" to={otherPaths.find(x => x.locale === 'en').path}>
                       English
                     </Link>
                   )}
                   {locale !== 'fr' && (
-                    <Link className="dropdown-item" to={this.getPathInLocale('fr')}>
+                    <Link className="dropdown-item" to={otherPaths.find(x => x.locale === 'fr').path}>
                       français
                     </Link>
                   )}

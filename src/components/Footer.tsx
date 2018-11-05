@@ -5,52 +5,31 @@ import Container from 'reactstrap/lib/Container';
 import Nav from 'reactstrap/lib/Nav';
 import NavItem from 'reactstrap/lib/NavItem';
 import NavLink from 'reactstrap/lib/NavLink';
-import { MenuItem } from 'scripts/MenuUtil';
-import { Page } from 'scripts/models/Page';
+import { PageProps } from '../containers/Page';
 import '../css/Footer.scss';
-import { tr } from '../utils/tr';
 
-export interface FooterProps {
-  page: Page;
-  menu: MenuItem[];
-  isBookingPage?: boolean;
-}
+export interface FooterProps extends PageProps {}
 
 export class Footer extends React.Component<FooterProps, {}> {
-  private getPathInLocale = (locale: string) => {
-    if (this.props.page.slug === 'home') {
-      return locale === 'nl' ? '/' : '/' + locale;
-    }
-    return `/${locale}/${this.props.page.slug}`;
-  };
-
   public render() {
-    const {
-      page: { locale },
-      menu,
-      isBookingPage
-    } = this.props;
-    const booking = menu.find(x => x.url.endsWith('/reserveren'));
+    const { locale, menu, id, text, otherPaths } = this.props;
+    const isBookingPage = id === 'bookingpage';
+    const booking = menu.find(x => x.id === 'bookingpage');
     return (
       <div className="pageFooter">
         {!isBookingPage && (
           <Container className="bookingFooter">
-            <p>{tr('bookingFooterText', locale)}</p>
-            <Button color="primary" tag={Link} to={booking.url}>
-              {tr('bookingFooterButton', locale)}
+            <p>{text.bookingFooterText}</p>
+            <Button color="primary" tag={Link} to={booking.path}>
+              {text.bookingFooterButton}
             </Button>
           </Container>
         )}
         <Container className="navFooter">
           <Nav>
-            <NavItem>
-              <NavLink tag={Link} to={locale === 'nl' ? '/' : `/${locale}`}>
-                {tr('home', locale)}
-              </NavLink>
-            </NavItem>
             {this.props.menu.map(item => (
-              <NavItem key={item.url}>
-                <NavLink tag={Link} to={item.url}>
+              <NavItem key={item.path}>
+                <NavLink tag={Link} to={item.path}>
                   {item.label}
                 </NavLink>
               </NavItem>
@@ -59,21 +38,21 @@ export class Footer extends React.Component<FooterProps, {}> {
           <Nav>
             {locale != 'nl' && (
               <NavItem>
-                <NavLink tag={Link} to={this.getPathInLocale('nl')}>
+                <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'nl').path}>
                   Nederlands
                 </NavLink>
               </NavItem>
             )}
             {locale != 'en' && (
               <NavItem>
-                <NavLink tag={Link} to={this.getPathInLocale('en')}>
+                <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'en').path}>
                   English
                 </NavLink>
               </NavItem>
             )}
             {locale != 'fr' && (
               <NavItem>
-                <NavLink tag={Link} to={this.getPathInLocale('fr')}>
+                <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'fr').path}>
                   français
                 </NavLink>
               </NavItem>

@@ -9,7 +9,6 @@ import Label from 'reactstrap/lib/Label';
 import { ContactPageProps } from 'src/containers/ContactPage';
 import { Api } from '../../scripts/Api';
 import { FormStatus } from '../models/FormStatus';
-import { tr } from '../utils/tr';
 import { Spinner } from './Spinner';
 
 export interface ContactFormProps extends ContactPageProps {}
@@ -44,9 +43,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
     e.preventDefault();
     if (this.checkIfFormValid()) {
       this.setState({ formStatus: FormStatus.Saving }, () => {
-        const {
-          page: { locale }
-        } = this.props;
+        const { locale } = this.props;
         const { name, email, message, recaptcha } = this.state;
         Api.post(Api.websiteBasePath + '/contact.php', {
           locale: locale,
@@ -72,23 +69,21 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
   };
 
   public render() {
-    const {
-      page: { locale }
-    } = this.props;
+    const { text } = this.props;
     const { name, email, message, recaptcha, formStatus } = this.state;
     return (
       <div className="contactForm">
         <Form onSubmit={this.handleFormSubmit}>
           <FormGroup>
-            <Label for="name">{tr('name', locale)}</Label>
+            <Label for="name">{text.name}</Label>
             <Input type="text" id="name" value={name} onChange={e => this.setState({ name: e.target.value })} />
           </FormGroup>
           <FormGroup>
-            <Label for="email">{tr('email', locale)}</Label>
+            <Label for="email">{text.email}</Label>
             <Input type="email" id="email" value={email} onChange={e => this.setState({ email: e.target.value })} />
           </FormGroup>
           <FormGroup>
-            <Label for="request">{tr('message', locale)}</Label>
+            <Label for="request">{text.message}</Label>
             <Input
               type="textarea"
               id="request"
@@ -100,11 +95,11 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
             <ReCAPTCHA sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC" onChange={this.handleRecaptchaResolved} />
           </div>
           {formStatus === FormStatus.Validating &&
-            !this.checkIfFormValid() && <Alert color="danger">{tr('completeAllFields', locale)}</Alert>}
-          {formStatus === FormStatus.Saved && <Alert color="success">{tr('contactFormSent', locale)}</Alert>}
-          {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', locale)}</Alert>}
+            !this.checkIfFormValid() && <Alert color="danger">{text.completeAllFields}</Alert>}
+          {formStatus === FormStatus.Saved && <Alert color="success">{text.contactFormSent}</Alert>}
+          {formStatus === FormStatus.Error && <Alert color="danger">{text.oops}</Alert>}
           <Button color="primary" disabled={formStatus === FormStatus.Saving || !recaptcha}>
-            {tr('submitContactForm', locale)}
+            {text.submitContactForm}
           </Button>
           {formStatus === FormStatus.Saving && <Spinner />}
         </Form>

@@ -25,10 +25,6 @@ export class BookingCalendar extends React.Component<BookingCalendarProps, {}> {
     this._nextMonth.setDate(this._nextMonth.getDate() + 30);
   }
 
-  public componentWillReceiveProps(nextProps: BookingCalendarProps) {
-    console.log(new Date(nextProps.bookings[0].start).toISOString());
-  }
-
   private _nextMonth: Date;
 
   private getDateClassName = (obj: GetDateClassNameObject) => {

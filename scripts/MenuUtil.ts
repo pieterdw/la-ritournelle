@@ -1,6 +1,7 @@
 import { KeyValue } from './models/KeyValue';
 import { MenuItem } from './models/MenuItem';
 import { Page } from './models/Page';
+import { PageUtil } from './PageUtil';
 
 export class MenuUtil {
   public static parseMenu = (
@@ -26,19 +27,19 @@ export class MenuUtil {
     return {
       id: item.value.id,
       label: item.value.label || page.title,
-      path: '/'
+      path: PageUtil.getPath(locale, page.slug)
     };
   };
 
   private static findPage = (id: string, locale: string, rawPages: Array<Array<KeyValue<Page>>>): Page => {
-    let result: Page = null;
-    rawPages.forEach(rawPage => {
-      rawPage.forEach(page => {
+    for (let i = 0; i < rawPages.length; i++) {
+      const rawPage = rawPages[i];
+      for (let j = 0; j < rawPage.length; j++) {
+        const page = rawPage[j];
         if (page.key === locale && page.value.id === id) {
-          result = page.value;
+          return page.value;
         }
-      });
-    });
-    return result;
+      }
+    }
   };
 }

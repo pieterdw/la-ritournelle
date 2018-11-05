@@ -14,7 +14,6 @@ import { Api } from '../../../scripts/Api';
 import { FormStatus } from '../../models/FormStatus';
 import { DateUtil } from '../../utils/DateUtil';
 import { StringUtil } from '../../utils/StringUtil';
-import { tr } from '../../utils/tr';
 import { Markdown } from '../Markdown';
 import { Spinner } from '../Spinner';
 import { BookingCalendar } from './BookingCalendar';
@@ -166,7 +165,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     let firstDateOfWeek = new Date(this.state.bookingStart);
     firstDateOfWeek.setDate(firstDateOfWeek.getDate() + 1);
     while (firstDateOfWeek < this.state.bookingEnd) {
-      const weekPrice = this.props.bookingOptions.prices.find(
+      const weekPrice = this.props.prices.find(
         pr => new Date(pr.start) <= firstDateOfWeek && new Date(pr.end) > firstDateOfWeek
       );
       price += weekPrice.price;
@@ -192,7 +191,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
             bookings={this.props.bookings}
             bookingStart={this.state.bookingStart}
             bookingEnd={this.state.bookingEnd}
-            maxBookingDate={this.props.bookingOptions.prices.reduce(
+            maxBookingDate={this.props.prices.reduce(
               (max, current) => DateUtil.max(max, new Date(current.end)),
               new Date()
             )}
@@ -209,14 +208,14 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     return (
       <div className="noDateSelected">
         <div className="animated fadeInRight">
-          <i className="fas fa-arrow-left" /> {tr('pleaseSelectADate', this.props.page.locale)}
+          <i className="fas fa-arrow-left" /> {this.props.text.pleaseSelectADate}
         </div>
       </div>
     );
   }
 
   private renderDateSelected() {
-    const { page, bookingOptions } = this.props;
+    const { locale, text, prebookingtext } = this.props;
     const {
       bookingStart,
       bookingEnd,
@@ -234,36 +233,35 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
     return (
       <div className="dateSelected animated fadeInUp">
-        <h2 className="dateRange">{DateUtil.formatStartEndDates(bookingStart, bookingEnd, page.locale, 'short')}</h2>
+        <h2 className="dateRange">{DateUtil.formatStartEndDates(bookingStart, bookingEnd, locale, 'short')}</h2>
         <p className="light">
-          {overlapsWithOption && <Badge color="warning">{tr('overlapsLabel', page.locale)}</Badge>}
-          {!overlapsWithOption && <Badge color="success">{tr('availableLabel', page.locale)}</Badge>}
-          &nbsp; {nights} {tr('nights', page.locale)}
+          {overlapsWithOption && <Badge color="warning">{text.overlapsLabel}</Badge>}
+          {!overlapsWithOption && <Badge color="success">{text.availableLabel}</Badge>}
+          &nbsp; {nights} {text.nights}
           {canAddWeek && (
             <span>
               &nbsp;(
-              <a onClick={this.handleAddWeek}>{tr('addWeek', page.locale)}</a>)
+              <a onClick={this.handleAddWeek}>{text.addWeek}</a>)
             </span>
           )}
           <br />
-          {tr('estimatedPrice', page.locale)} {this.formatCurrency(price)} ({this.formatCurrency(price / nights)}{' '}
-          {tr('perNight', page.locale)})
+          {text.estimatedPrice} {this.formatCurrency(price)} ({this.formatCurrency(price / nights)} {text.perNight})
         </p>
         <div className="prebookingtext">
-          <Markdown content={bookingOptions.prebookingtext} />
+          <Markdown content={prebookingtext} />
         </div>
         <div className="bookingForm animated fadeInUp">
           <Form onSubmit={this.handleFormSubmit}>
             <FormGroup>
-              <Label for="name">{tr('name', page.locale)}</Label>
+              <Label for="name">{text.name}</Label>
               <Input type="text" id="name" value={name} onChange={e => this.setState({ name: e.target.value })} />
             </FormGroup>
             <FormGroup>
-              <Label for="email">{tr('email', page.locale)}</Label>
+              <Label for="email">{text.email}</Label>
               <Input type="email" id="email" value={email} onChange={e => this.setState({ email: e.target.value })} />
             </FormGroup>
             <FormGroup>
-              <Label for="request">{tr('request', page.locale)}</Label>
+              <Label for="request">{text.request}</Label>
               <Input
                 type="textarea"
                 id="request"
@@ -275,11 +273,11 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
               <ReCAPTCHA sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC" onChange={this.handleRecaptchaResolved} />
             </div>
             {formStatus === FormStatus.Validating &&
-              !this.checkIfFormValid() && <Alert color="danger">{tr('completeAllFields', page.locale)}</Alert>}
-            {formStatus === FormStatus.Saved && <Alert color="success">{tr('bookingRequestSent', page.locale)}</Alert>}
-            {formStatus === FormStatus.Error && <Alert color="danger">{tr('oops', page.locale)}</Alert>}
+              !this.checkIfFormValid() && <Alert color="danger">{text.completeAllFields}</Alert>}
+            {formStatus === FormStatus.Saved && <Alert color="success">{text.bookingRequestSent}</Alert>}
+            {formStatus === FormStatus.Error && <Alert color="danger">{text.oops}</Alert>}
             <Button color="primary" disabled={formStatus === FormStatus.Saving || !recaptcha}>
-              {tr('submitBookingRequest', page.locale)}
+              {text.submitBookingRequest}
             </Button>
             {formStatus === FormStatus.Saving && <Spinner />}
           </Form>
