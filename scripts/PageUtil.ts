@@ -141,7 +141,11 @@ export class PageUtil {
       const bookings = await CalendarUtil.getEvents();
       data = {
         ...data,
-        bookings: bookings
+        bookings: bookings,
+        prices: data.prices.map(pr => {
+          const strPrice = pr.value.price && isNaN(pr.value.price) ? pr.value.price.replace(',', '.') : pr.value.price;
+          return { start: pr.value.start, end: pr.value.end, price: +strPrice };
+        })
       };
     }
 

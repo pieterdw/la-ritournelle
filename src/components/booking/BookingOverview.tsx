@@ -122,9 +122,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     e.preventDefault();
     if (this.checkIfFormValid()) {
       this.setState({ formStatus: FormStatus.Saving }, () => {
-        const {
-          page: { locale }
-        } = this.props;
+        const { locale } = this.props;
         const { bookingStart, bookingEnd, name, email, request, recaptcha } = this.state;
         Api.post(Api.websiteBasePath + '/booking.php', {
           locale: locale,
@@ -154,7 +152,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
 
   private formatCurrency = (value: number) => {
     let formatted = StringUtil.formatCurrency(value);
-    if (this.props.page.locale != 'en') {
+    if (this.props.locale != 'en') {
       formatted = formatted.replace('.', ',');
     }
     return formatted;

@@ -1,5 +1,5 @@
 export interface BookingPrice {
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   price: number;
 }
