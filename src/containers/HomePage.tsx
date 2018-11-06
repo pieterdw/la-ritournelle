@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouteData } from 'react-static';
 import Button from 'reactstrap/lib/Button';
 import { ImagePath } from 'src/models/ImagePath';
-import { Content } from '../components/Content';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { HomeOverview } from '../components/home/HomeOverview';
@@ -36,9 +35,7 @@ export default withRouteData((props: HomePageProps) => {
           </Button>
         </div>
       </Header>
-      <Content {...props}>
-        <HomeOverview {...props} />
-      </Content>
+      <HomeOverview {...props} />
       <Footer {...props} menu={props.menu} />
     </Template>
   );
