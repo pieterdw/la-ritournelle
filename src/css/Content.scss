@@ -1,11 +1,12 @@
 .pageContent {
+  background-color: #fff;
+
   .alert.json {
     padding-top: 500px;
     word-wrap: break-word;
   }
 
   .contentContainer {
-    background-color: #fff;
     padding: 15px;
     @media only screen and (min-width: 574px) {
       padding: 30px;

@@ -16,50 +16,54 @@ export class Footer extends React.Component<FooterProps, {}> {
     const isBookingPage = id === 'bookingpage';
     const booking = menu.find(x => x.id === 'bookingpage');
     return (
-      <div className="pageFooter">
+      <React.Fragment>
         {!isBookingPage && (
-          <Container className="bookingFooter">
-            <p>{text.bookingFooterText}</p>
-            <Button color="primary" tag={Link} to={booking.path}>
-              {text.bookingFooterButton}
-            </Button>
-          </Container>
+          <div className="bookingFooter">
+            <Container>
+              <p>{text.bookingFooterText}</p>
+              <Button color="primary" tag={Link} to={booking.path}>
+                {text.bookingFooterButton}
+              </Button>
+            </Container>
+          </div>
         )}
-        <Container className="navFooter">
-          <Nav>
-            {this.props.menu.map(item => (
-              <NavItem key={item.path}>
-                <NavLink tag={Link} to={item.path}>
-                  {item.label}
-                </NavLink>
-              </NavItem>
-            ))}
-          </Nav>
-          <Nav>
-            {locale != 'nl' && (
-              <NavItem>
-                <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'nl').path}>
-                  Nederlands
-                </NavLink>
-              </NavItem>
-            )}
-            {locale != 'en' && (
-              <NavItem>
-                <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'en').path}>
-                  English
-                </NavLink>
-              </NavItem>
-            )}
-            {locale != 'fr' && (
-              <NavItem>
-                <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'fr').path}>
-                  français
-                </NavLink>
-              </NavItem>
-            )}
-          </Nav>
-        </Container>
-      </div>
+        <div className="navFooter">
+          <Container>
+            <Nav>
+              {this.props.menu.map(item => (
+                <NavItem key={item.path}>
+                  <NavLink tag={Link} to={item.path}>
+                    {item.label}
+                  </NavLink>
+                </NavItem>
+              ))}
+            </Nav>
+            <Nav>
+              {locale != 'nl' && (
+                <NavItem>
+                  <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'nl').path}>
+                    Nederlands
+                  </NavLink>
+                </NavItem>
+              )}
+              {locale != 'en' && (
+                <NavItem>
+                  <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'en').path}>
+                    English
+                  </NavLink>
+                </NavItem>
+              )}
+              {locale != 'fr' && (
+                <NavItem>
+                  <NavLink tag={Link} to={otherPaths.find(x => x.locale === 'fr').path}>
+                    français
+                  </NavLink>
+                </NavItem>
+              )}
+            </Nav>
+          </Container>
+        </div>
+      </React.Fragment>
     );
   }
 }

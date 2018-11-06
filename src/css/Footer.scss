@@ -1,11 +1,18 @@
-.pageFooter {
-  .bookingFooter {
-    background-color: #cbddde;
-    text-align: center;
+.bookingFooter {
+  background-color: #cbddde;
+  .container {
     padding: 30px 15px 35px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      margin: 0 15px 2px 0;
+    }
   }
-  .navFooter {
-    background-color: #454135;
+}
+.navFooter {
+  background-color: #454135;
+  .container {
     padding: 15px;
     display: flex;
     .nav {
