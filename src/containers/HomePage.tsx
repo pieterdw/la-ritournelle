@@ -36,7 +36,7 @@ export default withRouteData((props: HomePageProps) => {
           </Button>
         </div>
       </Header>
-      <Content {...props} className="wow slideInUp">
+      <Content {...props}>
         <HomeOverview {...props} />
       </Content>
       <Footer {...props} menu={props.menu} />
