@@ -4,16 +4,16 @@ html.homepage {
   .pageHeader {
     display: flex;
     align-items: center;
-    height: calc(100vh - 54px);
+    height: 100vh;
     min-height: 250px;
     > div {
       flex-grow: 1;
       text-align: center;
+      padding-top: 0;
       h1 {
-        text-transform: uppercase;
-        letter-spacing: 15px;
-        font-size: 2.5rem;
-        margin-top: 25px;
+        font-family: 'Caveat', cursive;
+        font-size: 4.5rem;
+        transform: rotate(-1deg);
         @media only screen and (max-width: 460px) and (min-width: 340px) {
           font-size: 1.6rem;
           letter-spacing: 10px;
@@ -39,7 +39,7 @@ html.homepage {
   .homeOverview {
     .highlights {
       background-color: #fff;
-      padding-bottom: 30px;
+      padding-bottom: 60px;
       .highlight {
         text-align: center;
 
@@ -74,8 +74,8 @@ html.homepage {
           a {
             // border-radius: 400px;
             // width: 100%;
-            max-width: 240px;
-            height: 150px;
+            max-width: 260px;
+            height: 160px;
             display: block;
             background-size: cover;
             background-position: center center;
@@ -83,15 +83,19 @@ html.homepage {
             margin: 0 auto 0 auto;
 
             @media only screen and (min-width: 768px) {
-              margin-bottom: 15px;
+              margin-bottom: 25px;
             }
           }
+        }
+        h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.75rem;
         }
       }
     }
     .numbers {
       background-color: #cbddde;
-      padding: 40px 0 30px 0;
+      padding: 60px 0 60px 0;
       .row {
         @media only screen and (min-width: 768px) {
           margin: 0 100px;
@@ -111,7 +115,7 @@ html.homepage {
     }
     .distances {
       background-color: #fff;
-      padding: 30px 0 0 0;
+      padding: 60px 0 40px 0;
       .pin {
         display: flex;
         flex-direction: column;
@@ -119,7 +123,7 @@ html.homepage {
         justify-content: center;
 
         img {
-          width: 75px;
+          width: 60px;
           margin-bottom: 10px;
         }
         span {

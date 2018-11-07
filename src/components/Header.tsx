@@ -16,7 +16,9 @@ export class Header extends React.Component<HeaderProps, {}> {
     return (
       <Container className="pageHeader">
         <div>
-          <h1 className={cn(animate && 'wow fadeInUp')}>{title}</h1>
+          <div className={cn(animate && 'wow fadeInUp')}>
+            <h1>{title}</h1>
+          </div>
           <Markdown content={intro} className={cn(animate && 'wow fadeIn')} />
           {children}
         </div>

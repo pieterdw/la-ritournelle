@@ -119,9 +119,10 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
 
   private getDistances = (): KeyValue<string>[] => {
     return [
-      { key: 'strand', value: '150m' },
-      { key: 'mini supermarkt', value: '500m' },
-      { key: 'restaurants', value: '150m' },
+      { key: 'Strand', value: '150m' },
+      { key: 'Superette', value: '500m' },
+      { key: 'Restaurants', value: '150m' },
+      { key: 'Belbus', value: '100m' },
       { key: `Antibes`, value: '3km' },
       { key: 'Cannes', value: '12km' },
       { key: 'Nice', value: '30km' },
