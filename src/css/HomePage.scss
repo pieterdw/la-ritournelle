@@ -15,13 +15,11 @@ html.homepage {
         font-size: 4.5rem;
         transform: rotate(-1deg);
         @media only screen and (max-width: 460px) and (min-width: 340px) {
-          font-size: 1.6rem;
-          letter-spacing: 10px;
+          font-size: 3.5rem;
           margin-bottom: 20px;
         }
         @media only screen and (max-width: 340px) {
-          font-size: 1.4rem;
-          letter-spacing: 8px;
+          font-size: 2.5rem;
           margin-bottom: 10px;
         }
       }
@@ -39,7 +37,7 @@ html.homepage {
   .homeOverview {
     .highlights {
       background-color: #fff;
-      padding-bottom: 60px;
+      padding-bottom: 35px;
       .highlight {
         text-align: center;
 
@@ -69,18 +67,15 @@ html.homepage {
           }
         }
         .imageContainer {
-          // margin: 15px 25px 0 25px;
           padding: 0 20px;
           a {
-            // border-radius: 400px;
-            // width: 100%;
             max-width: 260px;
             height: 160px;
             display: block;
             background-size: cover;
             background-position: center center;
             border: 10px solid #fff;
-            margin: 0 auto 0 auto;
+            margin: 0 auto 10px auto;
 
             @media only screen and (min-width: 768px) {
               margin-bottom: 25px;
@@ -90,6 +85,9 @@ html.homepage {
         h3 {
           font-size: 1.5rem;
           margin-bottom: 0.75rem;
+        }
+        p {
+          margin-bottom: 2rem;
         }
       }
     }

@@ -8,6 +8,13 @@
     p {
       margin: 0 15px 2px 0;
     }
+    @media only screen and (max-width: 574px) {
+      flex-direction: column;
+      text-align: center;
+      p {
+        margin-bottom: 15px;
+      }
+    }
   }
 }
 .navFooter {
