@@ -82,7 +82,7 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
           <Container>
             <Row className="outerRow">
               <Col md={4} className="pin">
-                <img src="/pin.png" className="wow bounceInDown" />
+                <img src="/pin.png" className="wow bounceIn" />
                 <span className="wow fadeIn">Alles in de buurt!</span>
               </Col>
               <Col md={8} className="innerDistances">
