@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouteData } from 'react-static';
 import { Gallery } from 'scripts/models/Gallery';
-import { Content } from '../components/Content';
 import { Footer } from '../components/Footer';
 import { GalleryOverview } from '../components/gallery/GalleryOverview';
 import { Header } from '../components/Header';
@@ -18,13 +17,11 @@ export default withRouteData((props: GalleryPageProps) => (
   <Template {...props}>
     <Header
       title={
-        props.title + (props.gallerySlug ? ' > ' + props.galleries.find(g => g.slug === props.gallerySlug).title : '')
+        props.title + (props.gallerySlug ? ': ' + props.galleries.find(g => g.slug === props.gallerySlug).title : '')
       }
       intro={props.intro}
     />
-    <Content {...props}>
-      <GalleryOverview {...props} />
-    </Content>
+    <GalleryOverview {...props} />
     <Footer {...props} />
   </Template>
 ));

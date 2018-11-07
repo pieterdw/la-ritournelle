@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-static';
+import Container from 'reactstrap/lib/Container';
 import Nav from 'reactstrap/lib/Nav';
 import NavItem from 'reactstrap/lib/NavItem';
 import NavLink from 'reactstrap/lib/NavLink';
@@ -26,7 +27,7 @@ export class GalleryOverview extends React.Component<GalleryOverviewProps, {}> {
     const images = gals.reduce((img: GalleryImage[], g) => img.concat(g.images), []);
     return (
       <div className="galleryOverview">
-        {this.renderGallerySelector()}
+        <Container>{this.renderGallerySelector()}</Container>
         <GalleryThumbs images={images} onSelect={this.handleSelect} />
         <GalleryLightbox images={images} currentImagePath={this.state.currentImagePath} onSelect={this.handleSelect} />
       </div>

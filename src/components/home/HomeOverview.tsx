@@ -113,10 +113,10 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
       { key: 'slaapkamers', value: '4' },
       { key: 'terassen', value: '2' },
       { key: `auto's in carport`, value: '2' },
-      { key: '', value: 'zwembad' },
-      { key: '', value: 'wifi' },
+      { key: '', value: 'Zwembad' },
+      { key: '', value: 'Wifi' },
       { key: '', value: 'BBQ' },
-      { key: '', value: 'keuken' }
+      { key: '', value: 'Tuin' }
     ];
   };
 

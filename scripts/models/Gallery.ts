@@ -6,7 +6,6 @@ export interface Gallery {
 
 export interface GalleryImage {
   title: string;
-  asset: string;
   thumbPath: string;
   fullSizePath: string;
 }

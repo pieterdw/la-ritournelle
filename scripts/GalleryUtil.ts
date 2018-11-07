@@ -8,23 +8,25 @@ export class GalleryUtil {
     const nl: Gallery[] = [];
     const en: Gallery[] = [];
     const fr: Gallery[] = [];
-    await raw.entries.forEach(async g => {
+
+    for (let i = 0; i < raw.entries.length; i++) {
+      const g = raw.entries[i];
       const images: GalleryImage[] = [];
 
-      await g.gallery.forEach(async img => {
+      for (let j = 0; j < g.gallery.length; j++) {
+        const img = g.gallery[j];
         const thumb = await Api.post<string>(`/api/cockpit/image`, {
-          src: img.meta.asset,
+          src: img.path,
           m: 'bestFit',
           w: 270,
           h: 200
         });
         images.push({
           title: img.meta.title,
-          asset: img.meta.asset,
           thumbPath: thumb,
-          fullSizePath: Api.cmsBasePath + img.path
+          fullSizePath: Api.cmsBasePath + '/' + img.path
         });
-      });
+      }
 
       nl.push({
         title: g.title,
@@ -41,7 +43,7 @@ export class GalleryUtil {
         slug: g.slug,
         images: images
       });
-    });
+    }
     return {
       nl,
       en,

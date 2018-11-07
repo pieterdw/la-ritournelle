@@ -18,12 +18,17 @@ export class GalleryThumbs extends React.Component<GalleryThumbsProps, {}> {
       <div className="galleryThumbs">
         <Row>
           {this.props.images.map((img, i) => (
-            <Col key={i} xs={6} md={3} className="thumbCol">
+            <Col
+              key={i}
+              xs={6}
+              md={3}
+              lg={2}
+              className="thumbCol animated zoomIn"
+              style={{ animationDelay: i * 60 + 'ms' }}>
               <a
                 data-path={img.fullSizePath}
                 onClick={this.handleSelect}
-                className="animated zoomIn"
-                style={{ backgroundImage: 'url(' + img.thumbPath + ')', animationDelay: i * 80 + 'ms' }}
+                style={{ backgroundImage: 'url(' + img.thumbPath + ')' }}
               />
             </Col>
           ))}
