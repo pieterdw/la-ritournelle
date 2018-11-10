@@ -2,9 +2,8 @@
 
 html.gallerypage {
   .galleryOverview {
-    background-color: #fff;
     .container {
-      padding: 20px 0;
+      padding: 0 0 20px 0;
     }
     .nav {
       display: flex;
@@ -12,6 +11,12 @@ html.gallerypage {
       .nav-item {
         display: flex;
         align-items: center;
+        a {
+          color: #fff;
+          &:hover {
+            background-color: $primaryHoverBackground;
+          }
+        }
       }
     }
   }
