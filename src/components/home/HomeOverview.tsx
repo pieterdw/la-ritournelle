@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from 'react-static';
+import Button from 'reactstrap/lib/Button';
 import Col from 'reactstrap/lib/Col';
 import Container from 'reactstrap/lib/Container';
 import Row from 'reactstrap/lib/Row';
@@ -20,8 +22,11 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
       highlight2image,
       highlight3title,
       highlight3text,
-      highlight3image
+      highlight3image,
+      menu,
+      text
     } = this.props;
+    const fotos = menu.find(x => x.id === 'gallerypage');
     return (
       <div className="homeOverview">
         <div className="highlights">
@@ -78,6 +83,15 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
             </Row>
           </Container>
         </div>
+        <div className="pictures">
+          <Container>
+            <div>
+              <Button color="secondary" tag={Link} to={fotos.path} className="wow fadeInUp">
+                {text.picturesLink}
+              </Button>
+            </div>
+          </Container>
+        </div>
         <div className="distances">
           <Container>
             <Row className="outerRow">
@@ -86,7 +100,7 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
                   src="https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/07/5be332fc97974pin-small.png"
                   className="wow bounceIn"
                 />
-                <span className="wow fadeIn">Alles in de buurt!</span>
+                <span className="wow fadeIn">{text.everythingNearby}</span>
               </Col>
               <Col md={8} className="innerDistances">
                 <Row>

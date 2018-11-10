@@ -95,7 +95,7 @@ html.homepage {
       background-color: #cbddde;
       padding: 60px 0 60px 0;
       .row {
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 992px) {
           margin: 0 100px;
         }
         > div {
@@ -111,9 +111,45 @@ html.homepage {
         }
       }
     }
+    .pictures {
+      background-color: $primaryBackground;
+      background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/10/5be693dee75d9collage-blur.jpg');
+      background-position: center center;
+      background-size: cover;
+      .container {
+        padding: 0;
+        > div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-image: url('https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/10/5be68f0f08634collage.jpg');
+          background-position: center center;
+          background-size: cover;
+          height: 396px;
+          @media only screen and (max-width: 450px) {
+            height: 150px;
+          }
+          @media only screen and (min-width: 450px) and (max-width: 768px) {
+            height: 190px;
+          }
+          @media only screen and (min-width: 768px) and (max-width: 992px) {
+            height: 250px;
+          }
+          @media only screen and (min-width: 992px) and (max-width: 1194px) {
+            height: 333px;
+          }
+        }
+      }
+    }
     .distances {
       background-color: #fff;
       padding: 60px 0 40px 0;
+      @media only screen and (min-width: 992px) {
+        .container {
+          padding-left: 90px;
+          padding-right: 90px;
+        }
+      }
       .pin {
         display: flex;
         flex-direction: column;
@@ -128,6 +164,7 @@ html.homepage {
           font-size: 1.2rem;
           display: inline-block;
           margin-bottom: 30px;
+          text-align: center;
         }
       }
       .innerDistances {
