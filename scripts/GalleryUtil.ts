@@ -17,8 +17,8 @@ export class GalleryUtil {
         const img = g.gallery[j];
         const thumb = await Api.post<string>(`/api/cockpit/image`, {
           src: img.path,
-          m: 'bestFit',
-          w: 270,
+          m: 'thumbnail',
+          w: 360,
           h: 200
         });
         images.push({

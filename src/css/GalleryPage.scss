@@ -16,6 +16,9 @@ html.gallerypage {
     }
   }
   .galleryThumbs {
+    .row {
+      margin: 0;
+    }
     .thumbCol {
       padding: 0;
       background-color: #222;
