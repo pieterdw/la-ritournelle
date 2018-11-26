@@ -52,19 +52,21 @@ export class PageUtil {
     result.push({ key: 'nl', value: PageUtil.keyValueToObject(nl) });
 
     result = result.concat(
-      PageUtil._languages.filter(locale => locale !== 'nl').map(lang => {
-        const values = nl.map(nl => {
-          const found = obj.find(x => x.key === nl.key + '_' + lang);
+      PageUtil._languages
+        .filter(locale => locale !== 'nl')
+        .map(lang => {
+          const values = nl.map(nl => {
+            const found = obj.find(x => x.key === nl.key + '_' + lang);
+            return {
+              key: nl.key,
+              value: found && found.value ? found.value : nl.value
+            };
+          });
           return {
-            key: nl.key,
-            value: found && found.value ? found.value : nl.value
+            key: lang,
+            value: PageUtil.keyValueToObject(values)
           };
-        });
-        return {
-          key: lang,
-          value: PageUtil.keyValueToObject(values)
-        };
-      })
+        })
     );
     return result;
   };
@@ -186,6 +188,8 @@ export class PageUtil {
     switch (id) {
       case 'homepage':
         return 'src/containers/HomePage';
+      case 'thehousepage':
+        return 'src/containers/TheHousePage';
       case 'gallerypage':
         return 'src/containers/GalleryPage';
       case 'bookingpage':

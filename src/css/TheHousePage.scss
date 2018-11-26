@@ -1,0 +1,19 @@
+html.thehousepage {
+  .theHouseOverview {
+    .feature {
+      &.even {
+        background-color: #fff;
+      }
+      &.odd {
+        background-color: #cadcdd;
+        text-align: right;
+      }
+      h3 {
+        margin-top: 35px;
+      }
+      .markdown {
+        margin-bottom: 35px;
+      }
+    }
+  }
+}
