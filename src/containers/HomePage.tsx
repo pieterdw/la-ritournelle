@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, withRouteData } from 'react-static';
 import Button from 'reactstrap/lib/Button';
+import { DistanceContainer } from 'src/models/Distance';
 import { ImagePath } from 'src/models/ImagePath';
+import { NumberValueContainer } from 'src/models/NumberValue';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { HomeOverview } from '../components/home/HomeOverview';
@@ -19,6 +21,8 @@ export interface HomePageProps extends PageProps {
   highlight3title: string;
   highlight3text: string;
   highlight3image: ImagePath;
+  numbers: NumberValueContainer[];
+  distances: DistanceContainer[];
 }
 
 export default withRouteData((props: HomePageProps) => {

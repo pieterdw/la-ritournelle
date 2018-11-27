@@ -4,7 +4,6 @@ import Button from 'reactstrap/lib/Button';
 import Col from 'reactstrap/lib/Col';
 import Container from 'reactstrap/lib/Container';
 import Row from 'reactstrap/lib/Row';
-import { KeyValue } from 'scripts/models/KeyValue';
 import { HomePageProps } from '../../containers/HomePage';
 import { PathUtil } from '../../utils/PathUtil';
 import { Markdown } from '../Markdown';
@@ -24,7 +23,9 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
       highlight3text,
       highlight3image,
       menu,
-      text
+      text,
+      numbers,
+      distances
     } = this.props;
     const fotos = menu.find(x => x.id === 'gallerypage');
     return (
@@ -74,10 +75,10 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
         <div className="numbers">
           <Container>
             <Row>
-              {this.getNumbers().map((x, i) => (
+              {numbers.map((x, i) => (
                 <Col xs={6} md={3} key={i}>
-                  <strong>{x.value}</strong>
-                  <span>{x.key}</span>
+                  <strong>{x.value.value}</strong>
+                  <span>{x.value.name}</span>
                 </Col>
               ))}
             </Row>
@@ -104,11 +105,11 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
               </Col>
               <Col md={8} className="innerDistances">
                 <Row>
-                  {this.getDistances().map((x, i) => (
+                  {distances.map((x, i) => (
                     <Col xs={6} sm={6} md={4} key={i}>
                       <div>
-                        <strong>{x.key}</strong>
-                        <span>{x.value}</span>
+                        <strong>{x.value.name}</strong>
+                        <span>{x.value.distance}</span>
                       </div>
                     </Col>
                   ))}
@@ -120,31 +121,4 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
       </div>
     );
   }
-
-  private getNumbers = (): KeyValue<string>[] => {
-    return [
-      { key: 'personen', value: '8' },
-      { key: 'slaapkamers', value: '4' },
-      { key: 'terassen', value: '2' },
-      { key: `auto's in carport`, value: '2' },
-      { key: '', value: 'Zwembad' },
-      { key: '', value: 'Wifi' },
-      { key: '', value: 'BBQ' },
-      { key: '', value: 'Tuin' }
-    ];
-  };
-
-  private getDistances = (): KeyValue<string>[] => {
-    return [
-      { key: 'Strand', value: '150m' },
-      { key: 'Superette', value: '500m' },
-      { key: 'Restaurants', value: '150m' },
-      { key: 'Belbus', value: '100m' },
-      { key: `Antibes`, value: '3km' },
-      { key: 'Cannes', value: '12km' },
-      { key: 'Nice', value: '30km' },
-      { key: 'Monaco', value: '50km' },
-      { key: 'Luchthaven', value: '24km' }
-    ];
-  };
 }
