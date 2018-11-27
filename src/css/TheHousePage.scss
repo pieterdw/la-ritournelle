@@ -3,16 +3,58 @@ html.thehousepage {
     .feature {
       &.even {
         background-color: #fff;
+        .imageContainer a {
+          margin-left: auto;
+        }
       }
       &.odd {
         background-color: #cadcdd;
         text-align: right;
+        .imageContainer a {
+          transform: rotate(2deg);
+        }
       }
       h3 {
         margin-top: 35px;
       }
       .markdown {
         margin-bottom: 35px;
+      }
+      .imageContainer {
+        // padding: 10px 0;
+        a {
+          margin: -10px 0;
+          width: 250px;
+          height: 150px;
+          display: block;
+          border: 8px solid #fff;
+          background-size: cover;
+          background-position: center center;
+          box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s;
+          transform: rotate(-2deg);
+          -webkit-backface-visibility: hidden;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+    .details {
+      background-color: #fff;
+      .container {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        h4 {
+          margin-top: 25px;
+          margin-bottom: 15px;
+        }
+        ul {
+          padding-left: 19px;
+          li {
+            line-height: 1.7;
+          }
+        }
       }
     }
   }

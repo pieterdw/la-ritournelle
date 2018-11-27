@@ -7,6 +7,9 @@
     h1 {
       letter-spacing: 1px;
       font-size: 2rem;
+      @media screen and (max-width: 580px) {
+        padding: 0 15px;
+      }
     }
     .markdown {
       animation-delay: 0.5s;
