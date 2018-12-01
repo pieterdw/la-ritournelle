@@ -50,6 +50,12 @@ html.homepage {
             margin-top: -30px;
           }
         }
+        .imageContainer a {
+          transition: transform 0.3s;
+          &:hover {
+            transform: scale(1.1) !important;
+          }
+        }
         &.highlight1 .imageContainer {
           a {
             transform: rotate(-1.5deg);
@@ -96,7 +102,7 @@ html.homepage {
       }
     }
     .numbers {
-      background-color: #cbddde;
+      background-color: #ecf2f2;
       padding: 60px 0 60px 0;
       .row {
         @media only screen and (min-width: 992px) {

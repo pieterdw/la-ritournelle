@@ -3,30 +3,33 @@ html.thehousepage {
     .feature {
       &.even {
         background-color: #fff;
-        .imageContainer a {
-          margin-left: auto;
+        .imageContainer {
+          text-align: right;
         }
       }
       &.odd {
-        background-color: #cadcdd;
+        background-color: #ecf2f2;
         text-align: right;
-        .imageContainer a {
-          transform: rotate(2deg);
+        .imageContainer {
+          text-align: left;
+          div {
+            transform: rotate(2deg);
+          }
         }
       }
       h3 {
-        margin-top: 35px;
+        margin-top: 50px;
       }
       .markdown {
-        margin-bottom: 35px;
+        margin-bottom: 20px;
       }
       .imageContainer {
         // padding: 10px 0;
-        a {
-          margin: -10px 0;
-          width: 250px;
-          height: 150px;
-          display: block;
+        div {
+          margin: 15px 0;
+          width: 230px;
+          height: 140px;
+          display: inline-block;
           border: 8px solid #fff;
           background-size: cover;
           background-position: center center;
@@ -34,14 +37,15 @@ html.thehousepage {
           transition: transform 0.3s;
           transform: rotate(-2deg);
           -webkit-backface-visibility: hidden;
-          &:hover {
-            transform: scale(1.1);
-          }
         }
       }
     }
     .details {
       background-color: #fff;
+      .desc {
+        margin-top: 30px;
+        text-align: center;
+      }
       .container {
         padding-top: 20px;
         padding-bottom: 40px;
@@ -53,6 +57,7 @@ html.thehousepage {
           padding-left: 19px;
           li {
             line-height: 1.7;
+            font-size: 0.85rem;
           }
         }
       }

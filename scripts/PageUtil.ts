@@ -46,7 +46,7 @@ export class PageUtil {
       }
     }
 
-    const nl = obj.filter(x => x.key.indexOf('_') === -1);
+    const nl = obj.filter(x => x.key.length === 2 || x.key.lastIndexOf('_') !== x.key.length - 3);
 
     let result: KeyValue<any>[] = [];
     result.push({ key: 'nl', value: PageUtil.keyValueToObject(nl) });
