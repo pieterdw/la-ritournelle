@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, withRouteData } from 'react-static';
-import Button from 'reactstrap/lib/Button';
+import { withRouteData } from 'react-static';
 import { DistanceContainer } from 'src/models/Distance';
 import { ImagePath } from 'src/models/ImagePath';
 import { NumberValueContainer } from 'src/models/NumberValue';
@@ -43,14 +42,14 @@ export default withRouteData((props: HomePageProps) => {
   return (
     <Template {...props}>
       <Header title={props.title} intro={props.intro} animate={true} bottomContent={bottomContent}>
-        <div className="headerButtons wow fadeIn">
+        {/* <div className="headerButtons wow fadeIn">
           <Button color="primary" tag={Link} to={thehouse.path}>
             {thehouse.label}
           </Button>
           <Button color="secondary" tag={Link} to={fotos.path}>
             {fotos.label}
           </Button>
-        </div>
+        </div> */}
       </Header>
       <HomeOverview {...props} />
       <Footer {...props} menu={props.menu} />
