@@ -52,8 +52,7 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
           message: message,
           recaptcha: recaptcha
         })
-          .then(response => {
-            console.log('Server response: ' + JSON.stringify(response));
+          .then(() => {
             this.setState({ formStatus: FormStatus.Saved });
           })
           .catch(error => {
@@ -94,8 +93,9 @@ export class ContactForm extends React.Component<ContactFormProps, ContactFormSt
           <div className="captcha">
             <ReCAPTCHA sitekey="6LcmM3cUAAAAAMlm-0Mz-2NpkhY-vog1cag9y_fC" onChange={this.handleRecaptchaResolved} />
           </div>
-          {formStatus === FormStatus.Validating &&
-            !this.checkIfFormValid() && <Alert color="danger">{text.completeAllFields}</Alert>}
+          {formStatus === FormStatus.Validating && !this.checkIfFormValid() && (
+            <Alert color="danger">{text.completeAllFields}</Alert>
+          )}
           {formStatus === FormStatus.Saved && <Alert color="success">{text.contactFormSent}</Alert>}
           {formStatus === FormStatus.Error && <Alert color="danger">{text.oops}</Alert>}
           <Button color="primary" disabled={formStatus === FormStatus.Saving || !recaptcha}>

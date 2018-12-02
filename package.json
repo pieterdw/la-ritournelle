@@ -32,6 +32,7 @@
     "react-static": "^5.9.12",
     "reactstrap": "^6.5.0",
     "showdown": "^1.8.7",
+    "smoothscroll-polyfill": "^0.4.3",
     "twilio": "^3.23.1",
     "wowjs": "^1.1.3"
   },

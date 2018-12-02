@@ -1,15 +1,55 @@
 @import './Colors.scss';
 
+@keyframes bounceInDownCustom {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -1000px, 0);
+  }
+
+  35% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 10px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 html.homepage {
   .pageHeader {
     display: flex;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     min-height: 250px;
-    > div {
+    .innerPageHeader {
       flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       text-align: center;
-      padding-top: 0;
+      padding: 0;
       h1 {
         font-family: 'Caveat', cursive;
         font-size: 4.5rem;
@@ -26,9 +66,27 @@ html.homepage {
       }
       .headerButtons {
         .btn {
+          display: none;
           text-shadow: none;
           &:first-child {
             margin-right: 10px;
+          }
+        }
+      }
+    }
+    .bottomContent {
+      padding: 0 0 50px 0;
+      .scrollDown {
+        animation-duration: 1.5s;
+        animation-fill-mode: both;
+        animation-name: bounceInDownCustom;
+        animation-delay: 1.6s;
+        a {
+          padding: 20px;
+          display: inline-block;
+          i {
+            color: #fff;
+            font-size: 2rem;
           }
         }
       }

@@ -10,8 +10,6 @@ export interface TheHouseOverviewProps extends TheHousePageProps {}
 
 export class TheHouseOverview extends React.Component<TheHouseOverviewProps, {}> {
   public render() {
-    console.log(this.props);
-
     return (
       <div className="theHouseOverview">
         {this.renderFeatures()}

@@ -9,6 +9,7 @@ import { Header } from '../components/Header';
 import { HomeOverview } from '../components/home/HomeOverview';
 import { Template } from '../components/Template';
 import '../css/HomePage.scss';
+import { scrollIt } from '../utils/scrollIt';
 import { PageProps } from './Page';
 
 export interface HomePageProps extends PageProps {
@@ -27,12 +28,24 @@ export interface HomePageProps extends PageProps {
 
 export default withRouteData((props: HomePageProps) => {
   const fotos = props.menu.find(x => x.id === 'gallerypage');
+  const thehouse = props.menu.find(x => x.id === 'thehousepage');
+  const bottomContent = (
+    <div className="scrollDown">
+      <a
+        onClick={() => {
+          const destination = (document.querySelector('.homeOverview') as any).offsetTop - 110;
+          scrollIt(destination, 750, 'easeInOutQuad', undefined);
+        }}>
+        <i className="fas fa-angle-down" />{' '}
+      </a>
+    </div>
+  );
   return (
     <Template {...props}>
-      <Header title={props.title} intro={props.intro} animate={true}>
+      <Header title={props.title} intro={props.intro} animate={true} bottomContent={bottomContent}>
         <div className="headerButtons wow fadeIn">
-          <Button color="primary" tag={Link} to={`/${props.locale}/info`}>
-            {props.text.moreInfo}
+          <Button color="primary" tag={Link} to={thehouse.path}>
+            {thehouse.label}
           </Button>
           <Button color="secondary" tag={Link} to={fotos.path}>
             {fotos.label}
