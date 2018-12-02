@@ -1,8 +1,8 @@
-html.thehousepage {
+html.surroundingspage {
   .surroundingsOverview {
+    background-color: #fff;
     .highlight {
       &.even {
-        background-color: #fff;
         .imageContainer {
           text-align: right;
         }
@@ -17,16 +17,26 @@ html.thehousepage {
           }
         }
       }
-      h3 {
-        margin-top: 50px;
+      .textCol,
+      .imageCol {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
       }
-      .markdown {
-        margin-bottom: 20px;
+      .textContainer {
+        margin: 40px 0;
+        h3 span {
+          font-size: 0.9rem;
+          vertical-align: middle;
+          display: inline-block;
+          margin-left: 10px;
+          color: #54858c;
+        }
       }
       .imageContainer {
-        // padding: 10px 0;
         div {
-          margin: 15px 0 12px 0;
+          margin: 35px 0 32px 0;
           width: 230px;
           height: 140px;
           display: inline-block;
@@ -37,6 +47,20 @@ html.thehousepage {
           transition: transform 0.3s;
           transform: rotate(-2deg);
           -webkit-backface-visibility: hidden;
+        }
+      }
+    }
+    .distances {
+      padding: 40px 0;
+      .distance {
+        text-align: center;
+        line-height: 1.7;
+        span {
+          font-size: 0.85rem;
+          vertical-align: middle;
+          display: inline-block;
+          margin-left: 10px;
+          color: #54858c;
         }
       }
     }

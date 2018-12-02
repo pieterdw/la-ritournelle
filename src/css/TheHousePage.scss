@@ -17,16 +17,20 @@ html.thehousepage {
           }
         }
       }
-      h3 {
-        margin-top: 50px;
+      .textCol,
+      .imageCol {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
       }
-      .markdown {
-        margin-bottom: 20px;
+      .textContainer {
+        margin: 40px 0;
       }
       .imageContainer {
         // padding: 10px 0;
         div {
-          margin: 15px 0 12px 0;
+          margin: 35px 0 32px 0;
           width: 230px;
           height: 140px;
           display: inline-block;

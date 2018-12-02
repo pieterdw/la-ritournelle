@@ -21,12 +21,8 @@ export class TheHouseOverview extends React.Component<TheHouseOverviewProps, {}>
   }
 
   private renderFeatures = () => {
-    return (
-      <React.Fragment>
-        {this.props.features.map((f, i) =>
-          this.renderFeature(f.value.title, f.value.description, f.value.image.path, i)
-        )}
-      </React.Fragment>
+    return this.props.features.map((f, i) =>
+      this.renderFeature(f.value.title, f.value.description, f.value.image.path, i)
     );
   };
 
@@ -84,15 +80,15 @@ export class TheHouseOverview extends React.Component<TheHouseOverviewProps, {}>
   private renderFeature = (title: string, text: string, backgroundImage: string, index: number) => {
     const isEven = index % 2 === 0;
     const imageCol = (
-      <Col sm={12} md={5} lg={4} xl={3}>
+      <Col sm={12} md={5} lg={4} xl={3} className="imageCol">
         <div className="imageContainer wow jackInTheBox" style={{ animationDelay: index * 60 + 'ms' }}>
           <div style={{ backgroundImage: `url(https://admin.vakantiehuisantibes.com${backgroundImage})` }} />
         </div>
       </Col>
     );
     const textCol = (
-      <Col sm={12} md={7} lg={8} xl={9}>
-        <div className="wow fadeIn" style={{ animationDelay: index * 60 + 'ms' }}>
+      <Col sm={12} md={7} lg={8} xl={9} className="textCol">
+        <div className="textContainer wow fadeIn" style={{ animationDelay: index * 60 + 'ms' }}>
           <h3>{title}</h3>
           <Markdown content={text} />
         </div>
