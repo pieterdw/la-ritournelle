@@ -84,6 +84,10 @@ html.homepage {
         a {
           padding: 20px;
           display: inline-block;
+          transition: transform 0.3s;
+          &:hover {
+            transform: translateY(8px);
+          }
           i {
             color: #fff;
             font-size: 2rem;
