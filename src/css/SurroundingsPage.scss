@@ -1,0 +1,44 @@
+html.thehousepage {
+  .surroundingsOverview {
+    .highlight {
+      &.even {
+        background-color: #fff;
+        .imageContainer {
+          text-align: right;
+        }
+      }
+      &.odd {
+        background-color: #ecf2f2;
+        text-align: right;
+        .imageContainer {
+          text-align: left;
+          div {
+            transform: rotate(2deg);
+          }
+        }
+      }
+      h3 {
+        margin-top: 50px;
+      }
+      .markdown {
+        margin-bottom: 20px;
+      }
+      .imageContainer {
+        // padding: 10px 0;
+        div {
+          margin: 15px 0 12px 0;
+          width: 230px;
+          height: 140px;
+          display: inline-block;
+          border: 8px solid #fff;
+          background-size: cover;
+          background-position: center center;
+          box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s;
+          transform: rotate(-2deg);
+          -webkit-backface-visibility: hidden;
+        }
+      }
+    }
+  }
+}

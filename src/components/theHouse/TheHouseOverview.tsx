@@ -26,42 +26,6 @@ export class TheHouseOverview extends React.Component<TheHouseOverviewProps, {}>
         {this.props.features.map((f, i) =>
           this.renderFeature(f.value.title, f.value.description, f.value.image.path, i)
         )}
-        {/* {this.renderFeature(
-          'Privézwembad',
-          'Geniet in alle rust en privacy van dit mooie zwembad.',
-          'https://admin.vakantiehuisantibes.com/storage/home-circle1.png',
-          true
-        )}
-        {this.renderFeature(
-          '2 terrassen',
-          'Een terras bij het zwembad, en een ander terras bij de keuken.',
-          'https://admin.vakantiehuisantibes.com/storage/home-circle1.png',
-          false
-        )}
-        {this.renderFeature(
-          '4 slaapkamers',
-          'Met bedden voor 8 volwassenen, plus 1 kinderbedje',
-          'https://admin.vakantiehuisantibes.com/storage/home-circle1.png',
-          true
-        )}
-        {this.renderFeature(
-          'Volledig voorziene keuken',
-          'Gezellige keuken met alle voorzieningen!',
-          'https://admin.vakantiehuisantibes.com/storage/home-circle1.png',
-          false
-        )}
-        {this.renderFeature(
-          'Ruime woon/eetkamer',
-          'Veel plaats!',
-          'https://admin.vakantiehuisantibes.com/storage/home-circle1.png',
-          true
-        )}
-        {this.renderFeature(
-          'Dubbele carport',
-          'Er is buiten veel plaats, ondermeer met een dubbele carport, 2 terrassen, tuinhuis, BBQ, ...',
-          'https://admin.vakantiehuisantibes.com/storage/home-circle1.png',
-          false
-        )} */}
       </React.Fragment>
     );
   };

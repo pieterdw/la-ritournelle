@@ -190,6 +190,8 @@ export class PageUtil {
         return 'src/containers/HomePage';
       case 'thehousepage':
         return 'src/containers/TheHousePage';
+      case 'surroundingspage':
+        return 'src/containers/SurroundingsPage';
       case 'gallerypage':
         return 'src/containers/GalleryPage';
       case 'bookingpage':
