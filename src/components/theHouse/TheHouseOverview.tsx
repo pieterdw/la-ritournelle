@@ -128,8 +128,10 @@ export class TheHouseOverview extends React.Component<TheHouseOverviewProps, {}>
     );
     const textCol = (
       <Col sm={12} md={7} lg={8} xl={9}>
-        <h3>{title}</h3>
-        <Markdown content={text} />
+        <div className="wow fadeIn" style={{ animationDelay: index * 60 + 'ms' }}>
+          <h3>{title}</h3>
+          <Markdown content={text} />
+        </div>
       </Col>
     );
     return (
