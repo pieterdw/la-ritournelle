@@ -36,8 +36,8 @@ html.homepage {
   }
 
   .homeOverview {
+    background-color: #fff;
     .highlights {
-      background-color: #fff;
       padding-bottom: 35px;
       .highlight {
         text-align: center;
@@ -102,6 +102,9 @@ html.homepage {
       }
     }
     .numbers {
+      border-radius: 250% / 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
       background-color: #ecf2f2;
       padding: 60px 0 60px 0;
       .row {

@@ -1,18 +1,24 @@
 .bookingFooter {
-  background-color: #ecf2f2;
-  .container {
-    padding: 30px 15px 35px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    p {
-      margin: 0 15px 2px 0;
-    }
-    @media only screen and (max-width: 574px) {
-      flex-direction: column;
-      text-align: center;
+  background-color: #fff;
+  .innerBookingFooter {
+    border-radius: 90% / 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #ecf2f2;
+    .container {
+      padding: 40px 15px 35px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       p {
-        margin-bottom: 15px;
+        margin: 0 15px 2px 0;
+      }
+      @media only screen and (max-width: 574px) {
+        flex-direction: column;
+        text-align: center;
+        p {
+          margin-bottom: 15px;
+        }
       }
     }
   }

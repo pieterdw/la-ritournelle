@@ -19,12 +19,14 @@ export class Footer extends React.Component<FooterProps, {}> {
       <React.Fragment>
         {!isBookingPage && (
           <div className="bookingFooter">
-            <Container>
-              <p>{text.bookingFooterText}</p>
-              <Button color="primary" tag={Link} to={booking.path}>
-                {text.bookingFooterButton}
-              </Button>
-            </Container>
+            <div className="innerBookingFooter">
+              <Container>
+                <p>{text.bookingFooterText}</p>
+                <Button color="primary" tag={Link} to={booking.path}>
+                  {text.bookingFooterButton}
+                </Button>
+              </Container>
+            </div>
           </div>
         )}
         <div className="navFooter">
