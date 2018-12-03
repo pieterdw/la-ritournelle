@@ -41,16 +41,7 @@ export default withRouteData((props: HomePageProps) => {
   );
   return (
     <Template {...props}>
-      <Header title={props.title} intro={props.intro} animate={true} bottomContent={bottomContent}>
-        {/* <div className="headerButtons wow fadeIn">
-          <Button color="primary" tag={Link} to={thehouse.path}>
-            {thehouse.label}
-          </Button>
-          <Button color="secondary" tag={Link} to={fotos.path}>
-            {fotos.label}
-          </Button>
-        </div> */}
-      </Header>
+      <Header title={props.title} intro={props.intro} animate={true} bottomContent={bottomContent} />
       <HomeOverview {...props} />
       <Footer {...props} menu={props.menu} />
     </Template>

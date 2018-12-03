@@ -5,7 +5,9 @@ import Routes from 'react-static-routes';
 import smoothscroll from 'smoothscroll-polyfill';
 import './css/App.scss';
 
-smoothscroll.polyfill();
+if (window) {
+  smoothscroll.polyfill();
+}
 
 if (process.env.NODE_ENV !== 'production') {
   const WOW = require('wowjs');
