@@ -205,7 +205,7 @@ export class BookingOverview extends React.Component<BookingOverviewProps, Booki
     return (
       <div className="noDateSelected">
         <div className="animated fadeInRight">
-          <i className="fas fa-arrow-left" /> {this.props.text.pleaseSelectADate}
+          <i className="icon-left-big" /> {this.props.text.pleaseSelectADate}
         </div>
       </div>
     );

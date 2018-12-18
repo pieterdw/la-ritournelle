@@ -26,8 +26,6 @@ export interface HomePageProps extends PageProps {
 }
 
 export default withRouteData((props: HomePageProps) => {
-  const fotos = props.menu.find(x => x.id === 'gallerypage');
-  const thehouse = props.menu.find(x => x.id === 'thehousepage');
   const bottomContent = (
     <div className="scrollDown">
       <a
@@ -35,7 +33,7 @@ export default withRouteData((props: HomePageProps) => {
           const destination = (document.querySelector('.homeOverview') as any).offsetTop - 110;
           scrollIt(destination, 750, 'easeInOutQuad', undefined);
         }}>
-        <i className="fas fa-angle-down" />{' '}
+        <i className="icon-angle-down" />{' '}
       </a>
     </div>
   );
