@@ -1,3 +1,13 @@
 .pageNotFound {
   color: #fff;
+  text-align: center;
+  padding-top: 50px;
+  a {
+    display: inline-block;
+    background-color: #fff;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-top: 15px;
+  }
 }
