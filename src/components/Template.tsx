@@ -36,19 +36,12 @@ export class Template extends React.Component<TemplateProps, {}> {
             `}
           </script>
 
-          {/* <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-            integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-            crossOrigin="anonymous"
-          /> */}
           <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossOrigin="anonymous"
           />
-          <link href="https://fonts.googleapis.com/css?family=Caveat|Montserrat" rel="stylesheet" />
           <link rel="stylesheet" href={Api.websiteBasePath + '/assets/animate.css'} crossOrigin="anonymous" />
           {process.env.NODE_ENV === 'production' && (
             <script src={Api.websiteBasePath + '/assets/wow.min.js'} crossOrigin="anonymous" />

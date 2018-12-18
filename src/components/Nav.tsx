@@ -38,20 +38,25 @@ export class Nav extends React.Component<NavProps, NavState> {
           <NavbarBrand tag={Link} to={homePath}>
             La Ritournelle
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} className={cn(this.state.isOpen && 'open')}>
+          <NavbarToggler
+            onClick={this.toggle}
+            className={cn(this.state.isOpen && 'open')}
+            aria-label="toggle navigation menu">
             <div className="one" />
             <div className="two" />
             <div className="three" />
           </NavbarToggler>
           <Collapse isOpen={this.state.isOpen} navbar>
             <NavBs className="ml-auto" navbar>
-              {this.props.menu.filter(item => item.id !== 'homepage').map(item => (
-                <NavItem key={item.path}>
-                  <NavLink tag={Link} to={item.path}>
-                    {item.label}
-                  </NavLink>
-                </NavItem>
-              ))}
+              {this.props.menu
+                .filter(item => item.id !== 'homepage')
+                .map(item => (
+                  <NavItem key={item.path}>
+                    <NavLink tag={Link} to={item.path}>
+                      {item.label}
+                    </NavLink>
+                  </NavItem>
+                ))}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   {this.props.locale.toUpperCase()}
