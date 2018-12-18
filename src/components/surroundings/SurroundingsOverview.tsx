@@ -71,7 +71,7 @@ export class SurroundingsOverview extends React.Component<SurroundingsOverviewPr
     const imageCol = (
       <Col sm={12} md={5} lg={4} xl={3} className="imageCol">
         {surrounding.image && (
-          <div className="imageContainer wow jackInTheBox" style={{ animationDelay: index * 250 + 'ms' }}>
+          <div className="imageContainer wow jackInTheBox" style={{ animationDelay: index * 175 + 'ms' }}>
             <div style={{ backgroundImage: `url(https://admin.vakantiehuisantibes.com${surrounding.image.path})` }} />
           </div>
         )}

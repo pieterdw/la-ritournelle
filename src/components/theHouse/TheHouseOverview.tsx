@@ -79,7 +79,7 @@ export class TheHouseOverview extends React.Component<TheHouseOverviewProps, {}>
     const isEven = index % 2 === 0;
     const imageCol = (
       <Col sm={12} md={5} lg={4} xl={3} className="imageCol">
-        <div className="imageContainer wow jackInTheBox" style={{ animationDelay: index * 250 + 'ms' }}>
+        <div className="imageContainer wow jackInTheBox" style={{ animationDelay: index * 175 + 'ms' }}>
           <div style={{ backgroundImage: `url(https://admin.vakantiehuisantibes.com${backgroundImage})` }} />
         </div>
       </Col>
