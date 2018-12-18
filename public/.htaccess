@@ -9,3 +9,9 @@ ErrorDocument 404 /404.html
 Header set Access-Control-Allow-Origin "*"
 
 php_value session.gc_maxlifetime 7200
+
+RewriteCond %{HTTP_HOST} ^vakantiehuisantibes\.com$
+RewriteRule ^(.*)$ "https\:\/\/www\.vakantiehuisantibes\.com\/$1" [R=301,L]
+
+RewriteCond %{THE_REQUEST} ^.*/index\.html
+RewriteRule ^(.*)index.html$ /$1 [R=301,L] 
