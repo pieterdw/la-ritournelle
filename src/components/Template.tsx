@@ -46,7 +46,7 @@ export class Template extends React.Component<TemplateProps, {}> {
           />
           <link rel="stylesheet" href={Api.websiteBasePath + '/assets/animate.css'} crossOrigin="anonymous" />
           {process.env.NODE_ENV === 'production' && (
-            <script src={Api.websiteBasePath + '/assets/wow.min.js'} crossOrigin="anonymous" />
+            <script src={Api.websiteBasePath + '/assets/wow.min.js'} crossOrigin="anonymous" async />
           )}
         </Head>
         <Nav {...this.props} />
