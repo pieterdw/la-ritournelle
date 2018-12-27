@@ -181,7 +181,7 @@ export class PageUtil {
     if (locale === 'nl' && !slug) {
       return '/';
     }
-    return `/${locale}${slug ? '/' + slug : ''}`;
+    return `/${locale}/${slug ? slug + '/' : ''}`;
   };
 
   private static getPageComponent = (id: string): string => {
