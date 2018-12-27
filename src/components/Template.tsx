@@ -25,6 +25,7 @@ export class Template extends React.Component<TemplateProps, {}> {
           </title>
           <meta name="description" content={this.props.meta_description} />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="canonical" href={'https://www.vakantiehuisantibes.com' + this.props.path} />
           <link rel="icon" type="image/png" href="/icon-32.png" sizes="32x32" />
           <link rel="icon" type="image/png" href="/icon-16.png" sizes="16x16" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127881760-1" />
