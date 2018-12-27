@@ -9,6 +9,7 @@ export interface Page {
   path: string;
   title: string;
   intro: string;
+  meta_description: string;
   content?: Layout[];
   text: any;
   menu: MenuItem[];
