@@ -28,6 +28,7 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
       distances
     } = this.props;
     const fotos = menu.find(x => x.id === 'gallerypage');
+    const theHouse = menu.find(x => x.id === 'thehousepage');
     return (
       <div className="homeOverview">
         <div className="highlights">
@@ -37,7 +38,7 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
                 <div className="highlight highlight1">
                   <div className="imageContainer wow jackInTheBox">
                     <a
-                      href="/nl/info"
+                      href={theHouse.path}
                       style={{ backgroundImage: 'url(' + PathUtil.getFullImagePath(highlight1image.path) + ')' }}
                     />
                   </div>
@@ -49,7 +50,7 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
                 <div className="highlight highlight2">
                   <div className="imageContainer wow jackInTheBox">
                     <a
-                      href="/nl/info"
+                      href={theHouse.path}
                       style={{ backgroundImage: 'url(' + PathUtil.getFullImagePath(highlight2image.path) + ')' }}
                     />
                   </div>
@@ -61,7 +62,7 @@ export class HomeOverview extends React.Component<HomeOverviewProps, {}> {
                 <div className="highlight highlight3">
                   <div className="imageContainer wow jackInTheBox">
                     <a
-                      href="/nl/info"
+                      href={theHouse.path}
                       style={{ backgroundImage: 'url(' + PathUtil.getFullImagePath(highlight3image.path) + ')' }}
                     />
                   </div>
