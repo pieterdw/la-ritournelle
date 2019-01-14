@@ -67,6 +67,7 @@ END;
 
     $mail->setFrom('info@vakantiehuisantibes.com', 'Vakantiehuis La Ritournelle');
     $mail->addAddress('info@vakantiehuisantibes.com');
+    $mail->addBCC('Ann.luyckx2@telenet.be');
 
     $mail->isHTML(true);
     $mail->Subject = $subject;

@@ -67,7 +67,7 @@ function sendMailToRequester($params, $bookingOptions)
 
     $mail->setFrom('info@vakantiehuisantibes.com', 'Vakantiehuis La Ritournelle');
     $mail->addCC('info@vakantiehuisantibes.com');
-    $mail->addAddress('pieterdewitte@gmail.com');
+    $mail->addBCC('Ann.luyckx2@telenet.be');
     $mail->addAddress($params->email);
 
     $mail->isHTML(true);
