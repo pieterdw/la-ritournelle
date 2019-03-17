@@ -26,6 +26,7 @@
     "react-calendar": "^2.17.5",
     "react-dom": "^16.6.3",
     "react-google-recaptcha": "^1.0.5",
+    "react-hot-loader": "^4.8.0",
     "react-image-lightbox": "^5.1.0",
     "react-images": "^0.5.19",
     "react-static": "^5.9.12",
