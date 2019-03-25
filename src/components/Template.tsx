@@ -8,12 +8,20 @@ export interface TemplateProps extends PageProps {}
 
 export class Template extends React.Component<TemplateProps, {}> {
   public componentDidMount() {
-    new (window as any).WOW().init();
+    this.wowInit();
     const imagePath = 'https://admin.vakantiehuisantibes.com/storage/uploads/2018/11/05/5be05f608de75bg3-big.jpg';
     const image = new Image();
     image.onload = () => (document.querySelector('html').style.backgroundImage = `url('${imagePath}')`);
     image.src = imagePath;
   }
+
+  private wowInit = () => {
+    if ((window as any).WOW) {
+      new (window as any).WOW().init();
+    } else {
+      setTimeout(this.wowInit, 250);
+    }
+  };
 
   public render() {
     return (
