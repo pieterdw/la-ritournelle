@@ -104,6 +104,7 @@ export class BookingCalendar extends React.Component<BookingCalendarProps, {}> {
     return (
       <div className="bookingCalendar">
         <Calendar
+          key={(this.props.bookingStart && this.props.bookingStart.toString()) || ''}
           tileClassName={this.getDateClassName}
           tileDisabled={this.checkDateIsDisabled}
           activeStartDate={new Date(this._nextMonth)}
